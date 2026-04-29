@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.env.local
+.DS_Store
+*.log
+
+# Local SQLite database (dev/auth data — never commit)
+data.db
+data.db-shm
+data.db-wal
+
+# TS incremental build cache
+tsconfig.tsbuildinfo

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Auth surface is flag-hidden in production, but be explicit anyway.
+Disallow: /login
+Disallow: /signup
+
+Sitemap: https://www.collegetrends.io/sitemap.xml

@@ -11,7 +11,7 @@ export function AboutPage({ onBack }: Props) {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-5 flex items-baseline justify-between gap-4">
           <h1 className="text-lg sm:text-xl font-semibold">
             <a href="/" className="hover:text-slate-200">
-              College Scorecard Explorer
+              College Trends
             </a>
           </h1>
           <button
@@ -28,7 +28,7 @@ export function AboutPage({ onBack }: Props) {
         <section>
           <h2 className="text-2xl font-semibold text-slate-900">About this tool</h2>
           <p className="text-base text-slate-700 mt-3 leading-relaxed">
-            College Scorecard Explorer is a free, public dashboard that turns the U.S.
+            College Trends is a free, public dashboard that turns the U.S.
             Department of Education's <em>College Scorecard</em> dataset into something
             anyone can actually use — students and families weighing their options,
             counselors advising them, and journalists or researchers covering higher

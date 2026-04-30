@@ -17,7 +17,7 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
       {/* Top bar */}
       <header className="bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-lg font-semibold">College Scorecard Explorer</div>
+          <div className="text-lg font-semibold">College Trends</div>
           <div className="flex items-center gap-3 text-sm">
             {!AUTH_ENABLED ? (
               <button

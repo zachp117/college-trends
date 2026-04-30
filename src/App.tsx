@@ -448,7 +448,7 @@ export default function App() {
           <div>
             <h1 className="text-lg sm:text-xl font-semibold">
               <a href="/" className="hover:text-slate-200">
-                College Scorecard Explorer
+                College Trends
               </a>
             </h1>
             <p className="text-xs text-slate-300 hidden sm:block">

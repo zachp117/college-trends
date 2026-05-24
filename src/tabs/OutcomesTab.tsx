@@ -12,6 +12,7 @@ import {
 import type { School } from '../api/scorecard';
 import { fmtMoney, fmtPct } from '../util/format';
 import { InfoTooltip } from '../components/InfoTooltip';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -231,8 +232,9 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <Accordion>
         {/* Completion by race */}
+        <AccordionSection id="outcomes.byRace" title="4-year completion rate by race">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             4-year completion rate by race
@@ -276,8 +278,10 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Completion by Pell + Gender */}
+        <AccordionSection id="outcomes.genderPell" title="6-year completion: gender & Pell status">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             6-year completion: gender & Pell status
@@ -320,8 +324,10 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Earnings by gender */}
+        <AccordionSection id="outcomes.earningsByGender" title="10-yr earnings by gender">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             10-yr earnings by gender
@@ -361,8 +367,10 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Earnings by income tercile */}
+        <AccordionSection id="outcomes.earningsByIncome" title="10-yr earnings by family income tercile (at entry)">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             10-yr earnings by family income tercile (at entry)
@@ -403,8 +411,9 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
-      </div>
+      </Accordion>
 
       {/* Outcomes table */}
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">

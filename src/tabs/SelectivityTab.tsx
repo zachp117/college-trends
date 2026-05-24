@@ -17,6 +17,7 @@ import type { School } from '../api/scorecard';
 import { OWNERSHIP_LABELS, TEST_POLICY_LABELS } from '../api/scorecard';
 import { fmtNum, fmtPct } from '../util/format';
 import { StatCard } from '../components/StatCard';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -210,9 +211,9 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
   }, [schools]);
 
   return (
-    <div className="space-y-6">
+    <>
       {/* Summary cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         <StatCard
           label="Typical admit rate"
           tip="admit-rate"
@@ -238,8 +239,9 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <Accordion>
         {/* Selectivity tiers */}
+        <AccordionSection id="selectivity.tiers" title="Schools by selectivity tier">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Schools by selectivity tier
@@ -265,8 +267,10 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Test policy distribution */}
+        <AccordionSection id="selectivity.testPolicy" title="Test-score policy">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">Test-score policy</h3>
           <p className="text-xs text-slate-500 mb-3">
@@ -301,8 +305,10 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+        </AccordionSection>
 
         {/* SAT range for selected */}
+        <AccordionSection id="selectivity.satRange" title="SAT score range — selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             SAT score range — selected schools
@@ -328,8 +334,10 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+        </AccordionSection>
 
         {/* ACT range for selected */}
+        <AccordionSection id="selectivity.actRange" title="ACT score range — selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             ACT score range — selected schools
@@ -354,8 +362,10 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+        </AccordionSection>
 
         {/* Admit rate vs SAT scatter */}
+        <AccordionSection id="selectivity.admitVsSat" title="Admit rate vs. SAT (50th percentile total)">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Admit rate vs. SAT (50th percentile total)
@@ -423,10 +433,11 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
-      </div>
+        </AccordionSection>
+      </Accordion>
 
       {/* Top 50 most selective table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mt-6">
         <div className="px-4 py-3 border-b border-slate-200">
           <h3 className="text-sm font-semibold text-slate-700">
             Most selective in the filter — top 50 by admit rate
@@ -478,7 +489,7 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

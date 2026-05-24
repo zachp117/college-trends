@@ -12,6 +12,14 @@ import {
 import type { School } from '../api/scorecard';
 import { OWNERSHIP_LABELS, TEST_POLICY_LABELS } from '../api/scorecard';
 import { fmtMoney, fmtNum, fmtPct } from '../util/format';
+import { Accordion, AccordionSection } from '../components/Accordion';
+
+function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 interface Props {
   selectedSchools: School[];
@@ -336,15 +344,24 @@ export function CompareTab({ selectedSchools }: Props) {
       </div>
 
       {/* Sections */}
-      {SECTIONS.map((sec) => (
-        <CompareSection
-          key={sec.title}
-          section={sec}
-          schools={selectedSchools}
-        />
-      ))}
+      <Accordion>
+        {SECTIONS.map((sec) => (
+          <AccordionSection
+            key={sec.title}
+            id={`compare.${slugify(sec.title)}`}
+            title={sec.title}
+            subtitle={sec.blurb}
+          >
+            <CompareSection section={sec} schools={selectedSchools} />
+          </AccordionSection>
+        ))}
 
-      {/* Race composition (visual, not table) */}
+        {/* Race composition (visual, not table) */}
+        <AccordionSection
+          id="compare.raceComposition"
+          title="Student race / ethnicity composition"
+          subtitle="Stacked share per school for direct comparison."
+        >
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 print-keep">
         <h3 className="text-sm font-semibold text-slate-700">
           Student race / ethnicity composition
@@ -389,6 +406,8 @@ export function CompareTab({ selectedSchools }: Props) {
           </BarChart>
         </ResponsiveContainer>
       </div>
+        </AccordionSection>
+      </Accordion>
 
       {/* Print footer */}
       <div className="print-only text-xs text-slate-500 pt-4 border-t border-slate-200">

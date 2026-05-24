@@ -18,6 +18,7 @@ import type { School } from '../api/scorecard';
 import { OWNERSHIP_LABELS } from '../api/scorecard';
 import { fmtMoney, fmtPct } from '../util/format';
 import { StatCard } from '../components/StatCard';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -233,8 +234,9 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <Accordion>
         {/* Federal loan rate distribution */}
+        <AccordionSection id="loanaid.federalLoanRate" title="Share of students borrowing federal loans">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Share of students borrowing federal loans
@@ -265,8 +267,10 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Student debt vs Parent PLUS scatter */}
+        <AccordionSection id="loanaid.studentVsPlus" title="Student debt vs. Parent PLUS debt">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Student debt vs. Parent PLUS debt
@@ -343,8 +347,10 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+        </AccordionSection>
 
         {/* Debt by income bracket */}
+        <AccordionSection id="loanaid.debtByIncome" title="Median debt by family income">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Median debt by family income
@@ -387,8 +393,10 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Debt by first-gen + dependency */}
+        <AccordionSection id="loanaid.debtByDemo" title="Median debt: first-gen & dependency">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Median debt: first-gen & dependency
@@ -432,8 +440,10 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Parent PLUS by completion */}
+        <AccordionSection id="loanaid.parentPlus" title="Parent PLUS debt: completers vs. non-completers">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Parent PLUS debt: completers vs. non-completers
@@ -470,7 +480,8 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
+        </AccordionSection>
+      </Accordion>
 
       {/* Top by Parent PLUS table */}
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">

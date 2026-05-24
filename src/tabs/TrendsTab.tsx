@@ -18,6 +18,7 @@ import type {
 } from '../api/scorecard';
 import { TREND_METRICS, fetchSchoolHistory, fetchHistoryAggregate } from '../api/scorecard';
 import { fmtMoney, fmtNum, fmtPct } from '../util/format';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   filters: SearchFilters;
@@ -156,9 +157,9 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
   );
 
   return (
-    <div className="space-y-4">
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
-        <div className="flex flex-wrap items-center gap-3 mb-3">
+    <>
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 mb-3">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="flex-1 min-w-[220px]">
             <label className="block text-xs font-medium text-slate-600 mb-1">Metric</label>
             <select
@@ -203,7 +204,11 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
             </label>
           </div>
         </div>
+      </div>
 
+      <Accordion>
+        <AccordionSection id="trends.metricOverTime" title={`${metricDef.label} over time`}>
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
         {(loadingSelected || aggLoading) && (
           <div className="text-xs text-slate-500 mb-2">
             {aggLoading && aggProgress
@@ -227,9 +232,6 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
           </div>
         )}
 
-        <h3 className="text-sm font-semibold text-slate-700">
-          {metricDef.label} over time
-        </h3>
         <p className="text-xs text-slate-500 mb-3">
           Thin lines: selected schools. Thick dark line: average across all{' '}
           {aggregate?.totalSchools?.toLocaleString() ?? ''} filtered colleges.
@@ -279,18 +281,28 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
           </ResponsiveContainer>
         )}
       </div>
+        </AccordionSection>
 
-      {showAggregate && aggregate && (
-        <AggregateSummary
-          agg={aggregate}
-          format={metricDef.format}
-          firstYear={years[0]}
-          lastYear={years[years.length - 1]}
-          metricLabel={metricDef.label}
-        />
-      )}
+        {showAggregate && aggregate && (
+          <AccordionSection
+            id="trends.aggregateSummary"
+            title={`${metricDef.label} — averages across ${aggregate.totalSchools.toLocaleString()} filtered colleges`}
+          >
+            <AggregateSummary
+              agg={aggregate}
+              format={metricDef.format}
+              firstYear={years[0]}
+              lastYear={years[years.length - 1]}
+              metricLabel={metricDef.label}
+            />
+          </AccordionSection>
+        )}
 
-      {histories.length > 0 && (
+        {histories.length > 0 && (
+          <AccordionSection
+            id="trends.changeOverRange"
+            title="Change over range — selected schools"
+          >
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-2">
             Change over range — selected schools
@@ -369,8 +381,10 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
             </table>
           </div>
         </div>
-      )}
-    </div>
+          </AccordionSection>
+        )}
+      </Accordion>
+    </>
   );
 }
 

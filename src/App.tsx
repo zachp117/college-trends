@@ -27,6 +27,7 @@ import { fetchPins, addPin, removePin } from './lib/pinsApi';
 import { StudentsPage } from './components/StudentsPage';
 import { StudentDetailPage } from './components/StudentDetailPage';
 import { StarterPresets } from './components/StarterPresets';
+import { SidebarLayout } from './components/Sidebar';
 
 type StudentView =
   | { kind: 'none' }
@@ -60,13 +61,13 @@ type TabId =
 const TABS: { id: TabId; label: string; description: string }[] = [
   {
     id: 'overview',
-    label: 'Overview',
+    label: 'Summary',
     description:
       'Headline numbers — cost, earnings, completion, admissions — for every school in your filter.',
   },
   {
     id: 'compare',
-    label: '📌 Compare',
+    label: 'Compare',
     description:
       'Side-by-side comparison of pinned schools across cost, admissions, outcomes, debt, and demographics. Print-friendly.',
   },
@@ -147,6 +148,7 @@ const DEFAULT_FILTERS: SearchFilters = {
 
 const TAB_IDS = new Set<TabId>([
   'overview',
+  'compare',
   'map',
   'debt',
   'trends',
@@ -619,10 +621,22 @@ function MainView({
   selectedSchools,
   onOpenDetail,
 }: MainViewProps) {
+  const activeTabMeta = TABS.find((t) => t.id === activeTab);
+
   return (
-    <>
-      <StarterPresets currentFilters={filters} onApply={setFilters} />
-      <Filters initial={filters} onApply={setFilters} loading={loading} />
+    <SidebarLayout activeTab={activeTab} onSelectTab={setActiveTab}>
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-lg font-semibold text-slate-800">
+            {activeTabMeta?.label}
+          </h2>
+          {activeTabMeta?.description && (
+            <p className="text-xs text-slate-500 mt-1">{activeTabMeta.description}</p>
+          )}
+        </div>
+
+        <StarterPresets currentFilters={filters} onApply={setFilters} />
+        <Filters initial={filters} onApply={setFilters} loading={loading} />
 
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-800 text-sm rounded p-3">
@@ -662,14 +676,14 @@ function MainView({
               <button
                 onClick={() => setActiveTab('compare')}
                 className="text-xs px-2.5 py-1.5 rounded-md border font-medium transition whitespace-nowrap bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100 hover:border-amber-400"
-                title="Open the Compare tab to see all pinned schools side-by-side"
+                title="Open the Compare view to see all pinned schools side-by-side"
               >
                 📌 Compare {selectedIds.size}
               </button>
             ) : (
               <span
                 className="text-xs text-slate-500 hidden md:inline"
-                title="Pinned schools appear in per-school breakdowns across every tab. Pick up to 5."
+                title="Pinned schools appear in per-school breakdowns across every view. Pick up to 5."
               >
                 {selectedIds.size === 1
                   ? '📌 1 pinned · pin one more to compare'
@@ -694,7 +708,7 @@ function MainView({
               onClick={() => downloadSchoolsCsv(schools, filters, activeTab)}
               disabled={loading || schools.length === 0}
               className="text-xs px-2.5 py-1.5 rounded-md border font-medium transition bg-emerald-50 border-emerald-300 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-              title={`Download ${schools.length.toLocaleString()} schools × ${getColumnCount(activeTab)} columns relevant to the ${activeTab} tab`}
+              title={`Download ${schools.length.toLocaleString()} schools × ${getColumnCount(activeTab)} columns relevant to the ${activeTab} view`}
             >
               📥 CSV
               <span className="hidden sm:inline">
@@ -715,32 +729,6 @@ function MainView({
         )}
 
         <SuppressionNote />
-
-        <div>
-          <div className="border-b border-slate-200 overflow-x-auto -mx-4 sm:-mx-6 px-4 sm:px-6">
-            <nav className="flex gap-1 min-w-max">
-              {TABS.map((t) => {
-                const active = activeTab === t.id;
-                return (
-                  <button
-                    key={t.id}
-                    onClick={() => setActiveTab(t.id)}
-                    className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition whitespace-nowrap ${
-                      active
-                        ? 'border-indigo-600 text-indigo-700'
-                        : 'border-transparent text-slate-500 hover:text-slate-800'
-                    }`}
-                  >
-                    {t.label}
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
-          <p className="text-xs text-slate-500 mt-2 px-1">
-            {TABS.find((t) => t.id === activeTab)?.description}
-          </p>
-        </div>
 
         {activeTab === 'overview' && (
           <OverviewTab
@@ -798,6 +786,7 @@ function MainView({
           onToggleSelect={toggleSelect}
           onOpenDetail={onOpenDetail}
         />
-    </>
+      </div>
+    </SidebarLayout>
   );
 }

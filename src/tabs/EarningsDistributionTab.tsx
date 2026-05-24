@@ -16,6 +16,7 @@ import type { School } from '../api/scorecard';
 import { OWNERSHIP_LABELS } from '../api/scorecard';
 import { fmtMoney, fmtPct } from '../util/format';
 import { StatCard } from '../components/StatCard';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -216,9 +217,9 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
   }, [schools, horizon]);
 
   return (
-    <div className="space-y-6">
+    <>
       {/* Horizon toggle */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-6">
         <div className="text-sm text-slate-600">
           Showing earnings <span className="font-medium">{horizon === '10yr' ? '10 years' : '6 years'}</span> after entry.
         </div>
@@ -247,7 +248,7 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
       </div>
 
       {/* Summary cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         <StatCard
           label="Typical grad's earnings"
           tip="median"
@@ -274,8 +275,9 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <Accordion>
         {/* Range chart for selected */}
+        <AccordionSection id="earnings.range" title="Earnings distribution — selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Earnings distribution — selected schools
@@ -348,8 +350,10 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+        </AccordionSection>
 
         {/* Spread vs median scatter */}
+        <AccordionSection id="earnings.spreadVsMedian" title="Earnings spread vs. median (across filter)">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Earnings spread vs. median (across filter)
@@ -420,9 +424,11 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+        </AccordionSection>
 
         {/* Threshold bars */}
         {thresholdData.length > 0 && (
+          <AccordionSection id="earnings.thresholds" title="Share of grads earning above thresholds — selected schools">
           <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
             <h3 className="text-sm font-semibold text-slate-700 mb-1">
               Share of grads earning above thresholds — selected schools
@@ -465,9 +471,11 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
               </BarChart>
             </ResponsiveContainer>
           </div>
+          </AccordionSection>
         )}
 
         {/* Distribution histogram */}
+        <AccordionSection id="earnings.percentiles" title="Distribution of school medians vs. 90th percentiles">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Distribution of school medians vs. 90th percentiles
@@ -491,10 +499,11 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
+        </AccordionSection>
+      </Accordion>
 
       {/* Top by p90 table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mt-6">
         <div className="px-4 py-3 border-b border-slate-200">
           <h3 className="text-sm font-semibold text-slate-700">
             Top 25 by 90th percentile earnings
@@ -541,7 +550,7 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

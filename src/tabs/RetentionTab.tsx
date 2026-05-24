@@ -18,6 +18,7 @@ import type { School } from '../api/scorecard';
 import { OWNERSHIP_LABELS } from '../api/scorecard';
 import { fmtPct } from '../util/format';
 import { StatCard } from '../components/StatCard';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -192,9 +193,9 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
   }, [schools]);
 
   return (
-    <div className="space-y-6">
+    <>
       {/* Summary cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         <StatCard
           label="Came back for year 2"
           tip="first-year-retention"
@@ -221,8 +222,9 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <Accordion>
         {/* Cohort breakdown (selected) */}
+        <AccordionSection id="retention.cohortOutcomes" title="6-year cohort outcomes — selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             6-year cohort outcomes — selected schools
@@ -278,8 +280,10 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+        </AccordionSection>
 
         {/* First-year retention histogram */}
+        <AccordionSection id="retention.firstYearDistribution" title="First-year retention distribution">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             First-year retention distribution
@@ -311,8 +315,10 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Withdrawal histogram */}
+        <AccordionSection id="retention.withdrawalDistribution" title="6-year withdrawal distribution">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             6-year withdrawal distribution
@@ -344,8 +350,10 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Retention vs 6yr completion scatter */}
+        <AccordionSection id="retention.retentionVsCompletion" title="First-year retention vs. 6-year completion">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             First-year retention vs. 6-year completion
@@ -425,10 +433,11 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
-      </div>
+        </AccordionSection>
+      </Accordion>
 
       {/* Top-withdrawal table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mt-6">
         <div className="px-4 py-3 border-b border-slate-200">
           <h3 className="text-sm font-semibold text-slate-700">
             Highest 6-year withdrawal in the filter
@@ -477,7 +486,7 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -3,6 +3,7 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { geoAlbersUsa } from 'd3-geo';
 import type { School } from '../api/scorecard';
 import { fmtMoney, fmtNum, fmtPct } from '../util/format';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -152,7 +153,8 @@ export function MapTab({ schools, selectedIds, onToggleSelect }: Props) {
   };
 
   return (
-    <div className="space-y-4">
+    <Accordion>
+      <AccordionSection id="map.heatmap" title="Map">
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
         <div className="flex flex-wrap items-end justify-between gap-3 mb-3">
           <div>
@@ -349,6 +351,7 @@ export function MapTab({ schools, selectedIds, onToggleSelect }: Props) {
           </div>
         </div>
       </div>
-    </div>
+      </AccordionSection>
+    </Accordion>
   );
 }

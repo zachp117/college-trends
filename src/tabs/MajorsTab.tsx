@@ -13,6 +13,7 @@ import {
 import type { Program, School } from '../api/scorecard';
 import { CREDENTIAL_LABELS, fetchSchoolPrograms } from '../api/scorecard';
 import { fmtMoney, fmtNum } from '../util/format';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   selectedSchools: School[];
@@ -307,7 +308,9 @@ export function MajorsTab({ selectedSchools }: Props) {
         )}
       </div>
 
-      {/* Spotlight */}
+      <Accordion>
+        {/* Spotlight */}
+        <AccordionSection id="majors.programSpotlight" title="Program spotlight">
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
         <div className="flex flex-wrap items-end justify-between gap-3 mb-3">
           <div>
@@ -340,8 +343,13 @@ export function MajorsTab({ selectedSchools }: Props) {
           <div className="text-xs text-slate-400 py-6 text-center">No program selected.</div>
         )}
       </div>
+        </AccordionSection>
 
-      {/* Top programs by metric */}
+        {/* Top programs by metric */}
+        <AccordionSection
+          id="majors.topPrograms"
+          title={`Top programs by ${topMetricDef.label.toLowerCase()}`}
+        >
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
         <div className="flex flex-wrap items-end justify-between gap-3 mb-3">
           <div>
@@ -429,8 +437,13 @@ export function MajorsTab({ selectedSchools }: Props) {
           </ResponsiveContainer>
         )}
       </div>
+        </AccordionSection>
 
-      {/* Full table */}
+        {/* Full table */}
+        <AccordionSection
+          id="majors.allPrograms"
+          title={`All programs (${filtered.length.toLocaleString()})`}
+        >
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
         <div className="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
           <h3 className="text-sm font-semibold text-slate-700">
@@ -503,6 +516,8 @@ export function MajorsTab({ selectedSchools }: Props) {
           </table>
         </div>
       </div>
+        </AccordionSection>
+      </Accordion>
     </div>
   );
 }

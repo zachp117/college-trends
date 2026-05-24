@@ -4,6 +4,7 @@ import { CostEarningsScatter } from '../components/charts/CostEarningsScatter';
 import { AdmissionHistogram } from '../components/charts/AdmissionHistogram';
 import { StateBar } from '../components/charts/StateBar';
 import { CompareCard } from '../components/CompareCard';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -19,16 +20,28 @@ export function OverviewTab({
   onRemoveSelected,
 }: Props) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <NetPriceByIncome schools={schools} selected={selectedSchools} />
-      <CostEarningsScatter schools={schools} />
-      <AdmissionHistogram schools={schools} />
-      <StateBar schools={schools} />
-      <CompareCard
-        schools={selectedSchools}
-        onClear={onClearSelected}
-        onRemove={onRemoveSelected}
-      />
-    </div>
+    <Accordion>
+      <AccordionSection id="overview.netPrice" title="Net price by family income">
+        <NetPriceByIncome schools={schools} selected={selectedSchools} />
+      </AccordionSection>
+      <AccordionSection id="overview.costEarnings" title="Cost vs. earnings">
+        <CostEarningsScatter schools={schools} />
+      </AccordionSection>
+      <AccordionSection id="overview.admissionRate" title="Admission rate distribution">
+        <AdmissionHistogram schools={schools} />
+      </AccordionSection>
+      <AccordionSection id="overview.byState" title="Schools by state">
+        <StateBar schools={schools} />
+      </AccordionSection>
+      {selectedSchools.length > 0 && (
+        <AccordionSection id="overview.compareCard" title="Pinned schools">
+          <CompareCard
+            schools={selectedSchools}
+            onClear={onClearSelected}
+            onRemove={onRemoveSelected}
+          />
+        </AccordionSection>
+      )}
+    </Accordion>
   );
 }

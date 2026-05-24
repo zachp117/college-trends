@@ -17,6 +17,7 @@ import type { School } from '../api/scorecard';
 import { OWNERSHIP_LABELS } from '../api/scorecard';
 import { fmtPct } from '../util/format';
 import { StatCard } from '../components/StatCard';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -248,8 +249,9 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <Accordion>
         {/* Student vs Faculty side-by-side */}
+        <AccordionSection id="faculty.studentVsFaculty" title="Student vs. faculty composition — selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Student vs. faculty composition — selected schools
@@ -294,8 +296,10 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+        </AccordionSection>
 
         {/* Faculty race composition */}
+        <AccordionSection id="faculty.racialMakeup" title="Faculty race / ethnicity">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Faculty race / ethnicity
@@ -336,8 +340,10 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Faculty gender */}
+        <AccordionSection id="faculty.genderSplit" title="Faculty gender split">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">Faculty gender split</h3>
           <p className="text-xs text-slate-500 mb-3">
@@ -375,8 +381,10 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+        </AccordionSection>
 
         {/* Student vs faculty diversity scatter */}
+        <AccordionSection id="faculty.diversityScatter" title="Student vs. faculty: % non-white (across filter)">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Student vs. faculty: % non-white (across filter)
@@ -456,7 +464,8 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
-      </div>
+        </AccordionSection>
+      </Accordion>
 
       {/* Top 50 table */}
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">

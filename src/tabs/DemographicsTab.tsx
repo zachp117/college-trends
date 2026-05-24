@@ -17,6 +17,7 @@ import type { School } from '../api/scorecard';
 import { OWNERSHIP_LABELS } from '../api/scorecard';
 import { fmtMoney, fmtNum, fmtPct } from '../util/format';
 import { StatCard } from '../components/StatCard';
+import { Accordion, AccordionSection } from '../components/Accordion';
 
 interface Props {
   schools: School[];
@@ -165,8 +166,8 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
   }, [schools, selectedSchools]);
 
   return (
-    <div className="space-y-6">
-      {/* Summary cards */}
+    <Accordion>
+      <AccordionSection id="demographics.summary" title="Demographics summary">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <StatCard label="Pell recipients" tip="pell-rate" value={fmtPct(summary.pell)} sub="median across filter" />
         <StatCard label="First-generation" tip="first-generation" value={fmtPct(summary.firstGen)} sub="median across filter" />
@@ -194,9 +195,10 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
           sub="median across filter"
         />
       </div>
+      </AccordionSection>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Race composition */}
+      {/* Race composition */}
+      <AccordionSection id="demographics.raceBreakdown" title="Race / ethnicity composition">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Race / ethnicity composition
@@ -235,8 +237,10 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+      </AccordionSection>
 
-        {/* Gender split */}
+      {/* Gender split */}
+      <AccordionSection id="demographics.genderSplit" title="Gender split">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">Gender split</h3>
           <p className="text-xs text-slate-500 mb-3">
@@ -272,8 +276,13 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
+      </AccordionSection>
 
-        {/* Pell × first-gen scatter */}
+      {/* Pell × first-gen scatter */}
+      <AccordionSection
+        id="demographics.pellFirstGen"
+        title="Pell recipients vs. first-generation share"
+      >
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Pell recipients vs. first-generation share
@@ -344,8 +353,13 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
             </ResponsiveContainer>
           )}
         </div>
+      </AccordionSection>
 
-        {/* Family income histogram */}
+      {/* Family income histogram */}
+      <AccordionSection
+        id="demographics.familyIncome"
+        title="Median family income — distribution"
+      >
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
             Median family income — distribution
@@ -377,15 +391,14 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
+      </AccordionSection>
 
       {/* Demographics table */}
+      <AccordionSection
+        id="demographics.topSchoolsTable"
+        title="Demographics — top 50 schools by enrollment"
+      >
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
-        <div className="px-4 py-3 border-b border-slate-200">
-          <h3 className="text-sm font-semibold text-slate-700">
-            Demographics — top 50 schools by enrollment
-          </h3>
-        </div>
         <div className="max-h-[480px] overflow-auto">
           <table className="min-w-full text-sm">
             <thead className="bg-slate-100 sticky top-0 z-10">
@@ -437,7 +450,8 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
           </table>
         </div>
       </div>
-    </div>
+      </AccordionSection>
+    </Accordion>
   );
 }
 

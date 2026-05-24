@@ -120,7 +120,7 @@ const TABS: { id: TabId; label: string; description: string }[] = [
   },
   {
     id: 'demographics',
-    label: 'Who attends',
+    label: 'Demographics',
     description:
       'Student body composition: race, gender, age, family income, and first-generation share.',
   },

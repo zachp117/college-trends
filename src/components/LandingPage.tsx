@@ -146,6 +146,10 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
       </section>
 
       <footer className="max-w-6xl mx-auto px-6 py-8 text-xs text-slate-400 text-center space-x-3">
+        <a href="/changelog" className="underline hover:text-slate-600">
+          What's New
+        </a>
+        <span>·</span>
         <a href="/about" className="underline hover:text-slate-600">
           About &amp; methodology
         </a>

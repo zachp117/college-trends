@@ -4,11 +4,12 @@ import App from './App';
 import { LandingPage } from './components/LandingPage';
 import { AuthPage } from './components/AuthPage';
 import { AboutPage } from './components/AboutPage';
+import { ChangelogPage } from './components/ChangelogPage';
 import { NotFoundPage } from './components/NotFoundPage';
 import { parseSchoolPath } from './util/schoolUrl';
 import { AUTH_ENABLED } from './util/featureFlags';
 
-type Route = 'landing' | 'auth' | 'app' | 'about' | 'notfound';
+type Route = 'landing' | 'auth' | 'app' | 'about' | 'changelog' | 'notfound';
 
 /**
  * Match a path against a route prefix. Returns true for exactly the prefix
@@ -31,6 +32,7 @@ function pathToRoute(path: string): Route {
   // App and its subroutes (e.g. /app, /app/students/<id>)
   if (isUnder(clean, '/app')) return 'app';
   if (isUnder(clean, '/about')) return 'about';
+  if (isUnder(clean, '/changelog')) return 'changelog';
   // Auth surface is flag-gated: when hidden in prod, /login and /signup 404.
   if (AUTH_ENABLED && (isUnder(clean, '/login') || isUnder(clean, '/signup'))) {
     return 'auth';
@@ -82,6 +84,7 @@ export function Root() {
     <Boundary>
       {route === 'app' && <App />}
       {route === 'about' && <AboutPage onBack={() => navigate('/app')} />}
+      {route === 'changelog' && <ChangelogPage onBack={() => navigate('/app')} />}
       {route === 'auth' && <AuthPage onSuccess={() => navigate('/app')} />}
       {route === 'landing' && (
         <LandingPage

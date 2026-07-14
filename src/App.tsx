@@ -490,6 +490,9 @@ export default function App() {
                 Sign in
               </a>
             )}
+            <a href="/changelog" className="text-slate-300 hover:text-white underline">
+              What's New
+            </a>
             <a href="/about" className="text-slate-300 hover:text-white underline">
               About
             </a>

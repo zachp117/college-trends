@@ -34,25 +34,25 @@ interface Props {
 }
 
 const RACE_GROUPS = [
-  { key: 'raceWhite', label: 'White', color: '#3b82f6' },
-  { key: 'raceBlack', label: 'Black', color: '#7c3aed' },
-  { key: 'raceHispanic', label: 'Hispanic', color: '#f59e0b' },
-  { key: 'raceAsian', label: 'Asian', color: '#10b981' },
-  { key: 'raceAian', label: 'AIAN', color: '#dc2626' },
-  { key: 'raceNhpi', label: 'NHPI', color: '#ec4899' },
-  { key: 'raceTwoMore', label: '2+ races', color: '#0ea5e9' },
+  { key: 'raceWhite', label: 'White', color: '#2F6FEB' },
+  { key: 'raceBlack', label: 'Black', color: '#6D5EF0' },
+  { key: 'raceHispanic', label: 'Hispanic', color: '#F59E0B' },
+  { key: 'raceAsian', label: 'Asian', color: '#16A34A' },
+  { key: 'raceAian', label: 'AIAN', color: '#E0483D' },
+  { key: 'raceNhpi', label: 'NHPI', color: '#E5397F' },
+  { key: 'raceTwoMore', label: '2+ races', color: '#17B3A3' },
   { key: 'raceNonResident', label: 'Non-resident', color: '#64748b' },
   { key: 'raceUnknown', label: 'Unknown', color: '#cbd5e1' },
 ] as const;
 
 const FACULTY_RACE_GROUPS = [
-  { key: 'facultyWhite', label: 'White', color: '#3b82f6' },
-  { key: 'facultyBlack', label: 'Black', color: '#7c3aed' },
-  { key: 'facultyHispanic', label: 'Hispanic', color: '#f59e0b' },
-  { key: 'facultyAsian', label: 'Asian', color: '#10b981' },
-  { key: 'facultyAian', label: 'AIAN', color: '#dc2626' },
-  { key: 'facultyNhpi', label: 'NHPI', color: '#ec4899' },
-  { key: 'facultyTwoMore', label: '2+ races', color: '#0ea5e9' },
+  { key: 'facultyWhite', label: 'White', color: '#2F6FEB' },
+  { key: 'facultyBlack', label: 'Black', color: '#6D5EF0' },
+  { key: 'facultyHispanic', label: 'Hispanic', color: '#F59E0B' },
+  { key: 'facultyAsian', label: 'Asian', color: '#16A34A' },
+  { key: 'facultyAian', label: 'AIAN', color: '#E0483D' },
+  { key: 'facultyNhpi', label: 'NHPI', color: '#E5397F' },
+  { key: 'facultyTwoMore', label: '2+ races', color: '#17B3A3' },
   { key: 'facultyNonResident', label: 'Non-resident', color: '#64748b' },
   { key: 'facultyUnknown', label: 'Unknown', color: '#cbd5e1' },
 ] as const;
@@ -351,7 +351,7 @@ export function SchoolDetail({
                 formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
-              <Bar dataKey="Net price" fill="#10b981" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Net price" fill="#16A34A" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </Section>
@@ -420,7 +420,7 @@ export function SchoolDetail({
               <Legend wrapperStyle={{ fontSize: 11 }} />
               <Bar dataKey="10th" fill="#cbd5e1" radius={[3, 3, 0, 0]} />
               <Bar dataKey="25th" fill="#94a3b8" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Median" fill="#6366f1" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Median" fill="#6D5EF0" radius={[3, 3, 0, 0]} />
               <Bar dataKey="75th" fill="#94a3b8" radius={[3, 3, 0, 0]} />
               <Bar dataKey="90th" fill="#cbd5e1" radius={[3, 3, 0, 0]} />
             </BarChart>
@@ -459,11 +459,11 @@ export function SchoolDetail({
                   contentStyle={{ fontSize: 12, borderRadius: 6 }}
                 />
                 <Legend wrapperStyle={{ fontSize: 10 }} />
-                <Bar dataKey="Completed" stackId="c" fill="#059669" />
-                <Bar dataKey="Transf. completed" stackId="c" fill="#a7f3d0" />
-                <Bar dataKey="Still enrolled" stackId="c" fill="#facc15" />
-                <Bar dataKey="Withdrew" stackId="c" fill="#dc2626" />
-                <Bar dataKey="Transf. withdrew" stackId="c" fill="#fca5a5" />
+                <Bar dataKey="Completed" stackId="c" fill="#16A34A" />
+                <Bar dataKey="Transf. completed" stackId="c" fill="rgba(22,163,74,0.35)" />
+                <Bar dataKey="Still enrolled" stackId="c" fill="#F59E0B" />
+                <Bar dataKey="Withdrew" stackId="c" fill="#E0483D" />
+                <Bar dataKey="Transf. withdrew" stackId="c" fill="rgba(224,72,61,0.35)" />
                 <Bar dataKey="Unknown" stackId="c" fill="#cbd5e1" />
               </BarChart>
             </ResponsiveContainer>
@@ -607,7 +607,7 @@ export function SchoolDetail({
                   formatter={(v: number) => [fmtMoney(v), '5-yr earnings']}
                   contentStyle={{ fontSize: 12, borderRadius: 6 }}
                 />
-                <Bar dataKey="5-yr earnings" fill="#6366f1" radius={[0, 3, 3, 0]} />
+                <Bar dataKey="5-yr earnings" fill="#6D5EF0" radius={[0, 3, 3, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}
@@ -655,7 +655,7 @@ export function SchoolDetail({
                   yAxisId="left"
                   type="monotone"
                   dataKey="In-state tuition"
-                  stroke="#0ea5e9"
+                  stroke="#2F6FEB"
                   strokeWidth={2}
                   dot={{ r: 2 }}
                   connectNulls
@@ -664,7 +664,7 @@ export function SchoolDetail({
                   yAxisId="right"
                   type="monotone"
                   dataKey="Admit rate"
-                  stroke="#7c3aed"
+                  stroke="#6D5EF0"
                   strokeWidth={2}
                   dot={{ r: 2 }}
                   connectNulls
@@ -673,7 +673,7 @@ export function SchoolDetail({
                   yAxisId="right"
                   type="monotone"
                   dataKey="Completion rate"
-                  stroke="#059669"
+                  stroke="#16A34A"
                   strokeWidth={2}
                   dot={{ r: 2 }}
                   connectNulls

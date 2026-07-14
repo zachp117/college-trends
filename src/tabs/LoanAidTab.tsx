@@ -26,9 +26,9 @@ interface Props {
 }
 
 const OWNERSHIP_COLOR: Record<number, string> = {
-  1: '#2563eb',
-  2: '#059669',
-  3: '#dc2626',
+  1: '#2F6FEB',
+  2: '#16A34A',
+  3: '#E0483D',
 };
 
 function median(nums: number[]): number | null {
@@ -260,7 +260,7 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                 {loanRateHist.buckets.map((_b, i) => (
                   <Cell
                     key={i}
-                    fill={`rgb(${Math.round(165 + i * 20)},${Math.round(180 - i * 30)},${Math.round(252 - i * 30)})`}
+                    fill={`rgb(${Math.round(214 - i * 26.25)},${Math.round(209 - i * 28.75)},${Math.round(251 - i * 2.75)})`}
                   />
                 ))}
               </Bar>
@@ -339,7 +339,7 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                     key={own}
                     name={OWNERSHIP_LABELS[own] ?? `Type ${own}`}
                     data={data}
-                    fill={OWNERSHIP_COLOR[own] ?? '#6366f1'}
+                    fill={OWNERSHIP_COLOR[own] ?? '#6D5EF0'}
                     fillOpacity={0.6}
                   />
                 ))}
@@ -387,9 +387,9 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="<$30k" fill="#fb923c" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="$30–75k" fill="#facc15" radius={[3, 3, 0, 0]} />
-              <Bar dataKey=">$75k" fill="#22c55e" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="<$30k" fill="#F59E0B" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="$30–75k" fill="#E5397F" radius={[3, 3, 0, 0]} />
+              <Bar dataKey=">$75k" fill="#16A34A" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -433,10 +433,10 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="First-gen" fill="#f97316" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Not first-gen" fill="#0ea5e9" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Dependent" fill="#7c3aed" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Independent" fill="#14b8a6" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="First-gen" fill="#F59E0B" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Not first-gen" fill="#2F6FEB" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Dependent" fill="#6D5EF0" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Independent" fill="#17B3A3" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -475,8 +475,8 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="PLUS, completers" fill="#7c3aed" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="PLUS, non-completers" fill="#dc2626" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="PLUS, completers" fill="#6D5EF0" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="PLUS, non-completers" fill="#E0483D" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

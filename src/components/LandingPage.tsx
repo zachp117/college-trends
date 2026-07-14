@@ -1,5 +1,6 @@
 import { useSession } from '../lib/auth-client';
 import { AUTH_ENABLED } from '../util/featureFlags';
+import { Wordmark } from './Wordmark';
 
 interface Props {
   onEnterApp: () => void;
@@ -17,7 +18,7 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
       {/* Top bar */}
       <header className="bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-lg font-semibold">College Trends</div>
+          <Wordmark className="text-lg font-semibold" />
           <div className="flex items-center gap-3 text-sm">
             {!AUTH_ENABLED ? (
               <button

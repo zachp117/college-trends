@@ -25,16 +25,16 @@ interface Props {
 }
 
 const OWNERSHIP_COLOR: Record<number, string> = {
-  1: '#2563eb',
-  2: '#059669',
-  3: '#dc2626',
+  1: '#2F6FEB',
+  2: '#16A34A',
+  3: '#E0483D',
 };
 
 const SELECTIVITY_TIERS = [
-  { label: '<10%', lo: 0, hi: 0.1, color: '#7c3aed' },
-  { label: '10–25%', lo: 0.1, hi: 0.25, color: '#6366f1' },
-  { label: '25–50%', lo: 0.25, hi: 0.5, color: '#0ea5e9' },
-  { label: '50–75%', lo: 0.5, hi: 0.75, color: '#10b981' },
+  { label: '<10%', lo: 0, hi: 0.1, color: '#6D5EF0' },
+  { label: '10–25%', lo: 0.1, hi: 0.25, color: '#2F6FEB' },
+  { label: '25–50%', lo: 0.25, hi: 0.5, color: '#17B3A3' },
+  { label: '50–75%', lo: 0.5, hi: 0.75, color: '#16A34A' },
   { label: '75%+', lo: 0.75, hi: 1.01, color: '#94a3b8' },
 ];
 
@@ -300,7 +300,7 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
                   formatter={(v: number) => [v, 'Schools']}
                   contentStyle={{ fontSize: 12, borderRadius: 6 }}
                 />
-                <Bar dataKey="count" fill="#6366f1" radius={[0, 3, 3, 0]} />
+                <Bar dataKey="count" fill="#6D5EF0" radius={[0, 3, 3, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}
@@ -425,7 +425,7 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
                     key={own}
                     name={OWNERSHIP_LABELS[own] ?? `Type ${own}`}
                     data={data}
-                    fill={OWNERSHIP_COLOR[own] ?? '#6366f1'}
+                    fill={OWNERSHIP_COLOR[own] ?? '#6D5EF0'}
                     fillOpacity={0.65}
                   />
                 ))}
@@ -550,8 +550,8 @@ function SatActRangeChart({
         }}
       />
       <Bar dataKey="base" stackId="rng" fill="transparent" />
-      <Bar dataKey="lowToMid" stackId="rng" fill="#a5b4fc" />
-      <Bar dataKey="midToHigh" stackId="rng" fill="#6366f1" />
+      <Bar dataKey="lowToMid" stackId="rng" fill="rgba(109,94,240,0.35)" />
+      <Bar dataKey="midToHigh" stackId="rng" fill="#6D5EF0" />
     </BarChart>
   );
 }

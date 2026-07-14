@@ -1,0 +1,63 @@
+/* ============================================================
+   CollegeTrends — Brand Design Tokens  v1.0
+   Drop this in your global stylesheet / theme layer and
+   reference the custom properties everywhere.
+   ============================================================ */
+
+:root {
+  /* ---- Core ---- */
+  --ct-ink-navy:      #08111F;  /* primary page background            */
+  --ct-surface-navy:  #0E2035;  /* cards, panels, raised surfaces      */
+  --ct-signal-cyan:   #2EB4F0;  /* single action / emphasis / links    */
+  --ct-signal-cyan-h: #7FD3F7;  /* cyan hover / lighter tint           */
+  --ct-live-amber:    #F2A83A;  /* counters, "live" + numeric tags     */
+  --ct-data-violet:   #6D5EF0;  /* data marks / bars (charts only)     */
+
+  /* ---- Neutrals ---- */
+  --ct-paper:  #F4F9FD;  /* primary text on navy, light surfaces  */
+  --ct-slate:  #9FB6CC;  /* secondary text on navy                */
+  --ct-muted:  #5F7589;  /* tertiary text, mono meta, hairlines   */
+  --ct-line:   rgba(255,255,255,0.10); /* borders on dark          */
+  --ct-ink-on-light: #0F2237;          /* text on light surfaces  */
+
+  /* ---- Data / chart palette (categorical) ---- */
+  --ct-chart-blue:    #2F6FEB;
+  --ct-chart-green:   #16A34A;   /* positive / gains */
+  --ct-chart-red:     #E0483D;   /* negative / loss  */
+  --ct-chart-orange:  #F59E0B;
+  --ct-chart-magenta: #E5397F;
+  --ct-chart-teal:    #17B3A3;
+  --ct-chart-violet:  #6D5EF0;
+
+  /* ---- Type ---- */
+  --ct-font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif; /* headlines + UI */
+  --ct-font-mono:    'Space Mono', ui-monospace, 'SF Mono', monospace;      /* // labels, data */
+
+  --ct-weight-regular: 400;
+  --ct-weight-medium:  500;
+  --ct-weight-semi:    600;
+  --ct-weight-bold:    700;
+
+  /* Type scale (px) */
+  --ct-text-display: 76px;  /* hero            (line-height ~0.95, ls -0.02em) */
+  --ct-text-h1:      48px;  /* page titles     */
+  --ct-text-h2:      30px;  /* section titles  */
+  --ct-text-lg:      19px;  /* lead paragraph  */
+  --ct-text-base:    16px;  /* body            */
+  --ct-text-sm:      14px;  /* secondary       */
+  --ct-text-label:   13px;  /* mono // labels  (ls 0.22em, uppercase, bold) */
+
+  /* ---- Radius ---- */
+  --ct-radius-sm:  10px;
+  --ct-radius-md:  16px;
+  --ct-radius-lg:  20px;
+  --ct-radius-icon: 22%;   /* app-tile corner ratio */
+
+  /* ---- Elevation ---- */
+  --ct-shadow-card:  0 8px 24px rgba(0,0,0,0.35);
+
+  /* ---- Signature background (page) ---- */
+  --ct-bg: radial-gradient(1100px 700px at 85% -5%, rgba(46,180,240,0.16), transparent 55%),
+           radial-gradient(900px 700px at 8% 108%, rgba(109,94,240,0.10), transparent 55%),
+           #08111F;
+}

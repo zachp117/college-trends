@@ -26,17 +26,17 @@ interface Props {
 }
 
 const OWNERSHIP_COLOR: Record<number, string> = {
-  1: '#2563eb',
-  2: '#059669',
-  3: '#dc2626',
+  1: '#2F6FEB',
+  2: '#16A34A',
+  3: '#E0483D',
 };
 
 const COHORT_BUCKETS = [
-  { key: 'completed', label: 'Completed here', color: '#059669' },
-  { key: 'transfCompleted', label: 'Transferred + completed', color: '#a7f3d0' },
-  { key: 'stillEnrolled', label: 'Still enrolled', color: '#facc15' },
-  { key: 'withdrawn', label: 'Withdrew', color: '#dc2626' },
-  { key: 'transfWithdrawn', label: 'Transferred + withdrew', color: '#fca5a5' },
+  { key: 'completed', label: 'Completed here', color: '#16A34A' },
+  { key: 'transfCompleted', label: 'Transferred + completed', color: 'rgba(22,163,74,0.35)' },
+  { key: 'stillEnrolled', label: 'Still enrolled', color: '#F59E0B' },
+  { key: 'withdrawn', label: 'Withdrew', color: '#E0483D' },
+  { key: 'transfWithdrawn', label: 'Transferred + withdrew', color: 'rgba(224,72,61,0.35)' },
   { key: 'unknown', label: 'Unknown', color: '#cbd5e1' },
 ] as const;
 
@@ -425,7 +425,7 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
                     key={own}
                     name={OWNERSHIP_LABELS[own] ?? `Type ${own}`}
                     data={data}
-                    fill={OWNERSHIP_COLOR[own] ?? '#6366f1'}
+                    fill={OWNERSHIP_COLOR[own] ?? '#6D5EF0'}
                     fillOpacity={0.6}
                   />
                 ))}

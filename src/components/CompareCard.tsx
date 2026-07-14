@@ -17,7 +17,7 @@ interface Props {
   onRemove: (id: number) => void;
 }
 
-const PALETTE = ['#6366f1', '#0ea5e9', '#059669', '#f59e0b', '#dc2626'];
+const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 
 function normalize(vals: (number | null)[]): (number | null)[] {
   const nums = vals.filter((v): v is number => v !== null);

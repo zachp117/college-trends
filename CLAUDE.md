@@ -16,6 +16,24 @@ Repo on GitHub: `zachp117/college-trends`. Deploys to Vercel.
 - **Auth**: Better Auth (tables in same SQLite DB)
 - **Build extras**: satori + @resvg/resvg-js for OG images; @vercel/og available
 
+## Brand: CollegeTrends
+
+Design tokens live in `design/brand/brand-tokens.css` (imported by `src/index.css`) — always
+use `var(--ct-*)`, never raw hex. Fonts (loaded in `index.html`): **Space Grotesk** for UI +
+headlines, **Space Mono** for `// LABELS` and data values. Dark navy (`#08111F`) product
+surface; cyan (`#2EB4F0`) is the ONLY action/emphasis color; amber (`#F2A83A`) for live/numeric
+tags; violet (`#6D5EF0`) for chart marks only. Section kickers are uppercase Space Mono prefixed
+with `// `. Keep it trustworthy, editorial, minimal. Full reference (README, brand board `.dc.html`,
+production icon assets): `design/brand/`.
+
+**Status (light brand application):** the site stays **light** and keeps its original system font.
+Applied so far: the CT favicon + a `<Wordmark>` (CT mark + two-tone "CollegeTrends", cyan `Trends`)
+in every header; the brand **signal-cyan** accent — done by remapping the existing `indigo-*`
+scale to a cyan ramp in `tailwind.config.js`, so all existing accent usages become brand cyan with
+no per-component churn; brand corner radii (`md/lg/xl`); and a faint cyan/violet page-tint on paper
+(`src/index.css`). The full dark theme was intentionally NOT adopted. Chart series palettes are
+still their original hues (not yet moved to `var(--ct-chart-*)`). `design/brand/` holds the source.
+
 ## Commands
 
 ```bash

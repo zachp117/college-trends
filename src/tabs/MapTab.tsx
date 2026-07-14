@@ -38,22 +38,22 @@ interface MapMetric {
 }
 
 const MAP_METRICS: MapMetric[] = [
-  { key: 'avgCost', label: 'Avg net price', format: 'money', scale: 'linear', lowColor: '#10b981', highColor: '#ef4444' },
-  { key: 'tuitionIn', label: 'In-state tuition', format: 'money', scale: 'linear', lowColor: '#10b981', highColor: '#ef4444' },
-  { key: 'tuitionOut', label: 'Out-of-state tuition', format: 'money', scale: 'linear', lowColor: '#10b981', highColor: '#ef4444' },
-  { key: 'medianEarnings10', label: 'Median earnings (10y)', format: 'money', scale: 'linear', lowColor: '#fca5a5', highColor: '#15803d' },
-  { key: 'admissionRate', label: 'Admission rate', format: 'pct', scale: 'linear', lowColor: '#7c3aed', highColor: '#bae6fd' },
-  { key: 'completionRate', label: 'Completion rate', format: 'pct', scale: 'linear', lowColor: '#fca5a5', highColor: '#15803d' },
-  { key: 'medianDebt', label: 'Median debt', format: 'money', scale: 'linear', lowColor: '#10b981', highColor: '#ef4444' },
-  { key: 'defaultRate3yr', label: '3-yr default rate', format: 'pct', scale: 'linear', lowColor: '#10b981', highColor: '#ef4444' },
-  { key: 'size', label: 'Enrollment', format: 'num', scale: 'log', lowColor: '#e0e7ff', highColor: '#3730a3' },
+  { key: 'avgCost', label: 'Avg net price', format: 'money', scale: 'linear', lowColor: '#dcfce7', highColor: '#E0483D' },
+  { key: 'tuitionIn', label: 'In-state tuition', format: 'money', scale: 'linear', lowColor: '#dcfce7', highColor: '#E0483D' },
+  { key: 'tuitionOut', label: 'Out-of-state tuition', format: 'money', scale: 'linear', lowColor: '#dcfce7', highColor: '#E0483D' },
+  { key: 'medianEarnings10', label: 'Median earnings (10y)', format: 'money', scale: 'linear', lowColor: '#fbd7d4', highColor: '#16A34A' },
+  { key: 'admissionRate', label: 'Admission rate', format: 'pct', scale: 'linear', lowColor: '#6D5EF0', highColor: '#e7e4fd' },
+  { key: 'completionRate', label: 'Completion rate', format: 'pct', scale: 'linear', lowColor: '#fbd7d4', highColor: '#16A34A' },
+  { key: 'medianDebt', label: 'Median debt', format: 'money', scale: 'linear', lowColor: '#dcfce7', highColor: '#E0483D' },
+  { key: 'defaultRate3yr', label: '3-yr default rate', format: 'pct', scale: 'linear', lowColor: '#dcfce7', highColor: '#E0483D' },
+  { key: 'size', label: 'Enrollment', format: 'num', scale: 'log', lowColor: '#e7e4fd', highColor: '#6D5EF0' },
   { key: 'ownership', label: 'Ownership type', format: 'categorical', scale: 'categorical', lowColor: '', highColor: '' },
 ];
 
 const OWNERSHIP_COLOR: Record<number, string> = {
-  1: '#2563eb',
-  2: '#059669',
-  3: '#dc2626',
+  1: '#2F6FEB',
+  2: '#16A34A',
+  3: '#E0483D',
 };
 
 function lerpColor(c1: string, c2: string, t: number): string {

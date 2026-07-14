@@ -1,4 +1,5 @@
 import { FIELD_VINTAGES } from '../util/dataVintage';
+import { Wordmark } from './Wordmark';
 
 interface Props {
   onBack: () => void;
@@ -10,9 +11,7 @@ export function AboutPage({ onBack }: Props) {
       <header className="bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-5 flex items-baseline justify-between gap-4">
           <h1 className="text-lg sm:text-xl font-semibold">
-            <a href="/" className="hover:text-slate-200">
-              College Trends
-            </a>
+            <Wordmark />
           </h1>
           <button
             onClick={onBack}

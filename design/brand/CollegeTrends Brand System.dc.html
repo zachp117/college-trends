@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 700px at 85% -5%, rgba(46,180,240,0.16), transparent 55%),
+      radial-gradient(900px 700px at 8% 108%, rgba(109,94,240,0.10), transparent 55%),
+      #08111f;
+    background-attachment:fixed;
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:#2EB4F0;text-decoration:none;}
+  a:hover{color:#7fd3f7;}
+  ::selection{background:#2EB4F0;color:#08111f;}
+</style>
+</helmet>
+
+<div style="max-width:1480px;margin:0 auto;padding:64px 56px 96px;color:#F4F9FD;">
+
+  <!-- ===================== HEADER ===================== -->
+  <header style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,0.10);padding-bottom:34px;margin-bottom:56px;">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.32em;color:#2EB4F0;font-weight:700;margin-bottom:22px;">// BRAND&nbsp;&nbsp;SYSTEM</div>
+      <h1 style="font-size:76px;line-height:0.95;font-weight:700;margin:0;letter-spacing:-0.02em;">College<span style="color:#2EB4F0;">Trends</span></h1>
+      <p style="margin:20px 0 0;font-size:19px;line-height:1.5;color:#9FB6CC;max-width:560px;">The visual language for the free federal-data dashboard on every U.S. college. Colors, type, logo directions, and web assets ready for the site.</p>
+    </div>
+    <div style="font-family:'Space Mono',monospace;font-size:13px;text-align:right;line-height:2;">
+      <div style="color:#5F7589;">VERSION&nbsp;&nbsp;1.0</div>
+      <div style="color:#5F7589;">JUL&nbsp;2026</div>
+      <div style="color:#5F7589;">collegetrends.io</div>
+    </div>
+  </header>
+
+  <!-- ===================== LOGO DIRECTIONS (turn 1) ===================== -->
+  <section id="1" style="margin-bottom:72px;">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:8px;">
+      <span style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.26em;color:#F2A83A;font-weight:700;">01</span>
+      <h2 style="font-size:30px;font-weight:700;margin:0;letter-spacing:-0.01em;">Logo directions</h2>
+    </div>
+    <p style="margin:0 0 34px;color:#8FA6BC;font-size:16px;max-width:640px;">Three ownable takes on a data brand. Every mark is built from the same geometry so it stays crisp at favicon scale. Tell me a number — <a href="#1a">1a</a>, <a href="#1b">1b</a>, or <a href="#1c">1c</a> — and I'll lock it as the primary.</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:26px;">
+
+      <!-- 1a -->
+      <div id="1a" style="position:relative;flex:1 1 400px;min-width:400px;background:#0E2035;border:1px solid rgba(255,255,255,0.10);border-radius:20px;padding:34px 32px 30px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;">
+          <span style="font-family:'Space Mono',monospace;font-size:13px;color:#5F7589;">1a — Trendline</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;background:#08111f;border-radius:14px;padding:30px 26px;margin-bottom:22px;">
+          <svg width="58" height="58" viewBox="0 0 100 100" style="flex-shrink:0;">
+            <rect x="2" y="2" width="96" height="96" rx="24" fill="#0E2035" stroke="#22354c" stroke-width="1.5"/>
+            <polyline points="22,70 42,54 58,62 80,30" fill="none" stroke="#2EB4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="80" cy="30" r="8" fill="#2EB4F0"/>
+          </svg>
+          <div style="font-size:30px;font-weight:700;letter-spacing:-0.015em;">College<span style="color:#2EB4F0;">Trends</span></div>
+        </div>
+        <p style="margin:0 0 22px;color:#8FA6BC;font-size:14px;line-height:1.55;">A rising line with a node at the peak — literally "trends." Reads clean at 16px and animates well as a loading state.</p>
+        <div style="display:flex;gap:14px;align-items:flex-end;">
+          <div style="text-align:center;">
+            <svg width="16" height="16" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#08111f"/><polyline points="22,70 42,54 58,62 80,30" fill="none" stroke="#2EB4F0" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="80" cy="30" r="9" fill="#2EB4F0"/></svg>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">16px</div>
+          </div>
+          <div style="text-align:center;">
+            <svg width="32" height="32" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#08111f"/><polyline points="22,70 42,54 58,62 80,30" fill="none" stroke="#2EB4F0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="80" cy="30" r="8.5" fill="#2EB4F0"/></svg>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">32px</div>
+          </div>
+          <div style="text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="#08111f"/><polyline points="22,70 42,54 58,62 80,30" fill="none" stroke="#2EB4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="80" cy="30" r="8" fill="#2EB4F0"/></svg>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">icon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1b -->
+      <div id="1b" style="position:relative;flex:1 1 400px;min-width:400px;background:#0E2035;border:1px solid rgba(255,255,255,0.10);border-radius:20px;padding:34px 32px 30px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;">
+          <span style="font-family:'Space Mono',monospace;font-size:13px;color:#5F7589;">1b — The Slash</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;background:#08111f;border-radius:14px;padding:30px 26px;margin-bottom:22px;">
+          <svg width="58" height="58" viewBox="0 0 100 100" style="flex-shrink:0;">
+            <rect x="2" y="2" width="96" height="96" rx="24" fill="#0E2035" stroke="#22354c" stroke-width="1.5"/>
+            <line x1="36" y1="72" x2="52" y2="28" stroke="#2EB4F0" stroke-width="9" stroke-linecap="round"/>
+            <line x1="54" y1="72" x2="70" y2="28" stroke="#2EB4F0" stroke-width="9" stroke-linecap="round"/>
+          </svg>
+          <div style="font-size:29px;font-weight:700;letter-spacing:-0.015em;"><span style="font-family:'Space Mono',monospace;color:#2EB4F0;font-weight:700;">//</span> College<span style="color:#2EB4F0;">Trends</span></div>
+        </div>
+        <p style="margin:0 0 22px;color:#8FA6BC;font-size:14px;line-height:1.55;">Keeps the <span style="font-family:'Space Mono',monospace;color:#2EB4F0;">//</span> from your launch — a code-comment signature that says "raw data, no spin." Maximum recognition at tiny sizes.</p>
+        <div style="display:flex;gap:14px;align-items:flex-end;">
+          <div style="text-align:center;">
+            <svg width="16" height="16" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#08111f"/><line x1="36" y1="72" x2="52" y2="28" stroke="#2EB4F0" stroke-width="11" stroke-linecap="round"/><line x1="54" y1="72" x2="70" y2="28" stroke="#2EB4F0" stroke-width="11" stroke-linecap="round"/></svg>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">16px</div>
+          </div>
+          <div style="text-align:center;">
+            <svg width="32" height="32" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#08111f"/><line x1="36" y1="72" x2="52" y2="28" stroke="#2EB4F0" stroke-width="10" stroke-linecap="round"/><line x1="54" y1="72" x2="70" y2="28" stroke="#2EB4F0" stroke-width="10" stroke-linecap="round"/></svg>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">32px</div>
+          </div>
+          <div style="text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="#08111f"/><line x1="36" y1="72" x2="52" y2="28" stroke="#2EB4F0" stroke-width="9" stroke-linecap="round"/><line x1="54" y1="72" x2="70" y2="28" stroke="#2EB4F0" stroke-width="9" stroke-linecap="round"/></svg>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">icon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1c -->
+      <div id="1c" style="position:relative;flex:1 1 400px;min-width:400px;background:#0E2035;border:1px solid rgba(255,255,255,0.10);border-radius:20px;padding:34px 32px 30px;">
+        <div style="position:absolute;top:-11px;left:26px;background:#2EB4F0;color:#08111f;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.12em;padding:4px 10px;border-radius:6px;">RECOMMENDED</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;">
+          <span style="font-family:'Space Mono',monospace;font-size:13px;color:#5F7589;">1c — CT Monogram</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;background:#08111f;border-radius:14px;padding:30px 26px;margin-bottom:22px;">
+          <div style="width:58px;height:58px;border-radius:16px;background:#0E2035;border:1.5px solid #22354c;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:27px;font-weight:700;letter-spacing:-0.04em;">C<span style="color:#2EB4F0;">T</span></span>
+          </div>
+          <div style="font-size:30px;font-weight:700;letter-spacing:-0.015em;">College<span style="color:#2EB4F0;">Trends</span></div>
+        </div>
+        <p style="margin:0 0 22px;color:#8FA6BC;font-size:14px;line-height:1.55;">A tight geometric monogram — the most "product" of the three. Flexible as an app icon and avatar, but least descriptive on its own.</p>
+        <div style="display:flex;gap:14px;align-items:flex-end;">
+          <div style="text-align:center;">
+            <div style="width:16px;height:16px;border-radius:4px;background:#08111f;display:flex;align-items:center;justify-content:center;"><span style="font-size:9px;font-weight:700;letter-spacing:-0.04em;">C<span style="color:#2EB4F0;">T</span></span></div>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">16px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:32px;height:32px;border-radius:8px;background:#08111f;display:flex;align-items:center;justify-content:center;"><span style="font-size:16px;font-weight:700;letter-spacing:-0.04em;">C<span style="color:#2EB4F0;">T</span></span></div>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">32px</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:52px;height:52px;border-radius:13px;background:#08111f;display:flex;align-items:center;justify-content:center;"><span style="font-size:25px;font-weight:700;letter-spacing:-0.04em;">C<span style="color:#2EB4F0;">T</span></span></div>
+            <div style="font-family:'Space Mono',monospace;font-size:10px;color:#5F7589;margin-top:6px;">icon</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== COLOR ===================== -->
+  <section style="margin-bottom:72px;">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:8px;">
+      <span style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.26em;color:#F2A83A;font-weight:700;">02</span>
+      <h2 style="font-size:30px;font-weight:700;margin:0;letter-spacing:-0.01em;">Color</h2>
+    </div>
+    <p style="margin:0 0 30px;color:#8FA6BC;font-size:16px;max-width:640px;">Deep navy carries the product; sky-cyan is the single action + emphasis color; amber flags anything live or numeric. Violet is reserved for data marks.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
+      <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+        <div style="height:120px;background:#08111f;"></div>
+        <div style="padding:14px 16px;background:#0E2035;">
+          <div style="font-weight:600;font-size:15px;">Ink Navy</div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8FA6BC;margin-top:3px;">#08111F</div>
+          <div style="font-size:12px;color:#5F7589;margin-top:6px;">Primary background</div>
+        </div>
+      </div>
+      <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+        <div style="height:120px;background:#0E2035;"></div>
+        <div style="padding:14px 16px;background:#0E2035;">
+          <div style="font-weight:600;font-size:15px;">Surface Navy</div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8FA6BC;margin-top:3px;">#0E2035</div>
+          <div style="font-size:12px;color:#5F7589;margin-top:6px;">Cards, panels</div>
+        </div>
+      </div>
+      <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+        <div style="height:120px;background:#2EB4F0;"></div>
+        <div style="padding:14px 16px;background:#0E2035;">
+          <div style="font-weight:600;font-size:15px;">Signal Cyan</div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8FA6BC;margin-top:3px;">#2EB4F0</div>
+          <div style="font-size:12px;color:#5F7589;margin-top:6px;">Action, emphasis, links</div>
+        </div>
+      </div>
+      <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+        <div style="height:120px;background:#F2A83A;"></div>
+        <div style="padding:14px 16px;background:#0E2035;">
+          <div style="font-weight:600;font-size:15px;">Live Amber</div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;color:#8FA6BC;margin-top:3px;">#F2A83A</div>
+          <div style="font-size:12px;color:#5F7589;margin-top:6px;">Counters, live tags</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;">
+      <div style="text-align:center;">
+        <div style="height:60px;border-radius:10px;background:#6D5EF0;border:1px solid rgba(255,255,255,0.08);"></div>
+        <div style="font-size:12px;margin-top:8px;font-weight:600;">Data Violet</div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#5F7589;">#6D5EF0</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="height:60px;border-radius:10px;background:#F4F9FD;border:1px solid rgba(255,255,255,0.08);"></div>
+        <div style="font-size:12px;margin-top:8px;font-weight:600;">Paper</div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#5F7589;">#F4F9FD</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="height:60px;border-radius:10px;background:#9FB6CC;border:1px solid rgba(255,255,255,0.08);"></div>
+        <div style="font-size:12px;margin-top:8px;font-weight:600;">Slate</div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#5F7589;">#9FB6CC</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="height:60px;border-radius:10px;background:#5F7589;border:1px solid rgba(255,255,255,0.08);"></div>
+        <div style="font-size:12px;margin-top:8px;font-weight:600;">Muted</div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#5F7589;">#5F7589</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="height:60px;border-radius:10px;background:#16A34A;border:1px solid rgba(255,255,255,0.08);"></div>
+        <div style="font-size:12px;margin-top:8px;font-weight:600;">Pos. Green</div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#5F7589;">#16A34A</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="height:60px;border-radius:10px;background:#E0483D;border:1px solid rgba(255,255,255,0.08);"></div>
+        <div style="font-size:12px;margin-top:8px;font-weight:600;">Neg. Red</div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#5F7589;">#E0483D</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TYPE ===================== -->
+  <section style="margin-bottom:72px;">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:8px;">
+      <span style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.26em;color:#F2A83A;font-weight:700;">03</span>
+      <h2 style="font-size:30px;font-weight:700;margin:0;letter-spacing:-0.01em;">Typography</h2>
+    </div>
+    <p style="margin:0 0 30px;color:#8FA6BC;font-size:16px;max-width:640px;">Two families do everything. Space Grotesk for headlines and UI; Space Mono for the <span style="font-family:'Space Mono',monospace;color:#2EB4F0;">// labels</span>, data values, and anything that should feel machine-read.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+      <div style="background:#0E2035;border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:30px 32px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.22em;color:#5F7589;margin-bottom:18px;">DISPLAY / UI — SPACE GROTESK</div>
+        <div style="font-size:56px;font-weight:700;line-height:1;letter-spacing:-0.02em;">Aa</div>
+        <div style="font-size:34px;font-weight:700;letter-spacing:-0.015em;margin-top:22px;">Every U.S. college.</div>
+        <div style="font-size:19px;font-weight:500;color:#C9D8E6;margin-top:10px;">Compare cost, earnings, and debt.</div>
+        <div style="font-size:15px;font-weight:400;color:#8FA6BC;margin-top:12px;line-height:1.55;">Body copy sits at 400–500. Real numbers, not marketing pages — built for counselors and families.</div>
+      </div>
+      <div style="background:#0E2035;border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:30px 32px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.22em;color:#5F7589;margin-bottom:18px;">LABELS / DATA — SPACE MONO</div>
+        <div style="font-family:'Space Mono',monospace;font-size:56px;font-weight:700;line-height:1;">Aa</div>
+        <div style="font-family:'Space Mono',monospace;font-size:15px;letter-spacing:0.2em;color:#2EB4F0;font-weight:700;margin-top:26px;">// DATA DASHBOARD</div>
+        <div style="font-family:'Space Mono',monospace;font-size:34px;font-weight:700;margin-top:16px;">$13,063</div>
+        <div style="font-family:'Space Mono',monospace;font-size:14px;color:#8FA6BC;margin-top:8px;">5,570 schools · 33 columns · 2024 data</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WEB ASSETS ===================== -->
+  <section style="margin-bottom:24px;">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:8px;">
+      <span style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.26em;color:#F2A83A;font-weight:700;">04</span>
+      <h2 style="font-size:30px;font-weight:700;margin:0;letter-spacing:-0.01em;">Web assets</h2>
+    </div>
+    <p style="margin:0 0 30px;color:#8FA6BC;font-size:16px;max-width:680px;">Real files are delivered in <span style="font-family:'Space Mono',monospace;color:#C9D8E6;">/assets</span> using the recommended <a href="#1c">CT monogram</a> mark — favicon (16/32/48), Apple touch icon (180), PWA icons (192/512), and a scalable SVG. Paste the snippet below into <span style="font-family:'Space Mono',monospace;color:#C9D8E6;">&lt;head&gt;</span>.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:22px;align-items:stretch;">
+
+      <!-- browser tab -->
+      <div style="background:#0E2035;border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:26px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#5F7589;margin-bottom:20px;">FAVICON — BROWSER TAB</div>
+        <div style="background:#1b2b3d;border-radius:10px 10px 0 0;padding:9px 8px 0;">
+          <div style="display:inline-flex;align-items:center;gap:8px;background:#08111f;border-radius:8px 8px 0 0;padding:9px 14px;max-width:210px;">
+            <div style="width:16px;height:16px;border-radius:4px;background:#08111f;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:9px;font-weight:700;letter-spacing:-0.04em;">C<span style="color:#2EB4F0;">T</span></span></div>
+            <span style="font-size:13px;color:#C9D8E6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">CollegeTrends — every U.S…</span>
+          </div>
+        </div>
+        <div style="height:8px;background:#08111f;border-radius:0 0 10px 10px;"></div>
+        <div style="font-size:13px;color:#8FA6BC;margin-top:18px;line-height:1.5;">Holds up at 16px in a crowded tab bar. Scales to 48px for bookmarks.</div>
+      </div>
+
+      <!-- iOS webclip -->
+      <div style="background:#0E2035;border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:26px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#5F7589;margin-bottom:20px;">WEB CLIP — iOS HOME SCREEN</div>
+        <div style="display:flex;gap:22px;align-items:flex-start;">
+          <div style="text-align:center;">
+            <div style="width:76px;height:76px;border-radius:22px;background:#08111f;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.45);"><span style="font-size:38px;font-weight:700;letter-spacing:-0.04em;">C<span style="color:#2EB4F0;">T</span></span></div>
+            <div style="font-size:12px;color:#C9D8E6;margin-top:9px;">CollegeTrends</div>
+          </div>
+          <div style="font-size:13px;color:#8FA6BC;line-height:1.55;">Full-bleed navy tile — iOS rounds the corners automatically. Mark stays centered with safe padding.</div>
+        </div>
+      </div>
+
+      <!-- head snippet -->
+      <div style="background:#060d18;border:1px solid rgba(46,180,240,0.25);border-radius:16px;padding:26px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#2EB4F0;margin-bottom:18px;">PASTE INTO &lt;HEAD&gt;</div>
+        <pre style="margin:0;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.75;color:#C9D8E6;white-space:pre-wrap;word-break:break-word;">&lt;link rel="icon" href="/assets/favicon.svg"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32"
+      href="/assets/favicon-32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16"
+      href="/assets/favicon-16.png"&gt;
+&lt;link rel="apple-touch-icon"
+      href="/assets/apple-touch-icon.png"&gt;
+&lt;meta name="theme-color" content="#08111f"&gt;</pre>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+</x-dc>
+</body>
+</html>

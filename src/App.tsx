@@ -28,6 +28,7 @@ import { StudentsPage } from './components/StudentsPage';
 import { StudentDetailPage } from './components/StudentDetailPage';
 import { StarterPresets } from './components/StarterPresets';
 import { SidebarLayout } from './components/Sidebar';
+import { Wordmark } from './components/Wordmark';
 
 type StudentView =
   | { kind: 'none' }
@@ -449,9 +450,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
           <div>
             <h1 className="text-lg sm:text-xl font-semibold">
-              <a href="/" className="hover:text-slate-200">
-                College Trends
-              </a>
+              <Wordmark />
             </h1>
             <p className="text-xs text-slate-300 hidden sm:block">
               Interactive visualizations powered by the U.S. Dept. of Education College Scorecard API.

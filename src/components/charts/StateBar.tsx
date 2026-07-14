@@ -38,7 +38,7 @@ export function StateBar({ schools }: Props) {
             <XAxis dataKey="state" stroke="#64748b" fontSize={12} />
             <YAxis stroke="#64748b" fontSize={12} allowDecimals={false} />
             <Tooltip contentStyle={{ fontSize: 12, borderRadius: 6 }} />
-            <Bar dataKey="count" fill="#0ea5e9" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="count" fill="#2F6FEB" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       )}

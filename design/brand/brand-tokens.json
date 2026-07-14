@@ -1,0 +1,41 @@
+{
+  "$name": "CollegeTrends Brand Tokens",
+  "$version": "1.0",
+  "color": {
+    "core": {
+      "inkNavy":     { "value": "#08111F", "use": "primary page background" },
+      "surfaceNavy": { "value": "#0E2035", "use": "cards, panels, raised surfaces" },
+      "signalCyan":  { "value": "#2EB4F0", "use": "single action color, emphasis, links" },
+      "signalCyanHover": { "value": "#7FD3F7", "use": "cyan hover / lighter tint" },
+      "liveAmber":   { "value": "#F2A83A", "use": "counters, live tags, numeric flags" },
+      "dataViolet":  { "value": "#6D5EF0", "use": "data marks / bars (charts only)" }
+    },
+    "neutral": {
+      "paper":  { "value": "#F4F9FD", "use": "primary text on navy" },
+      "slate":  { "value": "#9FB6CC", "use": "secondary text on navy" },
+      "muted":  { "value": "#5F7589", "use": "tertiary text, mono meta, hairlines" },
+      "inkOnLight": { "value": "#0F2237", "use": "text on light surfaces" },
+      "line":   { "value": "rgba(255,255,255,0.10)", "use": "borders on dark" }
+    },
+    "chart": {
+      "blue": "#2F6FEB", "green": "#16A34A", "red": "#E0483D",
+      "orange": "#F59E0B", "magenta": "#E5397F", "teal": "#17B3A3", "violet": "#6D5EF0"
+    }
+  },
+  "font": {
+    "display": "'Space Grotesk', system-ui, sans-serif",
+    "mono": "'Space Mono', ui-monospace, monospace",
+    "googleImport": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+  },
+  "typeScale": {
+    "display": { "size": 76, "lineHeight": 0.95, "weight": 700, "letterSpacing": "-0.02em" },
+    "h1":      { "size": 48, "weight": 700, "letterSpacing": "-0.015em" },
+    "h2":      { "size": 30, "weight": 700, "letterSpacing": "-0.01em" },
+    "lead":    { "size": 19, "weight": 500 },
+    "body":    { "size": 16, "weight": 400 },
+    "small":   { "size": 14, "weight": 400 },
+    "label":   { "size": 13, "font": "mono", "weight": 700, "letterSpacing": "0.22em", "case": "upper", "prefix": "// " }
+  },
+  "radius": { "sm": 10, "md": 16, "lg": 20, "iconRatio": "22%" },
+  "shadow": { "card": "0 8px 24px rgba(0,0,0,0.35)" }
+}

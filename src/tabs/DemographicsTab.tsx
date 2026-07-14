@@ -25,21 +25,21 @@ interface Props {
 }
 
 const RACE_GROUPS = [
-  { key: 'raceWhite', label: 'White', color: '#3b82f6' },
-  { key: 'raceBlack', label: 'Black', color: '#7c3aed' },
-  { key: 'raceHispanic', label: 'Hispanic', color: '#f59e0b' },
-  { key: 'raceAsian', label: 'Asian', color: '#10b981' },
-  { key: 'raceAian', label: 'AIAN', color: '#dc2626' },
-  { key: 'raceNhpi', label: 'NHPI', color: '#ec4899' },
-  { key: 'raceTwoMore', label: '2+ races', color: '#0ea5e9' },
+  { key: 'raceWhite', label: 'White', color: '#2F6FEB' },
+  { key: 'raceBlack', label: 'Black', color: '#6D5EF0' },
+  { key: 'raceHispanic', label: 'Hispanic', color: '#F59E0B' },
+  { key: 'raceAsian', label: 'Asian', color: '#16A34A' },
+  { key: 'raceAian', label: 'AIAN', color: '#E0483D' },
+  { key: 'raceNhpi', label: 'NHPI', color: '#E5397F' },
+  { key: 'raceTwoMore', label: '2+ races', color: '#17B3A3' },
   { key: 'raceNonResident', label: 'Non-resident', color: '#64748b' },
   { key: 'raceUnknown', label: 'Unknown', color: '#cbd5e1' },
 ] as const;
 
 const OWNERSHIP_COLOR: Record<number, string> = {
-  1: '#2563eb',
-  2: '#059669',
-  3: '#dc2626',
+  1: '#2F6FEB',
+  2: '#16A34A',
+  3: '#E0483D',
 };
 
 function median(nums: number[]): number | null {
@@ -271,8 +271,8 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="Men" stackId="gender" fill="#3b82f6" />
-              <Bar dataKey="Women" stackId="gender" fill="#ec4899" />
+              <Bar dataKey="Men" stackId="gender" fill="#2F6FEB" />
+              <Bar dataKey="Women" stackId="gender" fill="#E5397F" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -345,7 +345,7 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
                     key={own}
                     name={OWNERSHIP_LABELS[own] ?? `Type ${own}`}
                     data={data}
-                    fill={OWNERSHIP_COLOR[own] ?? '#6366f1'}
+                    fill={OWNERSHIP_COLOR[own] ?? '#6D5EF0'}
                     fillOpacity={0.65}
                   />
                 ))}
@@ -384,7 +384,7 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
                 {incomeBuckets.buckets.map((_b, i) => (
                   <Cell
                     key={i}
-                    fill={`rgb(${Math.round(99 + i * 22)},${Math.round(102 + i * 18)},${Math.round(241 - i * 12)})`}
+                    fill={`rgb(${Math.round(214 - i * 21)},${Math.round(209 - i * 23)},${Math.round(251 - i * 2.2)})`}
                   />
                 ))}
               </Bar>

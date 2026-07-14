@@ -17,7 +17,7 @@ interface Props {
   selected: School[];
 }
 
-const PALETTE = ['#6366f1', '#0ea5e9', '#059669', '#f59e0b', '#dc2626'];
+const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 
 const GROUPS = [
   { key: 'completers', label: 'Completers', get: (s: School) => s.medianDebt },
@@ -58,7 +58,7 @@ export function DebtByGroup({ schools, selected }: Props) {
   const bars =
     mode === 'selected'
       ? selected.map((s, i) => ({ key: s.name, color: PALETTE[i % PALETTE.length] }))
-      : [{ key: 'Avg across results', color: '#7c3aed' }];
+      : [{ key: 'Avg across results', color: '#6D5EF0' }];
 
   const anyData = data.some((row) =>
     bars.some((b) => {

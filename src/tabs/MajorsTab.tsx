@@ -19,7 +19,7 @@ interface Props {
   selectedSchools: School[];
 }
 
-const PALETTE = ['#6366f1', '#0ea5e9', '#059669', '#f59e0b', '#dc2626'];
+const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 const COMMON_CREDENTIALS = [1, 2, 3, 5, 6, 7];
 
 type MetricKey = keyof Pick<
@@ -430,7 +430,7 @@ export function MajorsTab({ selectedSchools }: Props) {
               />
               <Bar dataKey="val" radius={[0, 3, 3, 0]}>
                 {topPrograms.map((p, i) => (
-                  <Cell key={i} fill={colorForSchool.get(p.schoolId) ?? '#6366f1'} />
+                  <Cell key={i} fill={colorForSchool.get(p.schoolId) ?? '#6D5EF0'} />
                 ))}
               </Bar>
             </BarChart>
@@ -490,7 +490,7 @@ export function MajorsTab({ selectedSchools }: Props) {
                   <td className="px-3 py-2 text-slate-600 text-xs">
                     <span
                       className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle"
-                      style={{ background: colorForSchool.get(p.schoolId) ?? '#6366f1' }}
+                      style={{ background: colorForSchool.get(p.schoolId) ?? '#6D5EF0' }}
                     />
                     {p.schoolName}
                   </td>
@@ -534,7 +534,7 @@ function SpotlightView({
     '1-yr': p.earnings1yr,
     '4-yr': p.earnings4yr,
     '5-yr': p.earnings5yr,
-    fill: colorForSchool.get(p.schoolId) ?? '#6366f1',
+    fill: colorForSchool.get(p.schoolId) ?? '#6D5EF0',
   }));
 
   const debtEmpData = spotlight.progs.map((p) => ({
@@ -593,7 +593,7 @@ function SpotlightView({
               <Legend wrapperStyle={{ fontSize: 11 }} />
               <Bar dataKey="1-yr" fill="#cbd5e1" radius={[3, 3, 0, 0]} />
               <Bar dataKey="4-yr" fill="#94a3b8" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="5-yr" fill="#6366f1" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="5-yr" fill="#6D5EF0" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -626,8 +626,8 @@ function SpotlightView({
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="Median debt" fill="#7c3aed" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Monthly payment × 12" fill="#f59e0b" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Median debt" fill="#6D5EF0" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Monthly payment × 12" fill="#F59E0B" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -662,10 +662,10 @@ function SpotlightView({
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="Male" fill="#3b82f6" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Female" fill="#ec4899" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Non-Pell" fill="#14b8a6" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Pell" fill="#f97316" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Male" fill="#2F6FEB" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Female" fill="#E5397F" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Non-Pell" fill="#17B3A3" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Pell" fill="#F59E0B" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -680,7 +680,7 @@ function SpotlightView({
                 <th key={p.schoolId} className="py-1.5 pr-3">
                   <span
                     className="inline-block w-2 h-2 rounded-full mr-1.5"
-                    style={{ background: colorForSchool.get(p.schoolId) ?? '#6366f1' }}
+                    style={{ background: colorForSchool.get(p.schoolId) ?? '#6D5EF0' }}
                   />
                   {p.schoolName}
                 </th>

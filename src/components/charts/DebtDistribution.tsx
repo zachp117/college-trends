@@ -50,7 +50,7 @@ export function DebtDistribution({ schools }: Props) {
             formatter={(v: number) => [v, 'Schools']}
             contentStyle={{ fontSize: 12, borderRadius: 6 }}
           />
-          <Bar dataKey="count" fill="#7c3aed" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="count" fill="#6D5EF0" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

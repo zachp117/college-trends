@@ -25,16 +25,16 @@ interface Props {
   selectedSchools: School[];
 }
 
-const PALETTE = ['#6366f1', '#0ea5e9', '#059669', '#f59e0b', '#dc2626'];
+const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 
 const RACE_GROUPS = [
-  { key: 'raceWhite', label: 'White', color: '#3b82f6' },
-  { key: 'raceBlack', label: 'Black', color: '#7c3aed' },
-  { key: 'raceHispanic', label: 'Hispanic', color: '#f59e0b' },
-  { key: 'raceAsian', label: 'Asian', color: '#10b981' },
-  { key: 'raceAian', label: 'AIAN', color: '#dc2626' },
-  { key: 'raceNhpi', label: 'NHPI', color: '#ec4899' },
-  { key: 'raceTwoMore', label: '2+ races', color: '#0ea5e9' },
+  { key: 'raceWhite', label: 'White', color: '#2F6FEB' },
+  { key: 'raceBlack', label: 'Black', color: '#6D5EF0' },
+  { key: 'raceHispanic', label: 'Hispanic', color: '#F59E0B' },
+  { key: 'raceAsian', label: 'Asian', color: '#16A34A' },
+  { key: 'raceAian', label: 'AIAN', color: '#E0483D' },
+  { key: 'raceNhpi', label: 'NHPI', color: '#E5397F' },
+  { key: 'raceTwoMore', label: '2+ races', color: '#17B3A3' },
   { key: 'raceNonResident', label: 'Non-resident', color: '#64748b' },
   { key: 'raceUnknown', label: 'Unknown', color: '#cbd5e1' },
 ] as const;

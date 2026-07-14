@@ -16,7 +16,7 @@ interface Props {
   selected: School[];
 }
 
-const PALETTE = ['#6366f1', '#0ea5e9', '#059669', '#f59e0b', '#dc2626'];
+const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 
 export function DefaultRateBar({ schools, selected }: Props) {
   const mode: 'selected' | 'top' = selected.length > 0 ? 'selected' : 'top';
@@ -38,7 +38,7 @@ export function DefaultRateBar({ schools, selected }: Props) {
       .map((s) => ({
         name: s.name.length > 28 ? s.name.slice(0, 25) + '…' : s.name,
         rate: s.defaultRate3yr! * 100,
-        color: '#dc2626',
+        color: '#E0483D',
       }));
   }, [mode, schools, selected]);
 

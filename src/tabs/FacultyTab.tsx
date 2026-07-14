@@ -25,28 +25,28 @@ interface Props {
 }
 
 const OWNERSHIP_COLOR: Record<number, string> = {
-  1: '#2563eb',
-  2: '#059669',
-  3: '#dc2626',
+  1: '#2F6FEB',
+  2: '#16A34A',
+  3: '#E0483D',
 };
 
 const RACE_GROUPS = [
-  { studentKey: 'raceWhite', facultyKey: 'facultyWhite', label: 'White', color: '#3b82f6' },
-  { studentKey: 'raceBlack', facultyKey: 'facultyBlack', label: 'Black', color: '#7c3aed' },
+  { studentKey: 'raceWhite', facultyKey: 'facultyWhite', label: 'White', color: '#2F6FEB' },
+  { studentKey: 'raceBlack', facultyKey: 'facultyBlack', label: 'Black', color: '#6D5EF0' },
   {
     studentKey: 'raceHispanic',
     facultyKey: 'facultyHispanic',
     label: 'Hispanic',
-    color: '#f59e0b',
+    color: '#F59E0B',
   },
-  { studentKey: 'raceAsian', facultyKey: 'facultyAsian', label: 'Asian', color: '#10b981' },
-  { studentKey: 'raceAian', facultyKey: 'facultyAian', label: 'AIAN', color: '#dc2626' },
-  { studentKey: 'raceNhpi', facultyKey: 'facultyNhpi', label: 'NHPI', color: '#ec4899' },
+  { studentKey: 'raceAsian', facultyKey: 'facultyAsian', label: 'Asian', color: '#16A34A' },
+  { studentKey: 'raceAian', facultyKey: 'facultyAian', label: 'AIAN', color: '#E0483D' },
+  { studentKey: 'raceNhpi', facultyKey: 'facultyNhpi', label: 'NHPI', color: '#E5397F' },
   {
     studentKey: 'raceTwoMore',
     facultyKey: 'facultyTwoMore',
     label: '2+ races',
-    color: '#0ea5e9',
+    color: '#17B3A3',
   },
   {
     studentKey: 'raceNonResident',
@@ -376,8 +376,8 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="Men" stackId="gender" fill="#3b82f6" />
-              <Bar dataKey="Women" stackId="gender" fill="#ec4899" />
+              <Bar dataKey="Men" stackId="gender" fill="#2F6FEB" />
+              <Bar dataKey="Women" stackId="gender" fill="#E5397F" />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -456,7 +456,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
                     key={own}
                     name={OWNERSHIP_LABELS[own] ?? `Type ${own}`}
                     data={data}
-                    fill={OWNERSHIP_COLOR[own] ?? '#6366f1'}
+                    fill={OWNERSHIP_COLOR[own] ?? '#6D5EF0'}
                     fillOpacity={0.6}
                   />
                 ))}

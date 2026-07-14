@@ -25,7 +25,7 @@ interface Props {
   selectedSchools: School[];
 }
 
-const PALETTE = ['#6366f1', '#0ea5e9', '#059669', '#f59e0b', '#dc2626'];
+const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 const AGGREGATE_KEY = 'All filtered colleges (avg)';
 const AGGREGATE_COLOR = '#0f172a';
 

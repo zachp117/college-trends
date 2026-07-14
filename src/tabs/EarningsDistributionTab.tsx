@@ -24,9 +24,9 @@ interface Props {
 }
 
 const OWNERSHIP_COLOR: Record<number, string> = {
-  1: '#2563eb',
-  2: '#059669',
-  3: '#dc2626',
+  1: '#2F6FEB',
+  2: '#16A34A',
+  3: '#E0483D',
 };
 
 type Horizon = '6yr' | '10yr';
@@ -343,9 +343,9 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
                   }}
                 />
                 <Bar dataKey="base" stackId="rng" fill="transparent" />
-                <Bar dataKey="lowSeg" stackId="rng" fill="#c7d2fe" />
-                <Bar dataKey="midSeg" stackId="rng" fill="#4f46e5" />
-                <Bar dataKey="highSeg" stackId="rng" fill="#c7d2fe" />
+                <Bar dataKey="lowSeg" stackId="rng" fill="rgba(109,94,240,0.35)" />
+                <Bar dataKey="midSeg" stackId="rng" fill="#6D5EF0" />
+                <Bar dataKey="highSeg" stackId="rng" fill="rgba(109,94,240,0.35)" />
               </BarChart>
             </ResponsiveContainer>
           )}
@@ -416,7 +416,7 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
                     key={own}
                     name={OWNERSHIP_LABELS[own] ?? `Type ${own}`}
                     data={data}
-                    fill={OWNERSHIP_COLOR[own] ?? '#6366f1'}
+                    fill={OWNERSHIP_COLOR[own] ?? '#6D5EF0'}
                     fillOpacity={0.6}
                   />
                 ))}
@@ -466,8 +466,8 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
                   contentStyle={{ fontSize: 12, borderRadius: 6 }}
                 />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
-                <Bar dataKey="> $25k" fill="#0ea5e9" radius={[3, 3, 0, 0]} />
-                <Bar dataKey="> $28k" fill="#6366f1" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="> $25k" fill="#2F6FEB" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="> $28k" fill="#6D5EF0" radius={[3, 3, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -494,8 +494,8 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="median" name="Schools by median" fill="#6366f1" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="p90" name="Schools by 90th percentile" fill="#10b981" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="median" name="Schools by median" fill="#6D5EF0" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="p90" name="Schools by 90th percentile" fill="#16A34A" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

@@ -18,7 +18,7 @@ interface Props {
   selected: School[];
 }
 
-const PALETTE = ['#6366f1', '#0ea5e9', '#059669', '#f59e0b', '#dc2626'];
+const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 
 function median(nums: number[]): number | null {
   if (nums.length === 0) return null;
@@ -61,8 +61,8 @@ export function NetPriceByIncome({ schools, selected }: Props) {
     mode === 'selected'
       ? selected.map((s, i) => ({ key: s.name, color: PALETTE[i % PALETTE.length] }))
       : [
-          { key: 'Public', color: '#2563eb' },
-          { key: 'Private', color: '#059669' },
+          { key: 'Public', color: '#2F6FEB' },
+          { key: 'Private', color: '#16A34A' },
         ];
 
   const anyData = data.some((row) =>

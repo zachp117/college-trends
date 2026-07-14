@@ -20,13 +20,13 @@ interface Props {
 }
 
 const RACE_GROUPS = [
-  { key: 'completion4yrWhite', label: 'White', color: '#3b82f6' },
-  { key: 'completion4yrBlack', label: 'Black', color: '#7c3aed' },
-  { key: 'completion4yrHispanic', label: 'Hispanic', color: '#f59e0b' },
-  { key: 'completion4yrAsian', label: 'Asian', color: '#10b981' },
-  { key: 'completion4yrAian', label: 'AIAN', color: '#dc2626' },
-  { key: 'completion4yrNhpi', label: 'NHPI', color: '#ec4899' },
-  { key: 'completion4yrTwoMore', label: '2+ races', color: '#0ea5e9' },
+  { key: 'completion4yrWhite', label: 'White', color: '#2F6FEB' },
+  { key: 'completion4yrBlack', label: 'Black', color: '#6D5EF0' },
+  { key: 'completion4yrHispanic', label: 'Hispanic', color: '#F59E0B' },
+  { key: 'completion4yrAsian', label: 'Asian', color: '#16A34A' },
+  { key: 'completion4yrAian', label: 'AIAN', color: '#E0483D' },
+  { key: 'completion4yrNhpi', label: 'NHPI', color: '#E5397F' },
+  { key: 'completion4yrTwoMore', label: '2+ races', color: '#17B3A3' },
   { key: 'completion4yrNonRes', label: 'Non-resident', color: '#64748b' },
 ] as const;
 
@@ -317,10 +317,10 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="Male" fill="#3b82f6" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Female" fill="#ec4899" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Pell recip." fill="#f97316" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="No Pell" fill="#14b8a6" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Male" fill="#2F6FEB" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Female" fill="#E5397F" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Pell recip." fill="#F59E0B" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="No Pell" fill="#17B3A3" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -362,8 +362,8 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="Male" fill="#3b82f6" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Female" fill="#ec4899" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Male" fill="#2F6FEB" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Female" fill="#E5397F" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -405,9 +405,9 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="Low income" fill="#fb923c" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Mid income" fill="#facc15" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="High income" fill="#22c55e" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Low income" fill="#F59E0B" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Mid income" fill="rgba(245,158,11,0.35)" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="High income" fill="#16A34A" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

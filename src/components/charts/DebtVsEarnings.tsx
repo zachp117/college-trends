@@ -19,9 +19,9 @@ interface Props {
 }
 
 const COLORS: Record<number, string> = {
-  1: '#2563eb',
-  2: '#059669',
-  3: '#dc2626',
+  1: '#2F6FEB',
+  2: '#16A34A',
+  3: '#E0483D',
 };
 
 export function DebtVsEarnings({ schools }: Props) {
@@ -117,7 +117,7 @@ export function DebtVsEarnings({ schools }: Props) {
                 key={own}
                 name={OWNERSHIP_LABELS[own] ?? `Type ${own}`}
                 data={data}
-                fill={COLORS[own] ?? '#6366f1'}
+                fill={COLORS[own] ?? '#6D5EF0'}
                 fillOpacity={0.7}
               />
             ))}

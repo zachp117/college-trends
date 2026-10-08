@@ -46,7 +46,7 @@ export function ChangelogPage({ onBack }: Props) {
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-slate-900">What's New</h2>
           <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-            Recent feature updates to College Trends — new capabilities and
+            Recent feature updates to College Trends: new capabilities and
             improvements to what the tool can do. Data refreshes and visual tweaks
             aren't listed here.
           </p>

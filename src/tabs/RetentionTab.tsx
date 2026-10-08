@@ -224,10 +224,10 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
 
       <Accordion>
         {/* Cohort breakdown (selected) */}
-        <AccordionSection id="retention.cohortOutcomes" title="6-year cohort outcomes — selected schools">
+        <AccordionSection id="retention.cohortOutcomes" title="6-year cohort outcomes for selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
-            6-year cohort outcomes — selected schools
+            6-year cohort outcomes for selected schools
           </h3>
           <p className="text-xs text-slate-500 mb-3">
             Tracks every Title-IV first-time student in the entering cohort. Bars sum to ≈100%
@@ -268,7 +268,7 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
                 />
                 <Tooltip
                   formatter={(v) =>
-                    v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`
+                    v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`
                   }
                   contentStyle={{ fontSize: 12, borderRadius: 6 }}
                 />
@@ -324,8 +324,8 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
             6-year withdrawal distribution
           </h3>
           <p className="text-xs text-slate-500 mb-3">
-            Share of the entering Title-IV cohort that withdrew without finishing — at the same
-            institution. {withdrawHist.n.toLocaleString()} schools reporting.
+            Share of the entering Title-IV cohort that withdrew without finishing (at the same
+            institution). {withdrawHist.n.toLocaleString()} schools reporting.
           </p>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart
@@ -360,7 +360,7 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
           </h3>
           <p className="text-xs text-slate-500 mb-3">
             Each dot = a school. Schools well *below* the dashed parity line keep first-year
-            students but lose them between year 2 and year 6 — late-stage leakage. Bubble size = enrollment.
+            students but lose them between year 2 and year 6 (late-stage leakage). Bubble size = enrollment.
           </p>
           {scatterData.length === 0 ? (
             <div className="h-[300px] flex items-center justify-center text-slate-400 text-sm">
@@ -472,7 +472,7 @@ export function RetentionTab({ schools, selectedSchools }: Props) {
                     <td className="px-3 py-2 font-medium text-slate-800">{s.name}</td>
                     <td className="px-3 py-2 tabular-nums">{fmtPct(bestRetention(s))}</td>
                     <td className="px-3 py-2 tabular-nums">{fmtPct(s.titleIvCompleted6)}</td>
-                    <td className="px-3 py-2 tabular-nums">{tc === 0 ? '—' : `${(tc * 100).toFixed(1)}%`}</td>
+                    <td className="px-3 py-2 tabular-nums">{tc === 0 ? 'n/a' : `${(tc * 100).toFixed(1)}%`}</td>
                     <td className="px-3 py-2 tabular-nums text-rose-700">
                       {fmtPct(s.titleIvWithdrawn6)}
                     </td>

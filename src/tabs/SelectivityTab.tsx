@@ -223,12 +223,12 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
         <StatCard
           label="Typical SAT score"
           tip="sat-percentile"
-          value={summary.medSat50 === null ? '—' : Math.round(summary.medSat50).toString()}
+          value={summary.medSat50 === null ? 'n/a' : Math.round(summary.medSat50).toString()}
           sub={`Reading + Math · ${summary.nSat.toLocaleString()} schools`}
         />
         <StatCard
           label="Typical ACT score"
-          value={summary.medAct50 === null ? '—' : summary.medAct50.toFixed(1)}
+          value={summary.medAct50 === null ? 'n/a' : summary.medAct50.toFixed(1)}
           sub={`composite · ${summary.nAct.toLocaleString()} schools`}
         />
         <StatCard
@@ -308,10 +308,10 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
         </AccordionSection>
 
         {/* SAT range for selected */}
-        <AccordionSection id="selectivity.satRange" title="SAT score range — selected schools">
+        <AccordionSection id="selectivity.satRange" title="SAT score range for selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
-            SAT score range — selected schools
+            SAT score range for selected schools
           </h3>
           <p className="text-xs text-slate-500 mb-3">
             25th, 50th, and 75th percentiles for total SAT (Reading + Math). Bar spans 25th to
@@ -337,10 +337,10 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
         </AccordionSection>
 
         {/* ACT range for selected */}
-        <AccordionSection id="selectivity.actRange" title="ACT score range — selected schools">
+        <AccordionSection id="selectivity.actRange" title="ACT score range for selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
-            ACT score range — selected schools
+            ACT score range for selected schools
           </h3>
           <p className="text-xs text-slate-500 mb-3">
             25th, 50th, and 75th percentiles for ACT cumulative.
@@ -440,7 +440,7 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden mt-6">
         <div className="px-4 py-3 border-b border-slate-200">
           <h3 className="text-sm font-semibold text-slate-700">
-            Most selective in the filter — top 50 by admit rate
+            Most selective in the filter: top 50 by admit rate
           </h3>
         </div>
         <div className="max-h-[480px] overflow-auto">
@@ -480,7 +480,7 @@ export function SelectivityTab({ schools, selectedSchools }: Props) {
                   <td className="px-3 py-2 tabular-nums">{fmtNum(s.actCum75)}</td>
                   <td className="px-3 py-2 text-xs text-slate-600">
                     {s.testRequirements === null
-                      ? '—'
+                      ? 'n/a'
                       : TEST_POLICY_LABELS[s.testRequirements] ?? `Code ${s.testRequirements}`}
                   </td>
                 </tr>
@@ -542,9 +542,9 @@ function SatActRangeChart({
           return (
             <div className="bg-white border border-slate-200 rounded p-2 text-xs shadow">
               <div className="font-medium">{d.fullName}</div>
-              <div>25th: {d.p25 ?? '—'}</div>
-              <div>50th: {d.p50 ?? '—'}</div>
-              <div>75th: {d.p75 ?? '—'}</div>
+              <div>25th: {d.p25 ?? 'n/a'}</div>
+              <div>50th: {d.p50 ?? 'n/a'}</div>
+              <div>75th: {d.p75 ?? 'n/a'}</div>
             </div>
           );
         }}

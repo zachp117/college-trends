@@ -65,8 +65,8 @@ export function NotFoundPage({ onGoHome, onGoApp }: Props) {
           </div>
 
           <p className="text-xs text-slate-400 mt-10">
-            Looking for a specific college? Use the search inside the dashboard
-            — every U.S. college is in there.
+            Looking for a specific college? Use the search inside the dashboard.
+            Every U.S. college is in there.
           </p>
         </div>
       </main>

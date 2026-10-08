@@ -201,10 +201,10 @@ export function StudentsPage({ onOpenStudent, onBack }: Props) {
                       {s.name}
                     </button>
                   </td>
-                  <td className="px-4 py-2 text-slate-600">{s.graduationYear ?? '—'}</td>
+                  <td className="px-4 py-2 text-slate-600">{s.graduationYear ?? 'n/a'}</td>
                   <td className="px-4 py-2 text-slate-600 tabular-nums">{s.schoolCount}</td>
                   <td className="px-4 py-2 text-slate-500 text-xs max-w-xs truncate">
-                    {s.notes ?? '—'}
+                    {s.notes ?? 'n/a'}
                   </td>
                   <td className="px-4 py-2 text-right">
                     <button

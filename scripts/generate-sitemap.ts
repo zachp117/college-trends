@@ -2,13 +2,13 @@
  * Build-time static page generator.
  *
  * Runs after `vite build` and produces:
- *   1. dist/sitemap.xml      — static + per-school URLs for Google
- *   2. dist/school/<slug>-<id>/index.html — per-school HTML stubs whose
+ *   1. dist/sitemap.xml: static + per-school URLs for Google
+ *   2. dist/school/<slug>-<id>/index.html: per-school HTML stubs whose
  *      <head> meta block (title, description, og:*, twitter:*) is
  *      customized to that school. The page body is identical to the
  *      root index.html, so React hydrates the same SPA on load. The
  *      meta tags exist solely so social crawlers (iMessage, Slack,
- *      Twitter, LinkedIn, Discord, Facebook) — which don't run JS —
+ *      Twitter, LinkedIn, Discord, Facebook), which don't run JS,
  *      see school-specific previews.
  *
  * Reads VITE_SCORECARD_API_KEY from the environment. On Vercel this comes
@@ -23,7 +23,7 @@ import { resolve, dirname } from 'path';
 import { slugify } from '../src/util/schoolUrl';
 
 // ---------------------------------------------------------------------------
-// Mini dotenv loader — avoids adding a dependency for one local convenience.
+// Mini dotenv loader: avoids adding a dependency for one local convenience.
 // Only sets vars that aren't already present in the environment (Vercel wins).
 // ---------------------------------------------------------------------------
 if (existsSync('.env')) {
@@ -62,7 +62,7 @@ async function fetchSchoolPage(page: number): Promise<{ schools: School[]; total
   const params = new URLSearchParams({
     api_key: API_KEY!,
     fields: 'id,school.name',
-    // Only operating, degree-granting institutions — matches what app shows.
+    // Only operating, degree-granting institutions, matching what the app shows.
     'school.operating': '1',
     'school.degrees_awarded.predominant': '1,2,3,4',
     per_page: String(PER_PAGE),
@@ -136,11 +136,11 @@ function htmlEscape(s: string): string {
 function renderSchoolMeta(school: School): string {
   const url = `${SITE_URL}/school/${slugify(school.name)}-${school.id}`;
   const ogImage = `${SITE_URL}/api/og?id=${school.id}`;
-  const title = htmlEscape(`${school.name} — College Trends`);
+  const title = htmlEscape(`${school.name} | College Trends`);
   const description = htmlEscape(
     `Federal data on ${school.name}: net price, earnings, debt, completion, demographics, admissions. From the U.S. Department of Education's College Scorecard.`,
   );
-  const altText = htmlEscape(`${school.name} — College Trends`);
+  const altText = htmlEscape(`${school.name} | College Trends`);
 
   return `<!-- meta:start (per-school, generated) -->
     <title>${title}</title>
@@ -205,7 +205,7 @@ async function main() {
 
   if (!API_KEY || API_KEY === 'your_api_data_gov_key_here') {
     console.warn(
-      'No VITE_SCORECARD_API_KEY in env — sitemap will include static pages only, ' +
+      'No VITE_SCORECARD_API_KEY in env; sitemap will include static pages only, ' +
         'per-school HTML generation skipped.',
     );
   } else {
@@ -220,7 +220,7 @@ async function main() {
       }
     } catch (err) {
       console.error(
-        'Failed to fetch schools — sitemap will include static pages only, ' +
+        'Failed to fetch schools; sitemap will include static pages only, ' +
           'per-school HTML skipped:',
         err instanceof Error ? err.message : err,
       );

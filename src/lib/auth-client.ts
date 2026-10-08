@@ -7,7 +7,7 @@ export const authClient = createAuthClient({
 });
 
 // Better Auth's React client uses a dynamic proxy to materialize hooks like
-// useSession on access — destructuring at module scope can capture stale
+// useSession on access; destructuring at module scope can capture stale
 // references, so we expose stable wrappers.
 export function useSession() {
   return authClient.useSession();

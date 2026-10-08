@@ -4,7 +4,7 @@
 export const GLOSSARY: Record<string, string> = {
   // ----- General statistical terms -----
   median:
-    'The middle value — half of the data is above it, half below. Less affected by extreme outliers than the average.',
+    'The middle value: half of the data is above it, half below. Less affected by extreme outliers than the average.',
   iqr:
     'Interquartile range: the gap between the 25th and 75th percentile. The wider it is, the more variation there is in outcomes.',
   percentile:
@@ -18,7 +18,7 @@ export const GLOSSARY: Record<string, string> = {
   'title-iv-cohort':
     'The class of students who started here and received federal financial aid. Federal completion and outcome stats track this specific group.',
   ftft:
-    'First-Time Full-Time students — those entering college for the first time and enrolled full-time. Most retention and completion stats are based on this group.',
+    'First-Time Full-Time students, meaning those entering college for the first time and enrolled full-time. Most retention and completion stats are based on this group.',
 
   // ----- Completion / retention -----
   'completion-4yr-150':
@@ -36,19 +36,19 @@ export const GLOSSARY: Record<string, string> = {
 
   // ----- Cost & aid -----
   'avg-net-price':
-    "Average sticker price minus typical grants and scholarships — the amount most students actually pay out-of-pocket plus loans.",
+    "Average sticker price minus typical grants and scholarships: the amount most students actually pay out-of-pocket plus loans.",
   'net-price-by-income':
     "What students from each family-income bracket actually pay after their typical aid package. Often very different from the published 'sticker' price.",
   pell:
     "Federal need-based grant for low-income undergraduates. Doesn't have to be repaid.",
   'pell-rate':
-    'Share of undergrads receiving a Pell grant — a rough proxy for how many low-income students attend.',
+    'Share of undergrads receiving a Pell grant, a rough proxy for how many low-income students attend.',
   'federal-loan-rate':
     'Share of students who took out at least one federal student loan.',
   'parent-plus':
-    "Federal loan taken by parents to pay for their kid's education. Counted separately from student debt — and the parents are on the hook even if the student doesn't graduate.",
+    "Federal loan taken by parents to pay for their kid's education. Counted separately from student debt, and the parents are on the hook even if the student doesn't graduate.",
   'plus-debt':
-    "Median Parent PLUS loan balance. PLUS is a federal loan parents take out for their kids' college — separate from student loans.",
+    "Median Parent PLUS loan balance. PLUS is a federal loan parents take out for their kids' college, separate from student loans.",
   'student-debt':
     "Median federal student-loan balance carried by students who graduated. Doesn't include Parent PLUS or private loans.",
 
@@ -58,9 +58,9 @@ export const GLOSSARY: Record<string, string> = {
   'earnings-6yr':
     "Median earnings of students 6 years after they started college, among those working and not enrolled in further schooling.",
   'earnings-distribution':
-    "The 10th, 25th, 75th, and 90th percentiles of grad earnings — shows the spread, not just the typical.",
+    "The 10th, 25th, 75th, and 90th percentiles of grad earnings, showing how widely earnings spread around the typical value.",
   'threshold-25k':
-    "Share of grads earning more than $25k/year — roughly the threshold for 'earning more than a typical high-school graduate'.",
+    "Share of grads earning more than $25k/year, roughly the threshold for 'earning more than a typical high-school graduate'.",
   'debt-to-income':
     "Annual loan payments divided by annual income. Roughly: what share of a typical grad's paycheck goes to loan payments.",
   'earnings-debt-ratio':
@@ -70,17 +70,17 @@ export const GLOSSARY: Record<string, string> = {
   'default-rate':
     'Share of borrowers who defaulted (90+ days delinquent that resulted in default) on their federal loans within 3 years of entering repayment.',
   'repayment-rate':
-    "Share of borrowers whose loan balance is *decreasing* — i.e., they're making progress, not just barely covering interest.",
+    "Share of borrowers whose loan balance is *decreasing*, meaning their payments cover the interest and also reduce what they owe.",
 
   // ----- Demographics -----
   'first-generation':
     "Student whose parents didn't complete a bachelor's degree.",
   '25-and-older':
-    "Share of students who are 25 or older — a rough measure of 'non-traditional' students (returning adults, transfers, parents).",
+    "Share of students who are 25 or older, a rough measure of 'non-traditional' students (returning adults, transfers, parents).",
   'student-faculty-ratio':
-    'Number of students per faculty member. Lower means smaller classes on average — though the ratio includes part-time faculty and grad students.',
+    'Number of students per faculty member. Lower means smaller classes on average, though the ratio includes part-time faculty and grad students.',
   'predominant-degree':
-    "The most common credential the school awards — Certificate, Associate's, Bachelor's, or Graduate.",
+    "The most common credential the school awards: Certificate, Associate's, Bachelor's, or Graduate.",
 
   // ----- Selectivity -----
   'admit-rate':
@@ -92,11 +92,11 @@ export const GLOSSARY: Record<string, string> = {
 
   // ----- Programs / majors -----
   'cip-code':
-    "Classification of Instructional Programs — the federal code system for academic majors. CIP-4 is a 4-digit code identifying a major (e.g., Computer Science = 1107).",
+    "Classification of Instructional Programs, the federal code system for academic majors. CIP-4 is a 4-digit code identifying a major (e.g., Computer Science = 1107).",
   'program-earnings':
     "Median earnings of students who completed this specific program, measured one or five years later. Only includes students who received federal aid.",
   completers:
     "Students who finished their degree program (graduated).",
   noncompleters:
-    "Students who started a program but didn't finish — either left or transferred.",
+    "Students who started a program but didn't finish (they either left or transferred).",
 };

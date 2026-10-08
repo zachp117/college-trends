@@ -74,7 +74,7 @@ function lerpColor(c1: string, c2: string, t: number): string {
 }
 
 function formatVal(v: number | null, format: MapMetric['format']): string {
-  if (v === null || v === undefined) return '—';
+  if (v === null || v === undefined) return 'n/a';
   if (format === 'money') return fmtMoney(v);
   if (format === 'pct') return fmtPct(v);
   return fmtNum(v);
@@ -290,7 +290,7 @@ export function MapTab({ schools, selectedIds, onToggleSelect }: Props) {
               </div>
               {selectedIds.has(hovered.school.id) && (
                 <div className="mt-1 text-indigo-600 font-medium">
-                  Selected — click to remove
+                  Selected. Click to remove.
                 </div>
               )}
             </div>

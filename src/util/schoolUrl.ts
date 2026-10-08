@@ -3,7 +3,7 @@
  * Pattern: /school/<slug>-<id>  (e.g., /school/stanford-university-243744)
  *
  * The numeric ID is what we route on; the slug is purely for readability and
- * search engine indexing. Mismatched slugs still resolve correctly — only the
+ * search engine indexing. Mismatched slugs still resolve correctly; only the
  * trailing ID is required.
  */
 

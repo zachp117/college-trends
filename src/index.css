@@ -1,4 +1,4 @@
-/* Brand design tokens (CollegeTrends v1.0) — defines --ct-* custom properties.
+/* Brand design tokens (CollegeTrends v1.0): defines --ct-* custom properties.
    Canonical source: design/brand/brand-tokens.css. Reference var(--ct-*), never raw hex. */
 @import '../design/brand/brand-tokens.css';
 
@@ -12,13 +12,49 @@ html, body, #root {
 
 body {
   @apply text-slate-900 antialiased;
-  /* Whisper of the brand's cyan/violet glow on a paper base — stays light and clean. */
+  /* Whisper of the brand's cyan/violet glow on a paper base; stays light and clean. */
   background:
     radial-gradient(1100px 700px at 85% -5%, rgba(46, 180, 240, 0.05), transparent 55%),
     radial-gradient(900px 700px at 8% 108%, rgba(109, 94, 240, 0.04), transparent 55%),
     #f4f9fd;
   background-attachment: fixed;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-family: var(--ct-font-display);
+  /* Data-dense UI: digits line up in tables, stats and axis ticks. */
+  font-variant-numeric: tabular-nums;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  h1, h2, h3 {
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* Visible keyboard focus everywhere; mouse clicks stay clean. */
+  :focus-visible {
+    outline: 2px solid var(--ct-signal-cyan);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  button:not(:disabled):active {
+    transform: translateY(1px);
+  }
+}
+
+/* Recharts axis + tooltip text: match the UI font at a quieter size. */
+.recharts-cartesian-axis-tick text,
+.recharts-text {
+  font-size: 11px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
 /* ---------- Print styles ---------- */
@@ -81,7 +117,7 @@ body {
     display: none !important;
   }
 
-  /* Recharts SVGs render fine — make sure they don't get clipped */
+  /* Recharts SVGs render fine; make sure they don't get clipped */
   svg {
     max-width: 100% !important;
     height: auto !important;

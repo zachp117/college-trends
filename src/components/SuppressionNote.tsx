@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { FIELD_VINTAGES } from '../util/dataVintage';
 
 /**
- * Persistent inline note explaining (a) why some cells show "—" and
+ * Persistent inline note explaining (a) why some cells show "n/a" and
  * (b) how recent the underlying data actually is. Both are top
- * questions counselors and parents have when first using the tool.
+ * questions students, parents, and researchers have when first using the tool.
  */
 export function SuppressionNote() {
   const [openVintage, setOpenVintage] = useState(false);
@@ -14,7 +14,7 @@ export function SuppressionNote() {
         <span className="text-slate-400 font-semibold mt-px">ⓘ</span>
         <span>
           <span className="font-medium text-slate-700">Why are some cells empty?</span>{' '}
-          Values shown as <span className="font-mono text-slate-700">—</span> were either
+          Values shown as <span className="font-medium text-slate-700">n/a</span> were either
           not reported or suppressed by the U.S. Dept. of Education to protect student
           privacy when the underlying cohort had fewer than ~30 students. This is normal
           for small schools, test-optional schools, and any field tracked through federal

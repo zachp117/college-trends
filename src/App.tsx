@@ -64,7 +64,7 @@ const TABS: { id: TabId; label: string; description: string }[] = [
     id: 'overview',
     label: 'Summary',
     description:
-      'Headline numbers — cost, earnings, completion, admissions — for every school in your filter.',
+      'Headline numbers on cost, earnings, completion, and admissions for every school in your filter.',
   },
   {
     id: 'compare',
@@ -87,7 +87,7 @@ const TABS: { id: TabId; label: string; description: string }[] = [
     id: 'earnings',
     label: 'Earnings',
     description:
-      "Not just averages — how much grads actually earn 6 and 10 years after starting college, including the 10th to 90th percentile spread.",
+      "How much graduates earn 6 and 10 years after starting college, including the full spread from the 10th to the 90th percentile.",
   },
   {
     id: 'debt',
@@ -99,7 +99,7 @@ const TABS: { id: TabId; label: string; description: string }[] = [
     id: 'loanaid',
     label: 'Loans & Aid',
     description:
-      'Who borrows what — including Parent PLUS loans — and what students from each family-income bracket actually pay.',
+      'Who borrows what (including Parent PLUS loans) and what students from each family-income bracket actually pay.',
   },
   {
     id: 'retention',
@@ -140,7 +140,7 @@ const TABS: { id: TabId; label: string; description: string }[] = [
 ];
 
 // Nationwide default: all states, public + private nonprofit, ≥ 2000 students,
-// bachelor's or graduate-predominant. Loads ~800 schools — meaningful but quick.
+// bachelor's or graduate-predominant. Loads ~800 schools: meaningful but quick.
 const DEFAULT_FILTERS: SearchFilters = {
   ownership: [1, 2],
   minSize: 2000,
@@ -221,7 +221,7 @@ export default function App() {
     pathToStudentView(window.location.pathname),
   );
 
-  // Listen for browser back/forward — keeps detail and student views in sync
+  // Listen for browser back/forward; keeps detail and student views in sync
   useEffect(() => {
     const onPop = () => {
       setStudentView(pathToStudentView(window.location.pathname));
@@ -285,7 +285,7 @@ export default function App() {
         if (transitioningToDetail && !onSchoolPath) {
           window.history.pushState(null, '', target);
         } else {
-          // Refining the slug after async load, or arrived directly via URL —
+          // Refining the slug after async load, or arrived directly via URL:
           // either way, replace in place.
           window.history.replaceState(null, '', target);
         }
@@ -416,7 +416,7 @@ export default function App() {
       else if (next.size < 5) next.add(id);
       // Mirror the change to the server when logged in.
       if (isLoggedIn) {
-        // Find a school name for the pin — try filtered list first, then detail.
+        // Find a school name for the pin: try filtered list first, then detail.
         const school =
           schools.find((s) => s.id === id) ??
           (fetchedDetailSchool && fetchedDetailSchool.id === id ? fetchedDetailSchool : null);
@@ -446,32 +446,32 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <header className="bg-slate-900 text-white no-print">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
-          <div>
-            <h1 className="text-lg sm:text-xl font-semibold">
+      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80 no-print">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4 min-w-0">
+            <span className="text-base font-semibold text-slate-900">
               <Wordmark />
-            </h1>
-            <p className="text-xs text-slate-300 hidden sm:block">
-              Interactive visualizations powered by the U.S. Dept. of Education College Scorecard API.
-            </p>
+            </span>
           </div>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
+          <nav className="flex items-center gap-1 text-sm">
             {isLoggedIn && (
               <>
                 <button
                   onClick={() =>
                     navigateStudents(studentView.kind === 'none' ? { kind: 'roster' } : { kind: 'none' })
                   }
-                  className={`px-2.5 py-1 rounded transition ${
+                  className={`px-3 py-1.5 rounded-md font-medium transition ${
                     studentView.kind !== 'none'
-                      ? 'bg-indigo-500 text-white hover:bg-indigo-600'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                      ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
-                  {studentView.kind !== 'none' ? '← Dashboard' : '👥 Students'}
+                  {studentView.kind !== 'none' ? '← Dashboard' : 'Students'}
                 </button>
-                <span className="text-slate-300" title={session?.user?.email}>
+                <span
+                  className="hidden md:inline px-2 text-xs text-slate-400 truncate max-w-[14rem]"
+                  title={session?.user?.email}
+                >
                   {session?.user?.name ?? session?.user?.email}
                 </span>
                 <button
@@ -479,28 +479,37 @@ export default function App() {
                     await signOut();
                     window.location.href = '/';
                   }}
-                  className="text-slate-300 hover:text-white underline"
+                  className="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
                 >
                   Sign out
                 </button>
               </>
             )}
             {AUTH_ENABLED && !isLoggedIn && (
-              <a href="/login" className="text-slate-300 hover:text-white underline">
+              <a
+                href="/login"
+                className="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+              >
                 Sign in
               </a>
             )}
-            <a href="/changelog" className="text-slate-300 hover:text-white underline">
-              What's New
+            <a
+              href="/changelog"
+              className="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+            >
+              What's new
             </a>
-            <a href="/about" className="text-slate-300 hover:text-white underline">
+            <a
+              href="/about"
+              className="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
+            >
               About
             </a>
-          </div>
+          </nav>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
         {studentView.kind === 'roster' ? (
           <StudentsPage
             onOpenStudent={(id) => navigateStudents({ kind: 'student', id })}
@@ -577,8 +586,12 @@ export default function App() {
         )}
       </main>
 
-      <footer className="text-xs text-slate-400 text-center py-6">
-        Data: College Scorecard · api.data.gov
+      <footer className="max-w-7xl mx-auto px-4 sm:px-6 py-8 mt-8 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+        <span>Data: U.S. Dept. of Education College Scorecard · api.data.gov</span>
+        <span className="flex gap-4">
+          <a href="/changelog" className="hover:text-slate-700 transition">What's new</a>
+          <a href="/about" className="hover:text-slate-700 transition">About &amp; methodology</a>
+        </span>
       </footer>
     </div>
   );
@@ -628,12 +641,12 @@ function MainView({
   return (
     <SidebarLayout activeTab={activeTab} onSelectTab={setActiveTab}>
       <div className="space-y-4">
-        <div>
-          <h2 className="text-lg font-semibold text-slate-800">
+        <div className="pb-1">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900">
             {activeTabMeta?.label}
           </h2>
           {activeTabMeta?.description && (
-            <p className="text-xs text-slate-500 mt-1">{activeTabMeta.description}</p>
+            <p className="text-sm text-slate-500 mt-1.5 max-w-[65ch]">{activeTabMeta.description}</p>
           )}
         </div>
 
@@ -697,11 +710,11 @@ function MainView({
               className={`text-xs px-2.5 py-1.5 rounded-md border font-medium transition whitespace-nowrap ${
                 copied
                   ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
-                  : 'bg-indigo-50 border-indigo-300 text-indigo-700 hover:bg-indigo-100 hover:border-indigo-400'
+                  : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50'
               }`}
               title="Copy a shareable link that re-creates this exact view"
             >
-              {copied ? '✓ Copied' : '🔗 Share'}
+              {copied ? '✓ Copied' : 'Share'}
               <span className="hidden sm:inline">
                 {copied ? ' link' : ' link to this view'}
               </span>
@@ -709,11 +722,11 @@ function MainView({
             <button
               onClick={() => downloadSchoolsCsv(schools, filters, activeTab)}
               disabled={loading || schools.length === 0}
-              className="text-xs px-2.5 py-1.5 rounded-md border font-medium transition bg-emerald-50 border-emerald-300 text-emerald-700 hover:bg-emerald-100 hover:border-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+              className="text-xs px-2.5 py-1.5 rounded-md border font-medium transition bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
               title={`Download ${schools.length.toLocaleString()} schools × ${getColumnCount(activeTab)} columns relevant to the ${activeTab} view`}
             >
-              📥 CSV
-              <span className="hidden sm:inline">
+              Export CSV
+              <span className="hidden sm:inline text-slate-400">
                 {' '}
                 ({schools.length.toLocaleString()} × {getColumnCount(activeTab)} cols)
               </span>

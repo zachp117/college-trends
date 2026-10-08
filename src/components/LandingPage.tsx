@@ -13,44 +13,42 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
   const { data: session, isPending } = useSession();
   const isLoggedIn = AUTH_ENABLED && !!session?.user;
 
+  const primaryBtn =
+    'inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium shadow-sm transition-colors duration-200';
+  const quietLink =
+    'px-3 py-2 rounded-md text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors duration-200';
+
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen">
       {/* Top bar */}
-      <header className="bg-slate-900 text-white">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Wordmark className="text-lg font-semibold" />
-          <div className="flex items-center gap-3 text-sm">
+      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200/80">
+        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+          <span className="text-base font-semibold text-slate-900">
+            <Wordmark />
+          </span>
+          <div className="flex items-center gap-1">
+            <a href="/about" className={`${quietLink} hidden sm:inline-block`}>
+              About
+            </a>
             {!AUTH_ENABLED ? (
-              <button
-                onClick={onEnterApp}
-                className="px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 rounded font-medium"
-              >
+              <button onClick={onEnterApp} className={`${primaryBtn} ml-2`}>
                 Open dashboard →
               </button>
             ) : isPending ? null : isLoggedIn ? (
               <>
-                <span className="text-slate-300 text-xs">
-                  Signed in as {session.user.email}
+                <span className="hidden md:inline px-2 text-xs text-slate-400">
+                  {session.user.email}
                 </span>
-                <button
-                  onClick={onEnterApp}
-                  className="px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 rounded font-medium"
-                >
+                <button onClick={onEnterApp} className={`${primaryBtn} ml-2`}>
                   Open dashboard →
                 </button>
               </>
             ) : (
               <>
-                <button
-                  onClick={onSignIn}
-                  className="px-3 py-1.5 hover:bg-slate-800 rounded"
-                >
+                <button onClick={onSignIn} className={quietLink}>
                   Sign in
                 </button>
-                <button
-                  onClick={onSignIn}
-                  className="px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 rounded font-medium"
-                >
+                <button onClick={onSignIn} className={`${primaryBtn} ml-2`}>
                   Get started
                 </button>
               </>
@@ -60,120 +58,154 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
       </header>
 
       {/* Hero */}
-      <section className="max-w-4xl mx-auto px-6 py-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-semibold text-slate-900 leading-tight">
-          The data layer for college counselors.
-        </h1>
-        <p className="text-lg text-slate-600 mt-5 max-w-2xl mx-auto">
-          Every U.S. college, every metric the federal government publishes — admissions,
-          earnings, debt, completion, demographics — in one searchable dashboard. Built for
-          counselors and families who need real numbers, not marketing pages.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <button
-            onClick={onEnterApp}
-            className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-md"
-          >
-            {isLoggedIn ? 'Open dashboard →' : 'Try it free →'}
-          </button>
-          <a
-            href="#features"
-            className="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium rounded-md border border-slate-300"
-          >
-            See what's inside
-          </a>
+      <section className="max-w-6xl mx-auto px-6 pt-20 pb-24 md:pt-28 md:pb-32 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-10 items-end">
+        <div className="md:col-span-7">
+          <h1 className="text-[2.75rem] leading-[1.02] md:text-[4.25rem] md:leading-[0.98] font-semibold tracking-[-0.03em] text-slate-900">
+            Compare any U.S. college on cost, earnings, and debt.
+          </h1>
+          <p className="mt-6 text-lg leading-relaxed text-slate-600 max-w-[34rem]">
+            College Trends puts the U.S. Department of Education's College Scorecard into one
+            free, searchable dashboard. Students and parents can check what a school costs and how
+            its graduates do. Researchers can filter, compare, and export every number.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-2">
+            <button onClick={onEnterApp} className={`${primaryBtn} px-5 py-2.5`}>
+              {isLoggedIn ? 'Open dashboard →' : 'Explore colleges →'}
+            </button>
+            <a href="#features" className={quietLink}>
+              See what's inside ↓
+            </a>
+          </div>
         </div>
-        <div className="mt-4 text-xs text-slate-400">
-          Powered by the U.S. Dept. of Education College Scorecard API.
-        </div>
+
+        {/* Index card: what's in the dataset */}
+        <aside className="md:col-span-5 md:pl-6">
+          <div className="relative rounded-xl bg-white/90 ring-1 ring-slate-200/80 shadow-lg overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-slate-100">
+              <span className="text-sm font-semibold text-slate-900">What's in the data</span>
+              <span className="text-xs font-medium text-amber-600">● Live data</span>
+            </div>
+            <ul className="divide-y divide-slate-100">
+              {DATASET_INDEX.map(([label, detail]) => (
+                <li key={label} className="flex items-baseline gap-4 px-5 py-2.5">
+                  <span className="text-sm font-medium text-slate-800">{label}</span>
+                  <span className="ml-auto text-xs text-slate-400 text-right">{detail}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="px-5 py-3 bg-slate-50/80 border-t border-slate-100 text-xs text-slate-500">
+              Source: U.S. Dept. of Education College Scorecard
+            </div>
+          </div>
+        </aside>
       </section>
 
       {/* Features */}
-      <section id="features" className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <FeatureCard
-            title="11 dashboards, one search"
-            body="Cost, selectivity, earnings, debt, retention, demographics, faculty, majors — every angle on every school in the federal database, navigable by tab or by school."
-          />
-          <FeatureCard
-            title="Per-school deep dives"
-            body="Click any school for a unified detail page that pulls together every metric, with national-percentile context so you know where it stands."
-          />
-          <FeatureCard
-            title="Pin to dashboard"
-            body="Track up to 5 schools at once. Their data shows up side-by-side in every tab — earnings ranges, cohort outcomes, racial breakdowns, the works."
-          />
-          <FeatureCard
-            title="Honest about data"
-            body="Plain-English glossary tooltips on every jargon term. Suppression notices where data is missing. Always know what year a number is from."
-          />
-          <FeatureCard
-            title="Built for sharing"
-            body="Every view has a shareable URL. Export your filtered set to CSV with one click. Counselor-branded reports coming soon."
-          />
-          <FeatureCard
-            title="Free during beta"
-            body="The data is public; your access is too. We'll add premium features for counseling agencies later. The core dashboard stays free."
-          />
+      <section id="features" className="border-t border-slate-200/80 bg-white/60 scroll-mt-14">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-10">
+          <div className="md:col-span-4">
+            <div className="md:sticky md:top-24">
+              <h2 className="text-3xl font-semibold text-slate-900 leading-tight">
+                Every angle on every school.
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-slate-500 max-w-xs">
+                One dashboard over the federal College Scorecard, with the caveats left in.
+              </p>
+            </div>
+          </div>
+          <ol className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10">
+            {FEATURES.map((f, i) => (
+              <li key={f.title} className="py-6 border-t border-slate-200/80">
+                <div className="text-xs font-semibold text-indigo-500">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <h3 className="mt-2 text-base font-semibold text-slate-900">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{f.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       {/* Coming soon strip */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
-          <div className="text-xs uppercase tracking-wide text-indigo-600 font-medium mb-2">
-            Coming soon for counselors
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-slate-600">
-            <div>
-              <div className="font-medium text-slate-800">Per-student lists</div>
-              <div className="text-xs">A roster of clients with a saved school list each.</div>
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-xl font-semibold text-slate-900 mb-6">Coming soon</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-slate-200/80 rounded-xl overflow-hidden ring-1 ring-slate-200/80">
+          {COMING_SOON.map(([title, body]) => (
+            <div key={title} className="bg-white p-5">
+              <div className="text-sm font-semibold text-slate-900">{title}</div>
+              <div className="mt-1 text-sm leading-relaxed text-slate-500">{body}</div>
             </div>
-            <div>
-              <div className="font-medium text-slate-800">Reach / Match / Safety</div>
-              <div className="text-xs">Tag every school per student. Auto-suggest based on profile.</div>
-            </div>
-            <div>
-              <div className="font-medium text-slate-800">Branded PDF reports</div>
-              <div className="text-xs">Hand families a polished comparison sheet with your logo.</div>
-            </div>
-            <div>
-              <div className="font-medium text-slate-800">Deadline tracker</div>
-              <div className="text-xs">Every school's ED1 / EA / RD dates in one calendar.</div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      <footer className="max-w-6xl mx-auto px-6 py-8 text-xs text-slate-400 text-center space-x-3">
-        <a href="/changelog" className="underline hover:text-slate-600">
-          What's New
-        </a>
-        <span>·</span>
-        <a href="/about" className="underline hover:text-slate-600">
-          About &amp; methodology
-        </a>
-        <span>·</span>
-        <span>Data: U.S. Dept. of Education College Scorecard</span>
-        <span>·</span>
-        <a
-          href="https://collegescorecard.ed.gov/data/api-documentation/"
-          target="_blank"
-          rel="noreferrer"
-          className="underline hover:text-slate-600"
-        >
-          API docs
-        </a>
+      <footer className="border-t border-slate-200/80">
+        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+          <span>Data: U.S. Dept. of Education College Scorecard</span>
+          <span className="flex gap-5">
+            <a href="/changelog" className="hover:text-slate-700 transition">
+              What's new
+            </a>
+            <a href="/about" className="hover:text-slate-700 transition">
+              About &amp; methodology
+            </a>
+            <a
+              href="https://collegescorecard.ed.gov/data/api-documentation/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-slate-700 transition"
+            >
+              API docs
+            </a>
+          </span>
+        </div>
       </footer>
     </div>
   );
 }
 
-function FeatureCard({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
-      <div className="text-sm font-semibold text-slate-800">{title}</div>
-      <div className="text-sm text-slate-600 mt-2 leading-relaxed">{body}</div>
-    </div>
-  );
-}
+const DATASET_INDEX: [string, string][] = [
+  ['Admissions', 'admit rates, SAT/ACT'],
+  ['Cost & aid', 'net price by income'],
+  ['Debt & repayment', 'balances, defaults'],
+  ['Earnings', '6 & 10 yrs after entry'],
+  ['Retention', 'year two, 6-yr completion'],
+  ['Demographics', 'race, income, first-gen'],
+  ['Faculty', 'race, gender'],
+  ['Majors', 'earnings by program'],
+];
+
+const FEATURES: { title: string; body: string }[] = [
+  {
+    title: '13 views, one search',
+    body: 'Cost, admissions, earnings, debt, retention, demographics, faculty, and majors for every school in the federal database. Browse by topic or by school.',
+  },
+  {
+    title: 'A page for every school',
+    body: 'Open any school to see all of its numbers in one place, with national percentiles that show where it stands.',
+  },
+  {
+    title: 'Pin and compare',
+    body: 'Pin up to 5 schools and see them side by side in every view: earnings ranges, graduation outcomes, and who attends.',
+  },
+  {
+    title: 'Clear about the data',
+    body: 'Plain-English definitions for every technical term. Notes wherever data is missing. You can always see what year a number comes from.',
+  },
+  {
+    title: 'Easy to share',
+    body: 'Every view has a shareable link. Export your filtered list to CSV in one click.',
+  },
+  {
+    title: 'Free to use',
+    body: 'The College Scorecard is public data, and College Trends is free for anyone to explore.',
+  },
+];
+
+const COMING_SOON: [string, string][] = [
+  ['Saved school lists', 'Keep a shortlist of schools and come back to it anytime.'],
+  ['Reach, match, safety', 'Tag each school on your list by how likely you are to get in.'],
+  ['Printable comparisons', 'A clean side-by-side sheet to print or share with family.'],
+  ['Deadline tracker', "Every school's early decision, early action, and regular deadlines in one calendar."],
+];

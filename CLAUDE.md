@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-College Trends (collegetrends.io) — a free dashboard for exploring U.S. Department of Education College Scorecard data. Users search and compare colleges across cost, earnings, debt, completion, and demographics. Authenticated counselor features let users manage student lists and tag schools as reach/match/safety with notes and application status.
+College Trends (collegetrends.io) — a free dashboard for exploring U.S. Department of Education College Scorecard data. Audience: prospective students, parents, and college researchers. Users search and compare colleges across cost, earnings, debt, completion, and demographics. Auth-gated (hidden in prod) counselor features let users manage student lists and tag schools as reach/match/safety with notes and application status.
 
 Repo on GitHub: `zachp117/college-trends`. Deploys to Vercel.
 
@@ -26,13 +26,18 @@ tags; violet (`#6D5EF0`) for chart marks only. Section kickers are uppercase Spa
 with `// `. Keep it trustworthy, editorial, minimal. Full reference (README, brand board `.dc.html`,
 production icon assets): `design/brand/`.
 
-**Status (light brand application):** the site stays **light** and keeps its original system font.
+**Status (light brand application):** the site stays **light**. UI font is **Space Grotesk** (Tailwind `font-sans`)
+with tabular numerals; headers are light/sticky with a blurred background. **Space Mono and `// LABEL` eyebrows are
+intentionally NOT used** (owner asked to drop them), despite the brand README.
 Applied so far: the CT favicon + a `<Wordmark>` (CT mark + two-tone "CollegeTrends", cyan `Trends`)
 in every header; the brand **signal-cyan** accent — done by remapping the existing `indigo-*`
 scale to a cyan ramp in `tailwind.config.js`, so all existing accent usages become brand cyan with
 no per-component churn; brand corner radii (`md/lg/xl`); and a faint cyan/violet page-tint on paper
 (`src/index.css`). The full dark theme was intentionally NOT adopted. Chart series palettes are
 still their original hues (not yet moved to `var(--ct-chart-*)`). `design/brand/` holds the source.
+
+**Copy rules (owner's, strict):** no em dashes anywhere (missing data renders as `n/a`); no "X, not Y" /
+"not just X" negation constructions; write for students, parents, and researchers, not counselors.
 
 ## Commands
 

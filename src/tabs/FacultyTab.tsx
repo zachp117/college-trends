@@ -224,7 +224,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
           label="Student-faculty ratio"
           tip="student-faculty-ratio"
           value={
-            summary.medRatio === null ? '—' : `${summary.medRatio.toFixed(0)}:1`
+            summary.medRatio === null ? 'n/a' : `${summary.medRatio.toFixed(0)}:1`
           }
           sub={`median across ${summary.nRatio.toLocaleString()} schools`}
         />
@@ -242,7 +242,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
           label="Student / faculty non-white"
           value={
             summary.medStudentNonWhite === null || summary.medFacultyNonWhite === null
-              ? '—'
+              ? 'n/a'
               : `${(summary.medStudentNonWhite * 100).toFixed(0)}% / ${(summary.medFacultyNonWhite * 100).toFixed(0)}%`
           }
           sub="median across filter"
@@ -251,10 +251,10 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
 
       <Accordion>
         {/* Student vs Faculty side-by-side */}
-        <AccordionSection id="faculty.studentVsFaculty" title="Student vs. faculty composition — selected schools">
+        <AccordionSection id="faculty.studentVsFaculty" title="Student vs. faculty composition for selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
-            Student vs. faculty composition — selected schools
+            Student vs. faculty composition for selected schools
           </h3>
           <p className="text-xs text-slate-500 mb-3">
             For each selected school, paired stacked bars: who's enrolled vs. who's teaching.
@@ -284,7 +284,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
                 <YAxis type="category" dataKey="name" stroke="#64748b" fontSize={11} width={210} />
                 <Tooltip
                   formatter={(v) =>
-                    v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`
+                    v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`
                   }
                   contentStyle={{ fontSize: 12, borderRadius: 6 }}
                 />
@@ -329,7 +329,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
               <YAxis type="category" dataKey="name" stroke="#64748b" fontSize={11} width={140} />
               <Tooltip
                 formatter={(v) =>
-                  v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`
+                  v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`
                 }
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
@@ -371,7 +371,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
               <YAxis type="category" dataKey="name" stroke="#64748b" fontSize={11} width={140} />
               <Tooltip
                 formatter={(v) =>
-                  v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`
+                  v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`
                 }
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
@@ -471,7 +471,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
         <div className="px-4 py-3 border-b border-slate-200">
           <h3 className="text-sm font-semibold text-slate-700">
-            Faculty composition — top 50 by enrollment
+            Faculty composition: top 50 by enrollment
           </h3>
         </div>
         <div className="max-h-[440px] overflow-auto">
@@ -508,7 +508,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
                     <td className="px-3 py-2 font-medium text-slate-800">{s.name}</td>
                     <td className="px-3 py-2 tabular-nums">
                       {s.studentFacultyRatio === null
-                        ? '—'
+                        ? 'n/a'
                         : `${s.studentFacultyRatio.toFixed(0)}:1`}
                     </td>
                     <td className="px-3 py-2 tabular-nums">{fmtPct(s.facultyWomen)}</td>

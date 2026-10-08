@@ -90,7 +90,7 @@ export function DebtByGroup({ schools, selected }: Props) {
               tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
             />
             <Tooltip
-              formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
+              formatter={(v) => (v === null || v === undefined ? 'n/a' : fmtMoney(Number(v)))}
               contentStyle={{ fontSize: 12, borderRadius: 6 }}
             />
             <Legend wrapperStyle={{ fontSize: 12 }} />

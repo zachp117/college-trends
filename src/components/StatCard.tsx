@@ -4,7 +4,7 @@ interface Props {
   label: string;
   value: string;
   sub?: string;
-  /** Glossary term key — adds an info tooltip next to the label */
+  /** Glossary term key: adds an info tooltip next to the label */
   tip?: string;
 }
 

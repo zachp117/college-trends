@@ -3,6 +3,19 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      // Brand type: Space Grotesk for UI + headlines, Space Mono for // labels and data.
+      fontFamily: {
+        sans: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"Space Mono"', 'ui-monospace', '"SF Mono"', 'monospace'],
+      },
+      // Shadows tinted toward brand ink-navy instead of neutral black.
+      boxShadow: {
+        sm: '0 1px 2px rgba(15, 34, 55, 0.05)',
+        DEFAULT: '0 1px 3px rgba(15, 34, 55, 0.07), 0 1px 2px rgba(15, 34, 55, 0.04)',
+        md: '0 6px 16px -4px rgba(15, 34, 55, 0.10), 0 2px 4px rgba(15, 34, 55, 0.04)',
+        lg: '0 14px 32px -8px rgba(15, 34, 55, 0.14), 0 4px 8px rgba(15, 34, 55, 0.04)',
+        xl: '0 24px 48px -12px rgba(15, 34, 55, 0.20)',
+      },
       colors: {
         // Brand accent: remap the app's existing `indigo-*` accent scale to the
         // CollegeTrends signal-cyan family. Kept deep enough that white button

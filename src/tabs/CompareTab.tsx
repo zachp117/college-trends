@@ -125,21 +125,21 @@ const SECTIONS: SectionSpec[] = [
           s.satRead75 !== null &&
           s.satMath75 !== null
             ? `${s.satRead25 + s.satMath25}–${s.satRead75 + s.satMath75}`
-            : '—',
+            : 'n/a',
       },
       {
         label: 'ACT 25th–75th',
         pick: (s) =>
           s.actCum25 !== null && s.actCum75 !== null
             ? `${s.actCum25}–${s.actCum75}`
-            : '—',
+            : 'n/a',
       },
       {
         label: 'Test policy',
         pick: (s) =>
           s.testRequirements === null
-            ? '—'
-            : TEST_POLICY_LABELS[s.testRequirements] ?? '—',
+            ? 'n/a'
+            : TEST_POLICY_LABELS[s.testRequirements] ?? 'n/a',
       },
     ],
   },
@@ -208,7 +208,7 @@ const SECTIONS: SectionSpec[] = [
         pick: (s) =>
           s.medianEarnings10 !== null && s.medianDebt !== null && s.medianDebt > 0
             ? `${(s.medianEarnings10 / s.medianDebt).toFixed(2)}×`
-            : '—',
+            : 'n/a',
       },
     ],
   },
@@ -244,7 +244,7 @@ const SECTIONS: SectionSpec[] = [
         label: 'Student-faculty ratio',
         pick: (s) =>
           s.studentFacultyRatio === null
-            ? '—'
+            ? 'n/a'
             : `${s.studentFacultyRatio.toFixed(0)}:1`,
         bar: (s) => s.studentFacultyRatio,
         direction: 'lower',
@@ -304,8 +304,8 @@ export function CompareTab({ selectedSchools }: Props) {
               Comparing {selectedSchools.length} schools
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              Print this page or save it as PDF using your browser's print dialog —
-              chrome and tab nav drop out automatically.
+              Print this page or save it as a PDF from your browser's print dialog.
+              Menus and navigation are left off the printout automatically.
             </p>
           </div>
           <button
@@ -335,7 +335,7 @@ export function CompareTab({ selectedSchools }: Props) {
                 {s.city}, {s.state}
               </div>
               <div className="text-xs text-slate-500">
-                {OWNERSHIP_LABELS[s.ownership] ?? '—'}
+                {OWNERSHIP_LABELS[s.ownership] ?? 'n/a'}
                 {s.size !== null && ` · ${fmtNum(s.size)} students`}
               </div>
             </div>
@@ -395,7 +395,7 @@ export function CompareTab({ selectedSchools }: Props) {
             />
             <Tooltip
               formatter={(v) =>
-                v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`
+                v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`
               }
               contentStyle={{ fontSize: 12, borderRadius: 6 }}
             />

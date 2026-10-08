@@ -424,7 +424,7 @@ async function fetchWithRetry(url: string, maxAttempts = 5): Promise<Response> {
       // Retry on 5xx and 429; fail fast on other 4xx
       if (res.status >= 500 || res.status === 429) {
         if (attempt === maxAttempts - 1) return res;
-        // Backoff: 500ms, 1s, 2s, 4s — total ~7.5s before giving up
+        // Backoff: 500ms, 1s, 2s, 4s (total ~7.5s before giving up)
         await new Promise((r) => setTimeout(r, 500 * 2 ** attempt + Math.random() * 250));
         continue;
       }
@@ -905,7 +905,7 @@ function cleanProgramTitle(t: string): string {
 
 export async function fetchSchoolPrograms(schoolIds: number[]): Promise<Program[]> {
   if (schoolIds.length === 0) return [];
-  // Request the whole cip_4_digit subtree — smaller in URL than listing every leaf
+  // Request the whole cip_4_digit subtree: smaller in URL than listing every leaf
   const fields = ['id', 'school.name', 'latest.programs.cip_4_digit'];
   const params = new URLSearchParams();
   params.set('api_key', getApiKey());

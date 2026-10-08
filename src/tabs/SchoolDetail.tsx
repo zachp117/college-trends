@@ -284,7 +284,7 @@ export function SchoolDetail({
             <div className="text-sm text-slate-500 mt-1">
               {school.city}, {school.state} ·{' '}
               <span className="text-slate-700">
-                {OWNERSHIP_LABELS[school.ownership] ?? '—'}
+                {OWNERSHIP_LABELS[school.ownership] ?? 'n/a'}
               </span>
               {school.url && (
                 <>
@@ -348,7 +348,7 @@ export function SchoolDetail({
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : fmtMoney(Number(v)))}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Bar dataKey="Net price" fill="#16A34A" radius={[3, 3, 0, 0]} />
@@ -361,7 +361,7 @@ export function SchoolDetail({
           title="Admissions"
           subtitle={
             school.testRequirements !== null
-              ? `Test policy: ${TEST_POLICY_LABELS[school.testRequirements] ?? '—'}`
+              ? `Test policy: ${TEST_POLICY_LABELS[school.testRequirements] ?? 'n/a'}`
               : 'Test policy: not reported'
           }
         >
@@ -370,18 +370,18 @@ export function SchoolDetail({
             <Stat label="SAT 50th (R+M)" value={
               school.satRead50 !== null && school.satMath50 !== null
                 ? `${school.satRead50 + school.satMath50}`
-                : '—'
+                : 'n/a'
             } />
             <Stat label="SAT 25th–75th" value={
               school.satRead25 !== null && school.satMath25 !== null && school.satRead75 !== null && school.satMath75 !== null
                 ? `${school.satRead25 + school.satMath25}–${school.satRead75 + school.satMath75}`
-                : '—'
+                : 'n/a'
             } />
             <Stat label="ACT 50th" value={fmtNum(school.actCum50)} />
             <Stat label="ACT 25th–75th" value={
               school.actCum25 !== null && school.actCum75 !== null
                 ? `${school.actCum25}–${school.actCum75}`
-                : '—'
+                : 'n/a'
             } />
             <Stat label="Avg SAT" value={fmtNum(school.satAvg)} />
           </div>
@@ -401,7 +401,7 @@ export function SchoolDetail({
             <Stat label="Earnings ÷ debt" value={
               school.medianEarnings10 !== null && school.medianDebt !== null && school.medianDebt > 0
                 ? `${(school.medianEarnings10 / school.medianDebt).toFixed(2)}×`
-                : '—'
+                : 'n/a'
             } />
           </div>
           <ResponsiveContainer width="100%" height={200}>
@@ -414,7 +414,7 @@ export function SchoolDetail({
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : fmtMoney(Number(v)))}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -455,7 +455,7 @@ export function SchoolDetail({
                 />
                 <YAxis type="category" dataKey="name" hide />
                 <Tooltip
-                  formatter={(v) => (v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`)}
+                  formatter={(v) => (v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`)}
                   contentStyle={{ fontSize: 12, borderRadius: 6 }}
                 />
                 <Legend wrapperStyle={{ fontSize: 10 }} />
@@ -499,7 +499,7 @@ export function SchoolDetail({
               />
               <YAxis type="category" dataKey="name" hide />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`)}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`)}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 10 }} />
@@ -520,7 +520,7 @@ export function SchoolDetail({
               label="Student-faculty ratio"
               value={
                 school.studentFacultyRatio === null
-                  ? '—'
+                  ? 'n/a'
                   : `${school.studentFacultyRatio.toFixed(0)}:1`
               }
             />
@@ -531,7 +531,7 @@ export function SchoolDetail({
               value={
                 school.raceWhite !== null && school.facultyWhite !== null
                   ? `${((school.facultyWhite - school.raceWhite) * 100).toFixed(0)} pp`
-                  : '—'
+                  : 'n/a'
               }
             />
           </div>
@@ -551,7 +551,7 @@ export function SchoolDetail({
               />
               <YAxis type="category" dataKey="name" stroke="#64748b" fontSize={11} width={60} />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`)}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`)}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 10 }} />
@@ -644,7 +644,7 @@ export function SchoolDetail({
                 />
                 <Tooltip
                   formatter={(v, name) => {
-                    if (v === null || v === undefined) return '—';
+                    if (v === null || v === undefined) return 'n/a';
                     if (name === 'In-state tuition') return fmtMoney(Number(v));
                     return `${Number(v).toFixed(1)}%`;
                   }}
@@ -693,11 +693,11 @@ export function SchoolDetail({
         </button>
       </div>
 
-      {/* Visible only when printed — adds attribution + URL + timestamp */}
+      {/* Visible only when printed. Adds attribution + URL + timestamp */}
       <div className="print-only text-xs text-slate-500 pt-4 border-t border-slate-200">
         <div>
           <strong>{school.name}</strong> · {school.city}, {school.state} ·{' '}
-          {OWNERSHIP_LABELS[school.ownership] ?? '—'}
+          {OWNERSHIP_LABELS[school.ownership] ?? 'n/a'}
         </div>
         <div className="mt-1">
           Source: U.S. Dept. of Education College Scorecard ·{' '}
@@ -738,7 +738,7 @@ function SchoolDetailActions({
             ? 'bg-indigo-600 border-indigo-600 text-white hover:bg-indigo-700'
             : 'bg-white border-indigo-300 text-indigo-700 hover:bg-indigo-50'
         }`}
-        title="Pinned schools appear in per-school breakdowns across every tab — Trends, Majors, Demographics, Faculty, Outcomes, Earnings, etc. Pick up to 5."
+        title="Pinned schools appear in per-school breakdowns across every tab (Trends, Majors, Demographics, Faculty, Outcomes, Earnings, and more). Pick up to 5."
       >
         {isSelected ? '✓ Pinned' : '📌 Pin to dashboard'}
       </button>
@@ -773,7 +773,7 @@ interface BigStatProps {
 
 function BigStat({ label, ctx, format, lowerIsBetter, tip }: BigStatProps) {
   const fmt = (v: number | null) => {
-    if (v === null) return '—';
+    if (v === null) return 'n/a';
     if (format === 'money') return fmtMoney(v);
     if (format === 'pct') return fmtPct(v);
     return fmtNum(v);
@@ -838,7 +838,7 @@ function Section({
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded border border-slate-200 px-2.5 py-1.5 bg-slate-50/50">
-      <div className="text-[10px] uppercase tracking-wide text-slate-500">{label}</div>
+      <div className="text-xs text-slate-500">{label}</div>
       <div className="text-sm font-medium text-slate-800 tabular-nums">{value}</div>
     </div>
   );

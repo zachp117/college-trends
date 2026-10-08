@@ -1,7 +1,7 @@
 /**
  * Feature flags read at bundle time from Vite env vars.
  *
- * AUTH_ENABLED — controls whether the Sign in / Sign up / signed-in chrome
+ * AUTH_ENABLED: controls whether the Sign in / Sign up / signed-in chrome
  * is rendered anywhere in the app. The auth backend (Hono + Better-Auth)
  * still exists in the codebase; this flag just hides the surface area so
  * the public deploy looks like a clean read-only dashboard.

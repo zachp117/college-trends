@@ -181,7 +181,7 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
         <StatCard label="Veterans" value={fmtPct(summary.veteran)} sub="median across filter" />
         <StatCard
           label="Avg age at entry"
-          value={summary.ageEntry === null ? '—' : `${summary.ageEntry.toFixed(1)} yrs`}
+          value={summary.ageEntry === null ? 'n/a' : `${summary.ageEntry.toFixed(1)} yrs`}
           sub="median across filter"
         />
         <StatCard
@@ -189,7 +189,7 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
           tip="student-faculty-ratio"
           value={
             summary.studentFaculty === null
-              ? '—'
+              ? 'n/a'
               : `${summary.studentFaculty.toFixed(0)}:1`
           }
           sub="median across filter"
@@ -358,11 +358,11 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
       {/* Family income histogram */}
       <AccordionSection
         id="demographics.familyIncome"
-        title="Median family income — distribution"
+        title="Median family income distribution"
       >
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
-            Median family income — distribution
+            Median family income distribution
           </h3>
           <p className="text-xs text-slate-500 mb-3">
             Median family income reported across {incomeBuckets.withData.toLocaleString()}{' '}
@@ -396,7 +396,7 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
       {/* Demographics table */}
       <AccordionSection
         id="demographics.topSchoolsTable"
-        title="Demographics — top 50 schools by enrollment"
+        title="Demographics: top 50 schools by enrollment"
       >
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
         <div className="max-h-[480px] overflow-auto">
@@ -441,7 +441,7 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
                     <td className="px-3 py-2 tabular-nums">{fmtMoney(s.medianFamilyIncome)}</td>
                     <td className="px-3 py-2 tabular-nums">
                       {s.studentFacultyRatio === null
-                        ? '—'
+                        ? 'n/a'
                         : `${s.studentFacultyRatio.toFixed(0)}:1`}
                     </td>
                   </tr>

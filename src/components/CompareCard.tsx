@@ -86,7 +86,7 @@ export function CompareCard({ schools, onClear, onRemove }: Props) {
           <PolarAngleAxis dataKey="metric" tick={{ fontSize: 12, fill: '#475569' }} />
           <PolarRadiusAxis tick={{ fontSize: 10, fill: '#94a3b8' }} domain={[0, 100]} />
           <Tooltip
-            formatter={(v: number) => (v === null ? '—' : v.toFixed(0))}
+            formatter={(v: number) => (v === null ? 'n/a' : v.toFixed(0))}
             contentStyle={{ fontSize: 12, borderRadius: 6 }}
           />
           <Legend wrapperStyle={{ fontSize: 12 }} />

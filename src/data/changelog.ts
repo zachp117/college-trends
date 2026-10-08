@@ -12,7 +12,7 @@ export interface ChangelogEntry {
 }
 
 /**
- * User-facing feature changelog, newest first. FEATURE changes only — we
+ * User-facing feature changelog, newest first. FEATURE changes only; we
  * deliberately leave out visual/brand tweaks, data refreshes, and copy edits.
  * To add an entry, prepend an object to this array; /changelog renders it.
  */

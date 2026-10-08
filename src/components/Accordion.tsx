@@ -23,7 +23,7 @@ function saveState(id: string, open: boolean): void {
 }
 
 interface AccordionSectionProps {
-  /** Stable ID used as the localStorage key — must be unique across the app. */
+  /** Stable ID used as the localStorage key; must be unique across the app. */
   id: string;
   title: string;
   /** Short context line shown next to the title. */
@@ -46,15 +46,15 @@ export function AccordionSection({
   }, [id, open]);
 
   return (
-    <section className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+    <section className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="w-full flex items-center justify-between gap-3 px-4 py-3 text-left hover:bg-slate-50 transition"
+        className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-slate-50/70 transition-colors duration-200"
       >
         <div className="min-w-0">
-          <h3 className="text-sm font-semibold text-slate-800 truncate">{title}</h3>
+          <h3 className="text-[15px] font-semibold text-slate-900 truncate">{title}</h3>
           {subtitle && (
             <p className="text-xs text-slate-500 mt-0.5 truncate">{subtitle}</p>
           )}
@@ -68,7 +68,7 @@ export function AccordionSection({
             // strip its bg / border / shadow / rounding / padding, hide its duplicate title.
             'border-t border-slate-100 ' +
             '[&>div]:!bg-transparent [&>div]:!border-0 [&>div]:!shadow-none ' +
-            '[&>div]:!rounded-none [&>div]:!p-4 ' +
+            '[&>div]:!rounded-none [&>div]:!px-5 [&>div]:!py-4 ' +
             '[&>div>h3:first-child]:!hidden ' +
             '[&>div>h3:first-child+p]:!mt-0'
           }
@@ -88,7 +88,7 @@ function Chevron({ open }: { open: boolean }) {
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`flex-shrink-0 text-slate-400 transition-transform ${
+      className={`flex-shrink-0 text-slate-400 transition-transform duration-200 ${
         open ? 'rotate-180' : ''
       }`}
     >
@@ -109,5 +109,5 @@ interface AccordionProps {
 
 /** Wrapper that stacks accordion sections with consistent spacing. */
 export function Accordion({ children }: AccordionProps) {
-  return <div className="space-y-3">{children}</div>;
+  return <div className="space-y-4">{children}</div>;
 }

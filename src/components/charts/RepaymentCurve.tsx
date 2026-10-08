@@ -106,7 +106,7 @@ export function RepaymentCurve({ schools, selected }: Props) {
           />
           <Tooltip
             formatter={(v) =>
-              v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`
+              v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`
             }
             contentStyle={{ fontSize: 12, borderRadius: 6 }}
           />

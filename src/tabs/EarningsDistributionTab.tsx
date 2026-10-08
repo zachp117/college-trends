@@ -265,7 +265,7 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
           label="What top earners make"
           tip="percentile"
           value={fmtMoney(summary.medP90)}
-          sub="90th percentile — top earners' floor"
+          sub="90th percentile: top earners' floor"
         />
         <StatCard
           label="% out-earning a HS grad"
@@ -277,10 +277,10 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
 
       <Accordion>
         {/* Range chart for selected */}
-        <AccordionSection id="earnings.range" title="Earnings distribution — selected schools">
+        <AccordionSection id="earnings.range" title="Earnings distribution for selected schools">
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
           <h3 className="text-sm font-semibold text-slate-700 mb-1">
-            Earnings distribution — selected schools
+            Earnings distribution for selected schools
           </h3>
           <p className="text-xs text-slate-500 mb-3">
             Bar spans the 10th to 90th percentile. Dark middle band is the IQR (25th – 75th). Bigger spread = wider variation in grad outcomes.
@@ -428,10 +428,10 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
 
         {/* Threshold bars */}
         {thresholdData.length > 0 && (
-          <AccordionSection id="earnings.thresholds" title="Share of grads earning above thresholds — selected schools">
+          <AccordionSection id="earnings.thresholds" title="Share of grads earning above thresholds at selected schools">
           <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 lg:col-span-2">
             <h3 className="text-sm font-semibold text-slate-700 mb-1">
-              Share of grads earning above thresholds — selected schools
+              Share of grads earning above thresholds at selected schools
             </h3>
             <p className="text-xs text-slate-500 mb-3">
               Both thresholds approximate "earns more than a typical high-school graduate."
@@ -461,7 +461,7 @@ export function EarningsDistributionTab({ schools, selectedSchools }: Props) {
                 />
                 <Tooltip
                   formatter={(v) =>
-                    v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`
+                    v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`
                   }
                   contentStyle={{ fontSize: 12, borderRadius: 6 }}
                 />

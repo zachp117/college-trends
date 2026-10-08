@@ -1,7 +1,7 @@
 import { GLOSSARY } from '../util/glossary';
 
 interface Props {
-  /** Glossary key (preferred) — pulls definition from src/util/glossary.ts */
+  /** Glossary key (preferred): pulls definition from src/util/glossary.ts */
   term?: string;
   /** Or pass arbitrary text (overrides term lookup) */
   text?: string;

@@ -32,7 +32,7 @@ export const SIDEBAR_GROUPS: SidebarGroup[] = [
     items: [
       { id: 'overview', label: 'Summary' },
       { id: 'map', label: 'Map' },
-      { id: 'compare', label: 'Compare', hint: '📌' },
+      { id: 'compare', label: 'Compare' },
     ],
   },
   {
@@ -76,8 +76,8 @@ export function Sidebar({ activeTab, onSelect }: SidebarProps) {
   return (
     <nav className="text-sm">
       {SIDEBAR_GROUPS.map((group) => (
-        <div key={group.label} className="mb-4">
-          <div className="px-3 mb-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+        <div key={group.label} className="mb-5">
+          <div className="px-3 mb-1 text-xs font-medium text-slate-400">
             {group.label}
           </div>
           <ul className="space-y-0.5">
@@ -87,10 +87,11 @@ export function Sidebar({ activeTab, onSelect }: SidebarProps) {
                 <li key={item.id}>
                   <button
                     onClick={() => onSelect(item.id)}
-                    className={`w-full text-left px-3 py-1.5 rounded-md flex items-center gap-2 transition ${
+                    aria-current={active ? 'page' : undefined}
+                    className={`relative w-full text-left px-3 py-1.5 rounded-md flex items-center gap-2 transition-colors duration-200 ${
                       active
-                        ? 'bg-indigo-50 text-indigo-700 font-medium'
-                        : 'text-slate-700 hover:bg-slate-100'
+                        ? 'bg-white text-slate-900 font-medium shadow-sm ring-1 ring-slate-200/80 before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-[3px] before:rounded-full before:bg-indigo-400'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-white/70'
                     }`}
                   >
                     {item.hint && <span className="text-xs">{item.hint}</span>}
@@ -173,7 +174,7 @@ export function SidebarLayout({ activeTab, onSelectTab, children }: SidebarLayou
 
       {/* Desktop: sticky sidebar */}
       <aside className="hidden md:block md:w-56 md:flex-shrink-0 no-print">
-        <div className="sticky top-4">
+        <div className="sticky top-20">
           <Sidebar activeTab={activeTab} onSelect={onSelectTab} />
         </div>
       </aside>

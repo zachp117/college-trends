@@ -19,14 +19,14 @@ interface Props {
 }
 
 const TIERS: { value: Tier; label: string; color: string }[] = [
-  { value: null, label: '—', color: 'bg-slate-100 text-slate-500' },
+  { value: null, label: 'Not set', color: 'bg-slate-100 text-slate-500' },
   { value: 'reach', label: 'Reach', color: 'bg-rose-100 text-rose-700' },
   { value: 'match', label: 'Match', color: 'bg-indigo-100 text-indigo-700' },
   { value: 'safety', label: 'Safety', color: 'bg-emerald-100 text-emerald-700' },
 ];
 
 const STATUSES: { value: StudentSchoolStatus; label: string }[] = [
-  { value: null, label: '—' },
+  { value: null, label: 'Not set' },
   { value: 'considering', label: 'Considering' },
   { value: 'applied', label: 'Applied' },
   { value: 'accepted', label: 'Accepted' },
@@ -122,7 +122,7 @@ export function StudentDetailPage({ studentId, onBack, onOpenSchoolDetail }: Pro
     try {
       await updateStudentSchool(id, { note: note || null });
     } catch {
-      // ignore — local state already updated
+      // ignore: local state already updated
     }
   };
 
@@ -225,7 +225,7 @@ export function StudentDetailPage({ studentId, onBack, onOpenSchoolDetail }: Pro
             <div>
               <h1 className="text-2xl font-semibold text-slate-900">{student.name}</h1>
               <div className="text-sm text-slate-500 mt-1">
-                Graduation: {student.graduationYear ?? '—'}
+                Graduation: {student.graduationYear ?? 'n/a'}
               </div>
               {student.notes && (
                 <div className="text-sm text-slate-700 mt-2">{student.notes}</div>

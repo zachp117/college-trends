@@ -36,7 +36,7 @@ export function DebtDistribution({ schools }: Props) {
   return (
     <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
       <h3 className="text-sm font-semibold text-slate-700 mb-1">
-        Median debt — distribution
+        Median debt distribution
       </h3>
       <p className="text-xs text-slate-500 mb-3">
         Median debt at graduation across {withData} schools in the current filter.

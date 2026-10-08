@@ -67,7 +67,7 @@ export function AuthPage({ onSuccess }: Props) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full rounded border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Jane Counselor"
+                placeholder="Your name"
               />
             </div>
           )}

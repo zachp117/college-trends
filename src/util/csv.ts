@@ -154,7 +154,7 @@ const TAB_COLUMNS: Record<string, string[]> = {
     'titleIvTransfWithdrawn6',
     'titleIvUnknown6',
   ],
-  // Trends and Majors fetch their own data not present in `schools` —
+  // Trends and Majors fetch their own data not present in `schools`, so
   // fall back to a sensible identity + headline set
   trends: ['admissionRate', 'avgCost', 'completionRate', 'medianEarnings10', 'medianDebt'],
   majors: ['admissionRate', 'avgCost', 'completionRate', 'medianEarnings10', 'medianDebt'],
@@ -274,7 +274,7 @@ export function buildSchoolsCsv(schools: School[], tab?: string): string {
   if (columns) {
     finalColumns = columns;
   } else {
-    // No tab specified — fall back to all keys, alphabetical after identity
+    // No tab specified: fall back to all keys, alphabetical after identity
     const allKeys = new Set<string>();
     for (const r of rows) Object.keys(r).forEach((k) => allKeys.add(k));
     const rest = Array.from(allKeys)

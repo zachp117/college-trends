@@ -80,7 +80,7 @@ const METRIC_BY_KEY: Record<MetricKey, MetricDef> = Object.fromEntries(
 ) as Record<MetricKey, MetricDef>;
 
 function formatValue(v: number | null, format: MetricDef['format']): string {
-  if (v === null || v === undefined) return '—';
+  if (v === null || v === undefined) return 'n/a';
   if (format === 'money') return fmtMoney(v);
   if (format === 'pct') return `${(v * 100).toFixed(1)}%`;
   return fmtNum(v);
@@ -586,7 +586,7 @@ function SpotlightView({
               />
               <Tooltip
                 formatter={(v) =>
-                  v === null || v === undefined ? '—' : fmtMoney(Number(v))
+                  v === null || v === undefined ? 'n/a' : fmtMoney(Number(v))
                 }
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
@@ -621,7 +621,7 @@ function SpotlightView({
               />
               <Tooltip
                 formatter={(v) =>
-                  v === null || v === undefined ? '—' : fmtMoney(Number(v))
+                  v === null || v === undefined ? 'n/a' : fmtMoney(Number(v))
                 }
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
@@ -634,7 +634,7 @@ function SpotlightView({
 
         <div className="lg:col-span-2">
           <div className="text-xs font-medium text-slate-600 mb-1">
-            Equity — 5-yr earnings by gender & Pell status
+            Equity: 5-yr earnings by gender & Pell status
           </div>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart
@@ -657,7 +657,7 @@ function SpotlightView({
               />
               <Tooltip
                 formatter={(v) =>
-                  v === null || v === undefined ? '—' : fmtMoney(Number(v))
+                  v === null || v === undefined ? 'n/a' : fmtMoney(Number(v))
                 }
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
@@ -720,12 +720,12 @@ function SpotlightView({
             <SRow
               label="Gender gap (5y)"
               progs={spotlight.progs}
-              fn={(p) => (p.genderGap5yr === null ? '—' : `+${fmtMoney(p.genderGap5yr)} male`)}
+              fn={(p) => (p.genderGap5yr === null ? 'n/a' : `+${fmtMoney(p.genderGap5yr)} male`)}
             />
             <SRow
               label="Pell gap (5y)"
               progs={spotlight.progs}
-              fn={(p) => (p.pellGap5yr === null ? '—' : `+${fmtMoney(p.pellGap5yr)} non-Pell`)}
+              fn={(p) => (p.pellGap5yr === null ? 'n/a' : `+${fmtMoney(p.pellGap5yr)} non-Pell`)}
             />
           </tbody>
         </table>

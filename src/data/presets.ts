@@ -55,7 +55,7 @@ export const STARTER_PRESETS: StarterPreset[] = [
     id: 'small-private',
     label: '🏫 Small private colleges',
     description:
-      'Private nonprofit colleges under 3,000 students — the classic small liberal-arts profile.',
+      'Private nonprofit colleges under 3,000 students: the classic small liberal-arts profile.',
     filters: {
       ownership: [2],
       degreeLevels: [3, 4],
@@ -91,7 +91,7 @@ export const STARTER_PRESETS: StarterPreset[] = [
  * the current filter set matches the preset exactly.
  */
 export function isPresetActive(filters: SearchFilters, preset: StarterPreset): boolean {
-  // Ignore name/state — those are for narrowing, not for matching presets
+  // Ignore name/state: those are for narrowing, not for matching presets
   const presetKeys: (keyof SearchFilters)[] = [
     'ownership',
     'degreeLevels',

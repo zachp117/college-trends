@@ -36,7 +36,7 @@ const YEAR_RANGES = [
 ] as const;
 
 function formatValue(v: number | null | undefined, format: string): string {
-  if (v === null || v === undefined) return '—';
+  if (v === null || v === undefined) return 'n/a';
   if (format === 'money') return fmtMoney(v);
   if (format === 'pct') return fmtPct(v);
   return fmtNum(v);
@@ -286,7 +286,7 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
         {showAggregate && aggregate && (
           <AccordionSection
             id="trends.aggregateSummary"
-            title={`${metricDef.label} — averages across ${aggregate.totalSchools.toLocaleString()} filtered colleges`}
+            title={`${metricDef.label}: averages across ${aggregate.totalSchools.toLocaleString()} filtered colleges`}
           >
             <AggregateSummary
               agg={aggregate}
@@ -301,11 +301,11 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
         {histories.length > 0 && (
           <AccordionSection
             id="trends.changeOverRange"
-            title="Change over range — selected schools"
+            title="Change over range for selected schools"
           >
         <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-700 mb-2">
-            Change over range — selected schools
+            Change over range for selected schools
           </h3>
           <div className="overflow-x-auto">
             <table className="min-w-full text-xs">
@@ -341,10 +341,10 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
                         {h.name}
                       </td>
                       <td className="py-1.5 pr-4 text-slate-500">
-                        {first ? `${first.year}: ${formatValue(first.value, metricDef.format)}` : '—'}
+                        {first ? `${first.year}: ${formatValue(first.value, metricDef.format)}` : 'n/a'}
                       </td>
                       <td className="py-1.5 pr-4">
-                        {last ? `${last.year}: ${formatValue(last.value, metricDef.format)}` : '—'}
+                        {last ? `${last.year}: ${formatValue(last.value, metricDef.format)}` : 'n/a'}
                       </td>
                       <td
                         className={`py-1.5 pr-4 ${
@@ -358,7 +358,7 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
                         }`}
                       >
                         {change === null
-                          ? '—'
+                          ? 'n/a'
                           : `${change > 0 ? '+' : ''}${formatValue(Math.abs(change), metricDef.format).replace('-', '')}`}
                       </td>
                       <td
@@ -372,7 +372,7 @@ export function TrendsTab({ filters, selectedSchools }: Props) {
                             : ''
                         }`}
                       >
-                        {pct === null ? '—' : `${pct > 0 ? '+' : ''}${(pct * 100).toFixed(1)}%`}
+                        {pct === null ? 'n/a' : `${pct > 0 ? '+' : ''}${(pct * 100).toFixed(1)}%`}
                       </td>
                     </tr>
                   );
@@ -405,7 +405,7 @@ function AggregateSummary({
 }: AggregateSummaryProps) {
   const formatV = (v: number | null | undefined) =>
     v === null || v === undefined
-      ? '—'
+      ? 'n/a'
       : format === 'money'
       ? fmtMoney(v)
       : format === 'pct'
@@ -430,7 +430,7 @@ function AggregateSummary({
       : '';
 
   const formatChange = (v: number | null) => {
-    if (v === null) return '—';
+    if (v === null) return 'n/a';
     const sign = v > 0 ? '+' : v < 0 ? '-' : '';
     const abs = Math.abs(v);
     return `${sign}${format === 'money' ? fmtMoney(abs) : format === 'pct' ? fmtPct(abs) : fmtNum(abs)}`;
@@ -457,7 +457,7 @@ function AggregateSummary({
       label: 'Median % change',
       value:
         agg.medianPctChange === null
-          ? '—'
+          ? 'n/a'
           : `${agg.medianPctChange > 0 ? '+' : ''}${(agg.medianPctChange * 100).toFixed(1)}%`,
       sub: 'across schools with both endpoints',
       className: pctColor,
@@ -467,7 +467,7 @@ function AggregateSummary({
   return (
     <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
       <h3 className="text-sm font-semibold text-slate-700 mb-1">
-        {metricLabel} — averages across {agg.totalSchools.toLocaleString()} filtered colleges
+        {metricLabel}: averages across {agg.totalSchools.toLocaleString()} filtered colleges
       </h3>
       <p className="text-xs text-slate-500 mb-3">
         Per-school endpoints use each school's earliest and latest reported value within the selected range.

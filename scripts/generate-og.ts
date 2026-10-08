@@ -9,9 +9,9 @@
  * changes.
  *
  * Tools:
- *   - satori           — turn a JSX-like layout into SVG
- *   - @resvg/resvg-js  — rasterize SVG → PNG (WASM, no native build)
- *   - assets/fonts/    — Inter OTF files (satori needs TTF/OTF)
+ *   - satori:           turn a JSX-like layout into SVG
+ *   - @resvg/resvg-js:  rasterize SVG → PNG (WASM, no native build)
+ *   - assets/fonts/:    Inter OTF files (satori needs TTF/OTF)
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
@@ -26,7 +26,7 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 
 // Satori takes a React-like element tree. We avoid JSX so we don't have to
-// configure tsx's JSX runtime — plain object literals work fine.
+// configure tsx's JSX runtime; plain object literals work fine.
 const layout = {
   type: 'div',
   props: {
@@ -87,10 +87,10 @@ const layout = {
             maxWidth: '960px',
           },
           children:
-            'Federal data on every U.S. college — cost, earnings, debt, completion, demographics.',
+            'Federal data on every U.S. college: cost, earnings, debt, completion, and demographics.',
         },
       },
-      // Footer accent — small attribution + colored bar
+      // Footer accent: small attribution + colored bar
       {
         type: 'div',
         props: {

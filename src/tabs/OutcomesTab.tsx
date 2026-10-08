@@ -220,13 +220,13 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
         />
         <GapCard
           label="Male – Female earnings gap"
-          value={summary.gapMaleFemaleEarn === null ? '—' : `+${fmtMoney(summary.gapMaleFemaleEarn)}`}
+          value={summary.gapMaleFemaleEarn === null ? 'n/a' : `+${fmtMoney(summary.gapMaleFemaleEarn)}`}
           n={summary.gapMaleFemaleEarnN}
           higherIsConcerning
         />
         <GapCard
           label="High – low income tercile gap"
-          value={summary.gapHighLowTercEarn === null ? '—' : `+${fmtMoney(summary.gapHighLowTercEarn)}`}
+          value={summary.gapHighLowTercEarn === null ? 'n/a' : `+${fmtMoney(summary.gapHighLowTercEarn)}`}
           n={summary.gapHighLowTercEarnN}
           higherIsConcerning
         />
@@ -268,7 +268,7 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
                 tickFormatter={(v) => `${v}%`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`)}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`)}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -313,7 +313,7 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
                 tickFormatter={(v) => `${v}%`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : `${Number(v).toFixed(1)}%`)}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : `${Number(v).toFixed(1)}%`)}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -358,7 +358,7 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : fmtMoney(Number(v)))}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -401,7 +401,7 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : fmtMoney(Number(v)))}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -419,7 +419,7 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
         <div className="px-4 py-3 border-b border-slate-200">
           <h3 className="text-sm font-semibold text-slate-700">
-            Completion gaps — top 50 by enrollment
+            Completion gaps: top 50 by enrollment
           </h3>
         </div>
         <div className="max-h-[440px] overflow-auto">
@@ -477,7 +477,7 @@ export function OutcomesTab({ schools, selectedSchools }: Props) {
                         }`}
                       >
                         {gap === null
-                          ? '—'
+                          ? 'n/a'
                           : `${gap > 0 ? '+' : ''}${(gap * 100).toFixed(1)} pp`}
                       </td>
                     </tr>

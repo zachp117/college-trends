@@ -143,7 +143,7 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
     }));
   }, [schools, selectedSchools]);
 
-  // ---------- Debt by demo (selected) — first-gen / dependency ----------
+  // ---------- Debt by demo (selected): first-gen / dependency ----------
   const demoData = useMemo(() => {
     if (selectedSchools.length === 0) {
       const meanOf = (key: keyof School) => {
@@ -383,7 +383,7 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : fmtMoney(Number(v)))}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -429,7 +429,7 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : fmtMoney(Number(v)))}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -471,7 +471,7 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                 tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
               />
               <Tooltip
-                formatter={(v) => (v === null || v === undefined ? '—' : fmtMoney(Number(v)))}
+                formatter={(v) => (v === null || v === undefined ? 'n/a' : fmtMoney(Number(v)))}
                 contentStyle={{ fontSize: 12, borderRadius: 6 }}
               />
               <Legend wrapperStyle={{ fontSize: 11 }} />
@@ -525,7 +525,7 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                     <td className="px-3 py-2 tabular-nums">{fmtMoney(s.plusDebtCompleters)}</td>
                     <td className="px-3 py-2 tabular-nums">
                       {s.plusDebtCompletersPayment === null
-                        ? '—'
+                        ? 'n/a'
                         : fmtMoney(Math.round(s.plusDebtCompletersPayment))}
                     </td>
                     <td className="px-3 py-2 tabular-nums">{fmtMoney(s.plusDebtNoncompleters)}</td>
@@ -535,7 +535,7 @@ export function LoanAidTab({ schools, selectedSchools }: Props) {
                         ratio === null ? '' : ratio > 1.5 ? 'text-rose-700' : ratio > 1 ? 'text-amber-700' : ''
                       }`}
                     >
-                      {ratio === null ? '—' : `${ratio.toFixed(2)}×`}
+                      {ratio === null ? 'n/a' : `${ratio.toFixed(2)}×`}
                     </td>
                   </tr>
                 );

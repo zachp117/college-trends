@@ -121,7 +121,7 @@ export function ResultsTable({
                   </td>
                   <td className="px-3 py-2 text-slate-600">{s.state}</td>
                   <td className="px-3 py-2 text-slate-600">
-                    {OWNERSHIP_LABELS[s.ownership] ?? '—'}
+                    {OWNERSHIP_LABELS[s.ownership] ?? 'n/a'}
                   </td>
                   <td className="px-3 py-2 text-right tabular-nums">{fmtNum(s.size)}</td>
                   <td className="px-3 py-2 text-right tabular-nums">{fmtPct(s.admissionRate)}</td>

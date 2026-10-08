@@ -46,7 +46,7 @@ export function AddToStudentMenu({ schoolId, schoolName }: Props) {
       setTimeout(() => setRecentlyAdded(null), 2000);
       setOpen(false);
     } catch {
-      // ignore — could show a toast
+      // ignore; could show a toast
     }
   };
 
@@ -61,7 +61,7 @@ export function AddToStudentMenu({ schoolId, schoolName }: Props) {
       </button>
       {open && (
         <div className="absolute right-0 top-full mt-1 w-72 bg-white border border-slate-200 rounded-md shadow-lg z-50 p-2 text-xs">
-          <div className="px-2 py-1 text-[10px] uppercase tracking-wide text-slate-500">
+          <div className="px-2 py-1 text-xs font-medium text-slate-500">
             Tier (optional)
           </div>
           <div className="flex gap-1 px-2 pb-2 border-b border-slate-100">
@@ -83,7 +83,7 @@ export function AddToStudentMenu({ schoolId, schoolName }: Props) {
               );
             })}
           </div>
-          <div className="px-2 py-1 text-[10px] uppercase tracking-wide text-slate-500 mt-1">
+          <div className="px-2 py-1 text-xs font-medium text-slate-500 mt-1">
             Add to which student?
           </div>
           <div className="max-h-60 overflow-y-auto">

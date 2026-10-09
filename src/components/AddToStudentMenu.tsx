@@ -1,3 +1,4 @@
+import { Check, Users } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { addSchoolToStudent, listStudents } from '../lib/studentsApi';
 import type { StudentWithCount, Tier } from '../lib/studentsApi';
@@ -57,7 +58,8 @@ export function AddToStudentMenu({ schoolId, schoolName }: Props) {
         className="text-xs px-3 py-1.5 rounded-md border font-medium bg-white border-emerald-300 text-emerald-700 hover:bg-emerald-50 transition"
         title="Add this school to one of your students' lists"
       >
-        {recentlyAdded ? `✓ Added to ${recentlyAdded}` : '👥 Add to a student'}
+        {recentlyAdded ? <Check size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" /> : <Users size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />}
+        {recentlyAdded ? `Added to ${recentlyAdded}` : 'Add to a student'}
       </button>
       {open && (
         <div className="absolute right-0 top-full mt-1 w-72 bg-white border border-slate-200 rounded-md shadow-lg z-50 p-2 text-xs">

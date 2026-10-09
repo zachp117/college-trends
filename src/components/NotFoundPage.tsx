@@ -28,7 +28,7 @@ export function NotFoundPage({ onGoHome, onGoApp }: Props) {
       <header className="bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-5">
           <h1 className="text-lg sm:text-xl font-semibold">
-            <Wordmark />
+            <Wordmark tone="light" />
           </h1>
         </div>
       </header>

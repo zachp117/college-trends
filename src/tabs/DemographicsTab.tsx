@@ -246,7 +246,7 @@ export function DemographicsTab({ schools, selectedSchools }: Props) {
           <p className="text-xs text-slate-500 mb-3">
             {selectedSchools.length > 0
               ? 'Per selected school + average across the filter.'
-              : 'Average across the filter. Pin schools (📌) to compare.'}
+              : 'Average across the filter. Pin schools to compare.'}
           </p>
           <ResponsiveContainer
             width="100%"

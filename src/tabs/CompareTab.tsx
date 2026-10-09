@@ -1,3 +1,4 @@
+import { Printer, Star } from 'lucide-react';
 import { useMemo } from 'react';
 import {
   ResponsiveContainer,
@@ -273,7 +274,7 @@ export function CompareTab({ selectedSchools }: Props) {
         </div>
         <div className="text-sm">
           Browse the dashboard, click a school name, and hit{' '}
-          <span className="font-medium text-slate-700">📌 Pin to dashboard</span>.
+          <span className="font-medium text-slate-700">Pin to dashboard</span>.
           Then come back here for a side-by-side comparison sheet you can save or print.
         </div>
       </div>
@@ -313,7 +314,8 @@ export function CompareTab({ selectedSchools }: Props) {
             className="text-xs px-3 py-1.5 rounded-md border font-medium bg-white border-slate-300 text-slate-700 hover:border-slate-400 transition no-print"
             title="Print or save as PDF"
           >
-            🖨️ Print / save as PDF
+            <Printer size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />
+            Print / save as PDF
           </button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mt-4">
@@ -503,7 +505,7 @@ function CompareSection({
                                   : 'Most favorable among compared'
                               }
                             >
-                              ★
+                              <Star size={11} strokeWidth={1.75} className="inline -mt-0.5" aria-label="Best among compared" />
                             </span>
                           )}
                         </div>

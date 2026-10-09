@@ -20,7 +20,7 @@ export interface StarterPreset {
 export const STARTER_PRESETS: StarterPreset[] = [
   {
     id: 'public-4yr',
-    label: '🏛️ Public 4-year',
+    label: 'Public 4-year',
     description:
       'Public bachelor\'s and graduate institutions across all states. The most common starting point for in-state cost questions.',
     filters: {
@@ -31,7 +31,7 @@ export const STARTER_PRESETS: StarterPreset[] = [
   },
   {
     id: 'private-nonprofit',
-    label: '🎓 Private nonprofit 4-year',
+    label: 'Private nonprofit 4-year',
     description:
       'Private nonprofit bachelor\'s and graduate institutions. Where most "selective" schools live.',
     filters: {
@@ -42,7 +42,7 @@ export const STARTER_PRESETS: StarterPreset[] = [
   },
   {
     id: 'large-flagships',
-    label: '🏟️ Large public flagships',
+    label: 'Large public flagships',
     description:
       'Large public universities (10,000+ students) that typically serve as a state\'s flagship campus.',
     filters: {
@@ -53,7 +53,7 @@ export const STARTER_PRESETS: StarterPreset[] = [
   },
   {
     id: 'small-private',
-    label: '🏫 Small private colleges',
+    label: 'Small private colleges',
     description:
       'Private nonprofit colleges under 3,000 students: the classic small liberal-arts profile.',
     filters: {
@@ -64,7 +64,7 @@ export const STARTER_PRESETS: StarterPreset[] = [
   },
   {
     id: 'community',
-    label: '📚 Community colleges',
+    label: 'Community colleges',
     description:
       'Associate-predominant institutions, mostly public, that serve transfer students and working adults.',
     filters: {
@@ -75,7 +75,7 @@ export const STARTER_PRESETS: StarterPreset[] = [
   },
   {
     id: 'all-4yr',
-    label: '🌎 All 4-year colleges',
+    label: 'All 4-year colleges',
     description:
       'Every bachelor\'s/graduate-predominant institution in the country regardless of ownership type.',
     filters: {

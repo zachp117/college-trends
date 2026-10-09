@@ -31,7 +31,7 @@ export function ChangelogPage({ onBack }: Props) {
       <header className="bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-5 flex items-baseline justify-between gap-4">
           <h1 className="text-lg sm:text-xl font-semibold">
-            <Wordmark />
+            <Wordmark tone="light" />
           </h1>
           <button
             onClick={onBack}
@@ -46,9 +46,8 @@ export function ChangelogPage({ onBack }: Props) {
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-slate-900">What's New</h2>
           <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-            Recent feature updates to College Trends: new capabilities and
-            improvements to what the tool can do. Data refreshes and visual tweaks
-            aren't listed here.
+            Recent updates to College Trends: new capabilities, improvements to
+            what the tool can do, and major redesigns.
           </p>
         </div>
 

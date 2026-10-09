@@ -1,0 +1,12 @@
+:root{
+  --font-sans:"Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* Scale (px) */
+  --text-display:64px; --text-h1:44px; --text-h2:32px; --text-h3:22px;
+  --text-lg:18px; --text-body:16px; --text-sm:14px; --text-xs:12px; --text-label:11px;
+  --leading-tight:0.95; --leading-heading:1.1; --leading-body:1.55;
+  --tracking-display:-0.03em; --tracking-heading:-0.02em; --tracking-label:0.14em;
+  --weight-regular:400; --weight-medium:500; --weight-semibold:600; --weight-bold:700; --weight-black:800;
+  /* Numbers in data views */
+  --numeric:tabular-nums;
+}

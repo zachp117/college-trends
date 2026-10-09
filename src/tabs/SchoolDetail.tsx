@@ -1,3 +1,4 @@
+import { Check, Link2, Pin, Printer } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import {
   ResponsiveContainer,
@@ -740,7 +741,8 @@ function SchoolDetailActions({
         }`}
         title="Pinned schools appear in per-school breakdowns across every tab (Trends, Majors, Demographics, Faculty, Outcomes, Earnings, and more). Pick up to 5."
       >
-        {isSelected ? '✓ Pinned' : '📌 Pin to dashboard'}
+        {isSelected ? <Check size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" /> : <Pin size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />}
+        {isSelected ? 'Pinned' : 'Pin to dashboard'}
       </button>
       <button
         onClick={copyShareLink}
@@ -750,14 +752,16 @@ function SchoolDetailActions({
             : 'bg-white border-slate-300 text-slate-700 hover:border-slate-400'
         }`}
       >
-        {copied ? '✓ Link copied' : '🔗 Share school'}
+        {copied ? <Check size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" /> : <Link2 size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />}
+        {copied ? 'Link copied' : 'Share school'}
       </button>
       <button
         onClick={() => window.print()}
         className="text-xs px-3 py-1.5 rounded-md border font-medium transition bg-white border-slate-300 text-slate-700 hover:border-slate-400"
         title="Print this page or save it as PDF using your browser's print dialog"
       >
-        🖨️ Print / save as PDF
+        <Printer size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />
+        Print / save as PDF
       </button>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useSession } from '../lib/auth-client';
 import { AUTH_ENABLED } from '../util/featureFlags';
-import { Wordmark } from './Wordmark';
+import { BrandLogo, Wordmark } from './Wordmark';
 
 interface Props {
   onEnterApp: () => void;
@@ -116,7 +116,7 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
           <ol className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10">
             {FEATURES.map((f, i) => (
               <li key={f.title} className="py-6 border-t border-slate-200/80">
-                <div className="text-xs font-semibold text-indigo-500">
+                <div className="font-num text-xs font-semibold text-indigo-500">
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <h3 className="mt-2 text-base font-semibold text-slate-900">{f.title}</h3>
@@ -141,24 +141,30 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
       </section>
 
       <footer className="border-t border-slate-200/80">
-        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
-          <span>Data: U.S. Dept. of Education College Scorecard</span>
-          <span className="flex gap-5">
-            <a href="/changelog" className="hover:text-slate-700 transition">
-              What's new
-            </a>
-            <a href="/about" className="hover:text-slate-700 transition">
-              About &amp; methodology
-            </a>
-            <a
-              href="https://collegescorecard.ed.gov/data/api-documentation/"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-slate-700 transition"
-            >
-              API docs
-            </a>
-          </span>
+        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
+          {/* Horizontal lockup; padding keeps the brand's clear space around the mark. */}
+          <a href="/" className="p-3 -m-3 self-start hover:opacity-80 transition-opacity duration-150">
+            <BrandLogo variant="lockup" colorway="ink" height={44} />
+          </a>
+          <div className="text-xs text-slate-400 space-y-2 md:text-right">
+            <div>Data: U.S. Dept. of Education College Scorecard</div>
+            <div className="flex flex-wrap gap-5 md:justify-end">
+              <a href="/changelog" className="hover:text-slate-700 transition">
+                What's new
+              </a>
+              <a href="/about" className="hover:text-slate-700 transition">
+                About &amp; methodology
+              </a>
+              <a
+                href="https://collegescorecard.ed.gov/data/api-documentation/"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-slate-700 transition"
+              >
+                API docs
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

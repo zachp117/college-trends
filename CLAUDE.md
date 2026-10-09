@@ -26,8 +26,8 @@ tags; violet (`#6D5EF0`) for chart marks only. Section kickers are uppercase Spa
 with `// `. Keep it trustworthy, editorial, minimal. Full reference (README, brand board `.dc.html`,
 production icon assets): `design/brand/`.
 
-**Status (light brand application):** the site stays **light**. UI font is **Space Grotesk** (Tailwind `font-sans`)
-with tabular numerals; headers are light/sticky with a blurred background. **Space Mono and `// LABEL` eyebrows are
+**Status (light brand application):** the site stays **light**. UI text font is **Schibsted Grotesk** (see Brand v2
+below); numbers use Space Grotesk; headers are light/sticky with a blurred background. **Space Mono and `// LABEL` eyebrows are
 intentionally NOT used** (owner asked to drop them), despite the brand README.
 Applied so far: the CT favicon + a `<Wordmark>` (CT mark + two-tone "CollegeTrends", cyan `Trends`)
 in every header; the brand **signal-cyan** accent — done by remapping the existing `indigo-*`
@@ -35,6 +35,19 @@ scale to a cyan ramp in `tailwind.config.js`, so all existing accent usages beco
 no per-component churn; brand corner radii (`md/lg/xl`); and a faint cyan/violet page-tint on paper
 (`src/index.css`). The full dark theme was intentionally NOT adopted. Chart series palettes are
 still their original hues (not yet moved to `var(--ct-chart-*)`). `design/brand/` holds the source.
+
+**Brand v2 (partial adoption, `design/brand-v2/`):** only these pieces are adopted. Ignore the rest of
+that kit (its colors, navy/paper palette, square corners, mono labels, UI kit layouts).
+- **Wordmarks** in `public/brand/` (stacked, descriptor, lockup, inline, monogram; ink / white / black).
+  Render via `BrandLogo` / `Wordmark` in `src/components/Wordmark.tsx`, which documents and enforces the
+  rules: clear space = cap height of the "C"; min widths stacked 72 / descriptor 120 / inline 110 /
+  monogram 16px; don't stretch, recolor, add shadows/glows/outlines, or use on low-contrast grounds.
+- **Type:** Schibsted Grotesk (self-hosted, `src/styles/fonts.css`) for all text. **Numbers stay in Space
+  Grotesk** with tabular digits: `.font-num`, `.tabular-nums`, table cells, chart ticks (see `src/index.css`).
+- **Icons:** Lucide (`lucide-react`), `strokeWidth={1.75}`, always with a text label. No emoji.
+- **Favicon, web clips, `site.webmanifest`, and `public/og-image.png`** come from the kit. Don't run
+  `scripts/generate-og.ts` (it would overwrite the kit's OG card with the old design).
+- **Voice:** plain, sourced, neutral.
 
 **Copy rules (owner's, strict):** no em dashes anywhere (missing data renders as `n/a`); no "X, not Y" /
 "not just X" negation constructions; write for students, parents, and researchers, not counselors.

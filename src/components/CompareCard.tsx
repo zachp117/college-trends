@@ -36,7 +36,7 @@ export function CompareCard({ schools, onClear, onRemove }: Props) {
   if (schools.length === 0) {
     return (
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6 text-center text-slate-500 text-sm">
-        Pin schools (📌) from the table or the school detail page to compare them here.
+        Pin schools from the table or the school detail page to compare them here.
       </div>
     );
   }

@@ -1,6 +1,7 @@
 /* Brand design tokens (CollegeTrends v1.0): defines --ct-* custom properties.
    Canonical source: design/brand/brand-tokens.css. Reference var(--ct-*), never raw hex. */
 @import '../design/brand/brand-tokens.css';
+@import './styles/fonts.css';
 
 @tailwind base;
 @tailwind components;
@@ -18,8 +19,17 @@ body {
     radial-gradient(900px 700px at 8% 108%, rgba(109, 94, 240, 0.04), transparent 55%),
     #f4f9fd;
   background-attachment: fixed;
+  font-family: 'Schibsted Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Numbers stay in Space Grotesk with tabular digits: stat values (.tabular-nums),
+   table cells, and chart ticks/tooltips. Text is Schibsted Grotesk. */
+.tabular-nums,
+.font-num,
+table td,
+.recharts-cartesian-axis-tick text,
+.recharts-tooltip-wrapper {
   font-family: var(--ct-font-display);
-  /* Data-dense UI: digits line up in tables, stats and axis ticks. */
   font-variant-numeric: tabular-nums;
 }
 

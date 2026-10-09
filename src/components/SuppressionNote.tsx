@@ -1,3 +1,4 @@
+import { CalendarDays, Info } from 'lucide-react';
 import { useState } from 'react';
 import { FIELD_VINTAGES } from '../util/dataVintage';
 
@@ -11,7 +12,7 @@ export function SuppressionNote() {
   return (
     <div className="text-xs text-slate-500 bg-slate-100/70 border border-slate-200 rounded-md px-3 py-2 space-y-2">
       <div className="flex items-start gap-2">
-        <span className="text-slate-400 font-semibold mt-px">ⓘ</span>
+        <Info size={14} strokeWidth={1.75} className="text-slate-400 mt-0.5 shrink-0" aria-hidden="true" />
         <span>
           <span className="font-medium text-slate-700">Why are some cells empty?</span>{' '}
           Values shown as <span className="font-medium text-slate-700">n/a</span> were either
@@ -22,7 +23,7 @@ export function SuppressionNote() {
         </span>
       </div>
       <div className="flex items-start gap-2">
-        <span className="text-slate-400 font-semibold mt-px">📅</span>
+        <CalendarDays size={14} strokeWidth={1.75} className="text-slate-400 mt-0.5 shrink-0" aria-hidden="true" />
         <div className="flex-1">
           <button
             onClick={() => setOpenVintage((v) => !v)}

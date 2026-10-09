@@ -1,3 +1,4 @@
+import { Check, Download, Link2, Pin } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Filters } from './components/Filters';
 import { ResultsTable } from './components/ResultsTable';
@@ -665,11 +666,11 @@ function MainView({
             {loading && progress ? (
               <span>
                 Loading{' '}
-                <span className="font-semibold text-slate-900">
+                <span className="font-num font-semibold text-slate-900">
                   {progress.loaded.toLocaleString()}
                 </span>{' '}
                 of{' '}
-                <span className="font-semibold text-slate-900">
+                <span className="font-num font-semibold text-slate-900">
                   {progress.total.toLocaleString()}
                 </span>{' '}
                 schools…
@@ -677,11 +678,11 @@ function MainView({
             ) : (
               <span>
                 Showing{' '}
-                <span className="font-semibold text-slate-900">
+                <span className="font-num font-semibold text-slate-900">
                   {schools.length.toLocaleString()}
                 </span>{' '}
                 of{' '}
-                <span className="font-semibold text-slate-900">{total.toLocaleString()}</span>{' '}
+                <span className="font-num font-semibold text-slate-900">{total.toLocaleString()}</span>{' '}
                 schools matching filters.
               </span>
             )}
@@ -693,16 +694,18 @@ function MainView({
                 className="text-xs px-2.5 py-1.5 rounded-md border font-medium transition whitespace-nowrap bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100 hover:border-amber-400"
                 title="Open the Compare view to see all pinned schools side-by-side"
               >
-                📌 Compare {selectedIds.size}
+                <Pin size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />
+                Compare {selectedIds.size}
               </button>
             ) : (
               <span
                 className="text-xs text-slate-500 hidden md:inline"
                 title="Pinned schools appear in per-school breakdowns across every view. Pick up to 5."
               >
+                <Pin size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />
                 {selectedIds.size === 1
-                  ? '📌 1 pinned · pin one more to compare'
-                  : '📌 Pin schools to compare (up to 5)'}
+                  ? '1 pinned · pin one more to compare'
+                  : 'Pin schools to compare (up to 5)'}
               </span>
             )}
             <button
@@ -714,7 +717,12 @@ function MainView({
               }`}
               title="Copy a shareable link that re-creates this exact view"
             >
-              {copied ? '✓ Copied' : 'Share'}
+              {copied ? (
+                <Check size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />
+              ) : (
+                <Link2 size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />
+              )}
+              {copied ? 'Copied' : 'Share'}
               <span className="hidden sm:inline">
                 {copied ? ' link' : ' link to this view'}
               </span>
@@ -725,6 +733,7 @@ function MainView({
               className="text-xs px-2.5 py-1.5 rounded-md border font-medium transition bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
               title={`Download ${schools.length.toLocaleString()} schools × ${getColumnCount(activeTab)} columns relevant to the ${activeTab} view`}
             >
+              <Download size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />
               Export CSV
               <span className="hidden sm:inline text-slate-400">
                 {' '}

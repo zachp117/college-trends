@@ -73,7 +73,7 @@ export function DebtByGroup({ schools, selected }: Props) {
       <p className="text-xs text-slate-500 mb-3">
         {mode === 'selected'
           ? 'Debt load by sub-population, for each selected school.'
-          : 'Average across current results. Pin schools (📌) to compare per-school.'}
+          : 'Average across current results. Pin schools to compare per school.'}
       </p>
       {!anyData ? (
         <div className="h-[280px] flex items-center justify-center text-slate-400 text-sm">

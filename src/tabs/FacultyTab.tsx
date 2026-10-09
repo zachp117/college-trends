@@ -261,7 +261,7 @@ export function FacultyTab({ schools, selectedSchools }: Props) {
           </p>
           {sideBySideRows.length === 0 ? (
             <div className="h-[180px] flex items-center justify-center text-slate-400 text-sm">
-              Pin schools (📌) from the table below to compare student and faculty composition.
+              Pin schools from the table below to compare student and faculty composition.
             </div>
           ) : (
             <ResponsiveContainer

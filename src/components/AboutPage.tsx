@@ -11,7 +11,7 @@ export function AboutPage({ onBack }: Props) {
       <header className="bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-5 flex items-baseline justify-between gap-4">
           <h1 className="text-lg sm:text-xl font-semibold">
-            <Wordmark />
+            <Wordmark tone="light" />
           </h1>
           <button
             onClick={onBack}
@@ -173,7 +173,7 @@ export function AboutPage({ onBack }: Props) {
 
           <Faq q="How do I share a specific view?">
             Hit the{' '}
-            <span className="font-medium">🔗 Share link to this view</span> button in
+            <span className="font-medium">Share link to this view</span> button in
             the status row above the tabs. The URL it copies includes your active
             filter, tab, and (for unauthenticated visitors) any pinned schools, so
             anyone who opens the link sees the exact same thing you do. School-detail
@@ -186,12 +186,12 @@ export function AboutPage({ onBack }: Props) {
 
           <Faq q="Can I download the data?">
             Yes. Every tab has a{' '}
-            <span className="font-medium">📥 Export CSV</span> button that downloads
+            <span className="font-medium">Export CSV</span> button that downloads
             the columns relevant to that tab, for every school currently in your
             filter. The school detail page also has a{' '}
-            <span className="font-medium">🖨️ Print / save as PDF</span> option that
+            <span className="font-medium">Print / save as PDF</span> option that
             produces a clean one-school summary, and the{' '}
-            <span className="font-medium">📌 Compare</span> tab has the same option
+            <span className="font-medium">Compare</span> tab has the same option
             for side-by-side multi-school sheets.
           </Faq>
 

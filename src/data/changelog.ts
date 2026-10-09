@@ -12,11 +12,24 @@ export interface ChangelogEntry {
 }
 
 /**
- * User-facing feature changelog, newest first. FEATURE changes only; we
- * deliberately leave out visual/brand tweaks, data refreshes, and copy edits.
+ * User-facing feature changelog, newest first. FEATURE changes and major
+ * redesigns only; we leave out small visual tweaks, data refreshes, and copy edits.
  * To add an entry, prepend an object to this array; /changelog renders it.
  */
 export const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: '2026-10-08',
+    tag: 'Improved',
+    title: 'A new look for College Trends',
+    description:
+      'The site has a new logo, a new typeface, and a redesigned home page built for students, parents, and researchers.',
+    details: [
+      'New College Trends wordmark, favicon, and link preview image',
+      'Cleaner text in Schibsted Grotesk, with numbers that line up in tables and charts',
+      'Simple line icons on buttons and quick starts',
+      'Missing values now read "n/a" everywhere, so blank data is easy to spot',
+    ],
+  },
   {
     date: '2026-05-24',
     tag: 'Improved',

@@ -18,23 +18,14 @@ Repo on GitHub: `zachp117/college-trends`. Deploys to Vercel.
 
 ## Brand: CollegeTrends
 
-Design tokens live in `design/brand/brand-tokens.css` (imported by `src/index.css`) — always
-use `var(--ct-*)`, never raw hex. Fonts (loaded in `index.html`): **Space Grotesk** for UI +
-headlines, **Space Mono** for `// LABELS` and data values. Dark navy (`#08111F`) product
-surface; cyan (`#2EB4F0`) is the ONLY action/emphasis color; amber (`#F2A83A`) for live/numeric
-tags; violet (`#6D5EF0`) for chart marks only. Section kickers are uppercase Space Mono prefixed
-with `// `. Keep it trustworthy, editorial, minimal. Full reference (README, brand board `.dc.html`,
-production icon assets): `design/brand/`.
-
-**Status (light brand application):** the site stays **light**. UI text font is **Schibsted Grotesk** (see Brand v2
-below); numbers use Space Grotesk; headers are light/sticky with a blurred background. **Space Mono and `// LABEL` eyebrows are
-intentionally NOT used** (owner asked to drop them), despite the brand README.
-Applied so far: the CT favicon + a `<Wordmark>` (CT mark + two-tone "CollegeTrends", cyan `Trends`)
-in every header; the brand **signal-cyan** accent — done by remapping the existing `indigo-*`
-scale to a cyan ramp in `tailwind.config.js`, so all existing accent usages become brand cyan with
-no per-component churn; brand corner radii (`md/lg/xl`); and a faint cyan/violet page-tint on paper
-(`src/index.css`). The full dark theme was intentionally NOT adopted. Chart series palettes are
-still their original hues (not yet moved to `var(--ct-chart-*)`). `design/brand/` holds the source.
+Colors come from brand v1 (`design/brand/brand-tokens.css`, imported by `src/index.css`): use
+`var(--ct-*)` or the remapped Tailwind scales, never raw hex. Cyan is the only action/emphasis color,
+done by remapping the `indigo-*` scale to a cyan ramp in `tailwind.config.js`, so existing accent
+usages are brand cyan. Brand corner radii (`md/lg/xl`) and a faint cyan/violet page tint on paper.
+The site stays **light**; headers are light/sticky with a blurred background (navy on About,
+What's new, 404). The dark theme was intentionally NOT adopted. **Space Grotesk, Space Mono and
+`// LABEL` eyebrows are no longer used** (owner's call). Chart series palettes are still their
+original hues. Keep it trustworthy, editorial, minimal.
 
 **Brand v2 (partial adoption, `design/brand-v2/`):** only these pieces are adopted. Ignore the rest of
 that kit (its colors, navy/paper palette, square corners, mono labels, UI kit layouts).
@@ -42,8 +33,9 @@ that kit (its colors, navy/paper palette, square corners, mono labels, UI kit la
   Render via `BrandLogo` / `Wordmark` in `src/components/Wordmark.tsx`, which documents and enforces the
   rules: clear space = cap height of the "C"; min widths stacked 72 / descriptor 120 / inline 110 /
   monogram 16px; don't stretch, recolor, add shadows/glows/outlines, or use on low-contrast grounds.
-- **Type:** Schibsted Grotesk (self-hosted, `src/styles/fonts.css`) for all text. **Numbers stay in Space
-  Grotesk** with tabular digits: `.font-num`, `.tabular-nums`, table cells, chart ticks (see `src/index.css`).
+- **Type:** Schibsted Grotesk (self-hosted, `src/styles/fonts.css`) for all text **and numbers**. Don't
+  turn on `tabular-nums` with it: its tabular figures also widen commas/periods ("$17 , 889"), so
+  `.tabular-nums` / `.font-num` are reset to normal digits in `src/index.css`.
 - **Icons:** Lucide (`lucide-react`), `strokeWidth={1.75}`, always with a text label. No emoji.
 - **Favicon, web clips, `site.webmanifest`, and `public/og-image.png`** come from the kit (static files).
 - **Voice:** plain, sourced, neutral.

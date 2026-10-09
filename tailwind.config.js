@@ -5,9 +5,9 @@ export default {
     extend: {
       // Brand type: Space Grotesk for UI + headlines, Space Mono for // labels and data.
       fontFamily: {
-        // Text: Schibsted Grotesk (wordmark typeface). Numbers: Space Grotesk via `font-num`.
+        // Schibsted Grotesk (wordmark typeface) for text and numbers alike.
         sans: ['"Schibsted Grotesk"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-        num: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        num: ['"Schibsted Grotesk"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
       },
       // Shadows tinted toward brand ink-navy instead of neutral black.
       boxShadow: {

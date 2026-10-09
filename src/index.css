@@ -22,15 +22,11 @@ body {
   font-family: 'Schibsted Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* Numbers stay in Space Grotesk with tabular digits: stat values (.tabular-nums),
-   table cells, and chart ticks/tooltips. Text is Schibsted Grotesk. */
+/* Numbers use Schibsted Grotesk too, with its default proportional digits:
+   its tabular-figures feature also widens commas and periods ("$17 , 889"). */
 .tabular-nums,
-.font-num,
-table td,
-.recharts-cartesian-axis-tick text,
-.recharts-tooltip-wrapper {
-  font-family: var(--ct-font-display);
-  font-variant-numeric: tabular-nums;
+.font-num {
+  font-variant-numeric: normal;
 }
 
 html {

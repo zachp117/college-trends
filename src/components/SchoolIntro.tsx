@@ -6,6 +6,7 @@ import {
   schoolOverview,
   sectionHeading,
   type PeerMedians,
+  type PeerMetric,
   type SchoolFacts,
 } from '../seo/schoolContent';
 import { InfoTooltip } from './InfoTooltip';
@@ -17,6 +18,10 @@ interface Props {
   back?: ReactNode;
   /** Top-right slot (pin / share / print); omitted in static HTML. */
   actions?: ReactNode;
+  /** Extra line per metric card comparing with the dashboard filter; omitted in static HTML. */
+  filterLine?: (metric: PeerMetric) => ReactNode;
+  /** Extra cards appended to the glance grid (SPA-only metrics); omitted in static HTML. */
+  extraStats?: ReactNode;
 }
 
 /**
@@ -24,7 +29,7 @@ interface Props {
  * Pure render (no hooks/effects) so scripts/generate-sitemap.ts can render it to
  * static HTML for crawlers with the exact markup the SPA shows.
  */
-export function SchoolIntro({ facts, peers, back, actions }: Props) {
+export function SchoolIntro({ facts, peers, back, actions, filterLine, extraStats }: Props) {
   const description = schoolDescription(facts);
   const overview = schoolOverview(facts, peers);
   const stats = highlights(facts, peers);
@@ -76,7 +81,7 @@ export function SchoolIntro({ facts, peers, back, actions }: Props) {
           <h2 id="school-glance" className="text-lg font-semibold text-slate-900 mb-3">
             {sectionHeading(facts.name, 'glance')}
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {stats.map((s) => (
               <div key={s.label} className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
                 <div className="text-xs text-slate-500 inline-flex items-center">
@@ -87,8 +92,10 @@ export function SchoolIntro({ facts, peers, back, actions }: Props) {
                 {s.peer && (
                   <div className="text-xs text-slate-400 mt-1">Similar schools: {s.peer}</div>
                 )}
+                {filterLine?.(s.metric)}
               </div>
             ))}
+            {extraStats}
           </div>
         </section>
       )}

@@ -313,7 +313,10 @@ const moneyFmt = new Intl.NumberFormat('en-US', {
 const intFmt = new Intl.NumberFormat('en-US');
 
 export const money = (v: number) => moneyFmt.format(v);
-export const pct = (v: number) => `${Math.round(v * 100)}%`;
+/** One decimal, matching fmtPct elsewhere on the site. */
+export const pct = (v: number) => `${(v * 100).toFixed(1)}%`;
+/** Whole percent, for the length-limited meta description only. */
+const pctWhole = (v: number) => `${Math.round(v * 100)}%`;
 export const int = (v: number) => intFmt.format(Math.round(v));
 
 export function stateName(code: string): string {
@@ -372,8 +375,8 @@ export function metaDescription(f: SchoolFacts): string {
   const where = f.city && f.state ? ` in ${f.city}, ${f.state}` : '';
   const parts: string[] = [];
   if (f.netPrice !== null) parts.push(`average net price ${money(f.netPrice)}`);
-  if (f.admitRate !== null) parts.push(`${pct(f.admitRate)} admit rate`);
-  if (f.completion !== null) parts.push(`${pct(f.completion)} graduation rate`);
+  if (f.admitRate !== null) parts.push(`${pctWhole(f.admitRate)} admit rate`);
+  if (f.completion !== null) parts.push(`${pctWhole(f.completion)} graduation rate`);
   if (f.earnings10 !== null) parts.push(`${money(f.earnings10)} median earnings`);
   if (f.medianDebt !== null) parts.push(`${money(f.medianDebt)} median debt`);
   const tail = ' Federal College Scorecard data.';
@@ -396,7 +399,6 @@ export function metaDescription(f: SchoolFacts): string {
 export type SectionTopic =
   | 'glance'
   | 'overview'
-  | 'filter'
   | 'cost'
   | 'admissions'
   | 'outcomes'
@@ -412,8 +414,6 @@ export function sectionHeading(name: string, topic: SectionTopic, programNoun = 
       return `${name} at a glance`;
     case 'overview':
       return `What the data shows about ${name}`;
-    case 'filter':
-      return `How ${name} ranks in your current filter`;
     case 'cost':
       return `${name} cost and financial aid`;
     case 'admissions':
@@ -571,6 +571,7 @@ export function schoolOverview(f: SchoolFacts, peers: PeerMedians): string[] {
 // ---------------------------------------------------------------------------
 
 export interface Highlight {
+  metric: PeerMetric;
   label: string;
   value: string;
   /** Similar-school median, formatted, when available. */
@@ -587,12 +588,13 @@ export function highlights(f: SchoolFacts, peers: PeerMedians): Highlight[] {
     ['Graduation rate (6 yrs)', f.completion, 'completion', pct, 'completion-4yr-150'],
     ['Median earnings (10 yrs)', f.earnings10, 'earnings10', money, 'earnings-10yr'],
     ['Median debt at graduation', f.medianDebt, 'medianDebt', money, 'student-debt'],
+    ['First-year retention', f.retention, 'retention', pct, 'first-year-retention'],
   ];
   return rows
     .filter(([, v]) => v !== null)
     .map(([label, v, m, fmt, tip]) => {
       const s = peerStat(f, peers, m);
-      return { label, value: fmt(v as number), peer: s ? fmt(s.median) : null, tip };
+      return { metric: m, label, value: fmt(v as number), peer: s ? fmt(s.median) : null, tip };
     });
 }
 

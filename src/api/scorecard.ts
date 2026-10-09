@@ -9,6 +9,12 @@ export const FIELDS = {
   ownership: 'school.ownership',
   locale: 'school.locale',
   url: 'school.school_url',
+  religiousAffiliation: 'school.religious_affiliation',
+  hbcu: 'school.minority_serving.historically_black',
+  hsi: 'school.minority_serving.hispanic',
+  onlineOnly: 'school.online_only',
+  predominantDegree: 'school.degrees_awarded.predominant',
+  highestDegree: 'school.degrees_awarded.highest',
   latitude: 'location.lat',
   longitude: 'location.lon',
   size: 'latest.student.size',
@@ -212,6 +218,15 @@ export interface School {
   ownership: number;
   locale: number | null;
   url: string | null;
+  /** Federal religious-affiliation code; null/negative when none reported. */
+  religiousAffiliation: number | null;
+  hbcu: number | null;
+  hsi: number | null;
+  onlineOnly: number | null;
+  /** 1 certificate, 2 associate, 3 bachelor's, 4 graduate. */
+  predominantDegree: number | null;
+  /** 0 non-degree, 1 certificate, 2 associate, 3 bachelor's, 4 graduate. */
+  highestDegree: number | null;
   latitude: number | null;
   longitude: number | null;
   size: number | null;
@@ -452,6 +467,12 @@ function mapRow(row: Record<string, unknown>): School {
     ownership: (row[FIELDS.ownership] as number) ?? 0,
     locale: g<number>(FIELDS.locale),
     url: g<string>(FIELDS.url),
+    religiousAffiliation: g<number>(FIELDS.religiousAffiliation),
+    hbcu: g<number>(FIELDS.hbcu),
+    hsi: g<number>(FIELDS.hsi),
+    onlineOnly: g<number>(FIELDS.onlineOnly),
+    predominantDegree: g<number>(FIELDS.predominantDegree),
+    highestDegree: g<number>(FIELDS.highestDegree),
     latitude: g<number>(FIELDS.latitude),
     longitude: g<number>(FIELDS.longitude),
     size: g<number>(FIELDS.size),

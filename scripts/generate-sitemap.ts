@@ -1,103 +1,42 @@
 /**
- * Build-time static page generator.
+ * Build step 3 (runs after `vite build`): static pages for crawlers.
  *
- * Runs after `vite build` and produces:
- *   1. dist/sitemap.xml: static + per-school URLs for Google
- *   2. dist/school/<slug>-<id>/index.html: per-school HTML stubs whose
- *      <head> meta block (title, description, og:*, twitter:*) is
- *      customized to that school. The page body is identical to the
- *      root index.html, so React hydrates the same SPA on load. The
- *      meta tags exist solely so social crawlers (iMessage, Slack,
- *      Twitter, LinkedIn, Discord, Facebook), which don't run JS,
- *      see school-specific previews.
+ * Reads .cache/school-facts.json (written by scripts/fetch-school-data.ts) and
+ * produces:
+ *   1. dist/sitemap.xml: static + per-school URLs.
+ *   2. dist/school/<slug>-<id>/index.html: per-school HTML whose <head> carries
+ *      a school-specific title, meta description, canonical, Open Graph, Twitter
+ *      and schema.org JSON-LD, and whose #root is pre-filled with the school's
+ *      intro (H1, description, key metrics, data overview) rendered from the same
+ *      React component the SPA uses. Crawlers that don't run JS see real content;
+ *      in a browser, React mounts and replaces it with the full interactive page.
  *
- * Reads VITE_SCORECARD_API_KEY from the environment. On Vercel this comes
- * from the project's Environment Variables. Locally we also read .env so
- * `npm run build` works without prefixing.
- *
- * If the key isn't available (or the API call fails), we fall back to a
- * static-only sitemap and skip per-school HTML so the build never breaks.
+ * If the facts cache is missing (no API key, or the fetch failed), the build still
+ * succeeds with a static-only sitemap and no per-school HTML.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { slugify } from '../src/util/schoolUrl';
-
-// ---------------------------------------------------------------------------
-// Mini dotenv loader: avoids adding a dependency for one local convenience.
-// Only sets vars that aren't already present in the environment (Vercel wins).
-// ---------------------------------------------------------------------------
-if (existsSync('.env')) {
-  for (const raw of readFileSync('.env', 'utf8').split('\n')) {
-    const m = raw.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)$/i);
-    if (!m) continue;
-    const [, key, valueRaw] = m;
-    if (process.env[key] !== undefined) continue;
-    process.env[key] = valueRaw.trim().replace(/^["']|["']$/g, '');
-  }
-}
+import {
+  metaDescription,
+  schoolJsonLd,
+  titleTag,
+  type PeerMedians,
+  type SchoolFacts,
+} from '../src/seo/schoolContent';
+import { SchoolIntro } from '../src/components/SchoolIntro';
 
 const SITE_URL = 'https://www.collegetrends.io';
-const API_KEY = process.env.VITE_SCORECARD_API_KEY;
-const SCORECARD_BASE = 'https://api.data.gov/ed/collegescorecard/v1/schools';
-const PER_PAGE = 100;
-const CONCURRENCY = 5;
+const FACTS_CACHE = resolve('.cache/school-facts.json');
+const PEERS_PATH = resolve('src/data/peerMedians.json');
 
 const STATIC_PAGES: Array<{ path: string; priority: string; changefreq: string }> = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/app', priority: '0.9', changefreq: 'weekly' },
   { path: '/about', priority: '0.5', changefreq: 'monthly' },
 ];
-
-interface School {
-  id: number;
-  name: string;
-}
-
-interface ApiResponse {
-  metadata: { total: number; page: number; per_page: number };
-  results: Array<Record<string, unknown>>;
-}
-
-async function fetchSchoolPage(page: number): Promise<{ schools: School[]; total: number }> {
-  const params = new URLSearchParams({
-    api_key: API_KEY!,
-    fields: 'id,school.name',
-    // Only operating, degree-granting institutions, matching what the app shows.
-    'school.operating': '1',
-    'school.degrees_awarded.predominant': '1,2,3,4',
-    per_page: String(PER_PAGE),
-    page: String(page),
-  });
-  const res = await fetch(`${SCORECARD_BASE}?${params.toString()}`);
-  if (!res.ok) {
-    throw new Error(`Scorecard API ${res.status}: ${await res.text().catch(() => '')}`);
-  }
-  const data = (await res.json()) as ApiResponse;
-  const schools = data.results
-    .map((r) => ({ id: Number(r.id), name: String(r['school.name'] ?? '') }))
-    .filter((s) => Number.isFinite(s.id) && s.name.length > 0);
-  return { schools, total: data.metadata.total };
-}
-
-async function fetchAllSchools(): Promise<School[]> {
-  console.log('Fetching school list from College Scorecard…');
-  const first = await fetchSchoolPage(0);
-  const totalPages = Math.ceil(first.total / PER_PAGE);
-  console.log(`  ${first.total} institutions across ${totalPages} pages`);
-
-  const all: School[] = [...first.schools];
-  const remaining: number[] = [];
-  for (let p = 1; p < totalPages; p++) remaining.push(p);
-
-  for (let i = 0; i < remaining.length; i += CONCURRENCY) {
-    const batch = remaining.slice(i, i + CONCURRENCY);
-    const results = await Promise.all(batch.map((p) => fetchSchoolPage(p)));
-    for (const r of results) all.push(...r.schools);
-    process.stdout.write(`\r  fetched ${all.length}/${first.total}    `);
-  }
-  process.stdout.write('\n');
-  return all;
-}
 
 interface UrlEntry {
   loc: string;
@@ -122,7 +61,7 @@ function buildXml(urls: UrlEntry[]): string {
 // Per-school HTML generation
 // ---------------------------------------------------------------------------
 
-/** HTML-escape user-supplied strings before they go into attributes. */
+/** HTML-escape strings before they go into attributes or text. */
 function htmlEscape(s: string): string {
   return s
     .replace(/&/g, '&amp;')
@@ -132,15 +71,16 @@ function htmlEscape(s: string): string {
     .replace(/'/g, '&#39;');
 }
 
+const schoolUrl = (f: SchoolFacts) => `${SITE_URL}/school/${slugify(f.name)}-${f.id}`;
+
 /** Build the school-specific <head> meta block (between meta:start/meta:end). */
-function renderSchoolMeta(school: School): string {
-  const url = `${SITE_URL}/school/${slugify(school.name)}-${school.id}`;
-  const ogImage = `${SITE_URL}/api/og?id=${school.id}`;
-  const title = htmlEscape(`${school.name} | College Trends`);
-  const description = htmlEscape(
-    `Federal data on ${school.name}: net price, earnings, debt, completion, demographics, admissions. From the U.S. Department of Education's College Scorecard.`,
-  );
-  const altText = htmlEscape(`${school.name} | College Trends`);
+function renderSchoolMeta(f: SchoolFacts): string {
+  const url = schoolUrl(f);
+  const ogImage = `${SITE_URL}/api/og?id=${f.id}`;
+  const title = htmlEscape(titleTag(f));
+  const description = htmlEscape(metaDescription(f));
+  // JSON in a <script>: escape "<" so a name can never close the tag.
+  const jsonLd = JSON.stringify(schoolJsonLd(f, url)).replace(/</g, '\\u003c');
 
   return `<!-- meta:start (per-school, generated) -->
     <title>${title}</title>
@@ -156,33 +96,44 @@ function renderSchoolMeta(school: School): string {
     <meta property="og:image" content="${ogImage}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="${altText}" />
+    <meta property="og:image:alt" content="${title}" />
 
     <!-- Twitter / X card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
     <meta name="twitter:image" content="${ogImage}" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">${jsonLd}</script>
     <!-- meta:end -->`;
 }
 
-const META_BLOCK_REGEX = /<!-- meta:start[\s\S]*?meta:end -->/;
+/** Static body: the same SchoolIntro the SPA renders, inside the app's main container. */
+function renderSchoolBody(f: SchoolFacts, peers: PeerMedians): string {
+  const intro = renderToStaticMarkup(createElement(SchoolIntro, { facts: f, peers }));
+  return `<div id="root"><main class="max-w-7xl mx-auto px-4 sm:px-6 py-8"><div class="space-y-6">${intro}</div></main></div>`;
+}
 
-function generateSchoolHtml(template: string, schools: School[]): number {
-  if (!META_BLOCK_REGEX.test(template)) {
+const META_BLOCK_REGEX = /<!-- meta:start[\s\S]*?meta:end -->/;
+const ROOT_REGEX = /<div id="root"><\/div>/;
+
+function generateSchoolHtml(template: string, schools: SchoolFacts[], peers: PeerMedians): number {
+  if (!META_BLOCK_REGEX.test(template) || !ROOT_REGEX.test(template)) {
     console.error(
-      '✗ dist/index.html is missing the <!-- meta:start --> ... <!-- meta:end --> markers; ' +
-        'per-school HTML generation skipped. (Did index.html get edited without preserving them?)',
+      '✗ dist/index.html is missing the <!-- meta:start --> ... <!-- meta:end --> markers or ' +
+        'an empty <div id="root"></div>; per-school HTML generation skipped.',
     );
     return 0;
   }
   let written = 0;
-  for (const school of schools) {
-    const slug = slugify(school.name);
+  for (const f of schools) {
+    const slug = slugify(f.name);
     if (!slug) continue;
-    const path = `dist/school/${slug}-${school.id}/index.html`;
-    const html = template.replace(META_BLOCK_REGEX, renderSchoolMeta(school));
-    const out = resolve(path);
+    const html = template
+      .replace(META_BLOCK_REGEX, () => renderSchoolMeta(f))
+      .replace(ROOT_REGEX, () => renderSchoolBody(f, peers));
+    const out = resolve(`dist/school/${slug}-${f.id}/index.html`);
     mkdirSync(dirname(out), { recursive: true });
     writeFileSync(out, html);
     written++;
@@ -194,37 +145,22 @@ function generateSchoolHtml(template: string, schools: School[]): number {
 // Main
 // ---------------------------------------------------------------------------
 
-async function main() {
+function main() {
   const urls: UrlEntry[] = STATIC_PAGES.map((p) => ({
     loc: SITE_URL + p.path,
     priority: p.priority,
     changefreq: p.changefreq,
   }));
 
-  let schools: School[] = [];
-
-  if (!API_KEY || API_KEY === 'your_api_data_gov_key_here') {
-    console.warn(
-      'No VITE_SCORECARD_API_KEY in env; sitemap will include static pages only, ' +
-        'per-school HTML generation skipped.',
-    );
-  } else {
-    try {
-      schools = await fetchAllSchools();
-      for (const s of schools) {
-        urls.push({
-          loc: `${SITE_URL}/school/${slugify(s.name)}-${s.id}`,
-          priority: '0.7',
-          changefreq: 'monthly',
-        });
-      }
-    } catch (err) {
-      console.error(
-        'Failed to fetch schools; sitemap will include static pages only, ' +
-          'per-school HTML skipped:',
-        err instanceof Error ? err.message : err,
-      );
+  let schools: SchoolFacts[] = [];
+  if (existsSync(FACTS_CACHE)) {
+    schools = JSON.parse(readFileSync(FACTS_CACHE, 'utf8')) as SchoolFacts[];
+    for (const f of schools) {
+      if (!slugify(f.name)) continue;
+      urls.push({ loc: schoolUrl(f), priority: '0.7', changefreq: 'monthly' });
     }
+  } else {
+    console.warn('No .cache/school-facts.json; sitemap will include static pages only, per-school HTML skipped.');
   }
 
   // 1. Sitemap
@@ -240,12 +176,10 @@ async function main() {
       return;
     }
     const template = readFileSync(templatePath, 'utf8');
-    const written = generateSchoolHtml(template, schools);
+    const peers = JSON.parse(readFileSync(PEERS_PATH, 'utf8')) as PeerMedians;
+    const written = generateSchoolHtml(template, schools, peers);
     console.log(`✓ Wrote ${written} per-school HTML files (dist/school/<slug>-<id>/index.html)`);
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+main();

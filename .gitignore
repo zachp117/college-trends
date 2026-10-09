@@ -12,3 +12,4 @@ data.db-wal
 
 # TS incremental build cache
 tsconfig.tsbuildinfo
+.cache

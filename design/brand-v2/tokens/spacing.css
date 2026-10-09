@@ -1,9 +1,0 @@
-:root{
-  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px;
-  --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px;
-  --radius-0:0; --radius-1:2px; --radius-2:4px; --radius-pill:999px;
-  --border-w:1px; --rule-w:2px;
-  --shadow-1:0 1px 0 rgba(8,17,31,.06); --shadow-2:0 8px 24px -8px rgba(8,17,31,.18);
-  --container:1200px; --nav-h:64px;
-  --ease-out:cubic-bezier(.2,.7,.2,1); --dur-fast:120ms; --dur-base:200ms;
-}

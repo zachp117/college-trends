@@ -14,7 +14,7 @@ Repo on GitHub: `zachp117/college-trends`. Deploys to Vercel.
 - **Backend**: Hono (Node) on port 3001 in dev, served as a Node function on Vercel in prod
 - **DB**: SQLite via `better-sqlite3` + Drizzle ORM (WAL enabled). File at `data.db` locally (gitignored); on Vercel use `DATABASE_URL`.
 - **Auth**: Better Auth (tables in same SQLite DB)
-- **Build extras**: satori + @resvg/resvg-js for OG images; @vercel/og available
+- **Build extras**: @vercel/og powers per-school OG images (`api/og.tsx`); the generic OG card is a static `public/og-image.png`
 
 ## Brand: CollegeTrends
 
@@ -45,8 +45,7 @@ that kit (its colors, navy/paper palette, square corners, mono labels, UI kit la
 - **Type:** Schibsted Grotesk (self-hosted, `src/styles/fonts.css`) for all text. **Numbers stay in Space
   Grotesk** with tabular digits: `.font-num`, `.tabular-nums`, table cells, chart ticks (see `src/index.css`).
 - **Icons:** Lucide (`lucide-react`), `strokeWidth={1.75}`, always with a text label. No emoji.
-- **Favicon, web clips, `site.webmanifest`, and `public/og-image.png`** come from the kit. Don't run
-  `scripts/generate-og.ts` (it would overwrite the kit's OG card with the old design).
+- **Favicon, web clips, `site.webmanifest`, and `public/og-image.png`** come from the kit (static files).
 - **Voice:** plain, sourced, neutral.
 
 **Copy rules (owner's, strict):** no em dashes anywhere (missing data renders as `n/a`); no "X, not Y" /
@@ -72,7 +71,7 @@ After cloning or wiping `data.db`, run `npm run db:migrate` to bootstrap the sch
 
 **Dual SPA + static-stub routing for social previews.** `vercel.json` rewrites `/*` → `/index.html` so the React SPA handles routing client-side. BUT `scripts/generate-sitemap.ts` writes per-school HTML files to `dist/school/<slug>-<id>/index.html` at build time with school-specific Open Graph + Twitter Card meta. These static stubs ship the same React bundle, so a real visitor clicking the link still gets the SPA; only crawlers (Facebook, Twitter, iMessage, etc.) read the per-school meta. If you change SPA routes or the OG flow, both paths need to stay consistent.
 
-**Build-time OG generation has a fallback.** `scripts/generate-og.ts` renders the generic OG PNG. `scripts/generate-sitemap.ts` fetches the full school list from data.gov (needs `VITE_SCORECARD_API_KEY`) and emits per-school stubs + `sitemap.xml`. If the key is missing or the API call fails, the build still succeeds with a static sitemap and no per-school stubs — intentional, so CI doesn't break when secrets are absent. Don't add hard failure on missing API key.
+**Build-time OG generation has a fallback.** The generic OG PNG is a static file from the brand kit. `scripts/generate-sitemap.ts` fetches the full school list from data.gov (needs `VITE_SCORECARD_API_KEY`) and emits per-school stubs + `sitemap.xml`. If the key is missing or the API call fails, the build still succeeds with a static sitemap and no per-school stubs — intentional, so CI doesn't break when secrets are absent. Don't add hard failure on missing API key.
 
 **Drizzle schema is split into two layers** in `server/db/schema.ts`: Better Auth core tables (`user`, `session`, `account`, `verification`) and app tables (`student`, `studentSchool`, `pinnedSchool`). Migrations are SQL files in `server/db/migrations/` — the canonical schema source. `data.db` is gitignored.
 

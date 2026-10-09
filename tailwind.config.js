@@ -8,7 +8,6 @@ export default {
         // Text: Schibsted Grotesk (wordmark typeface). Numbers: Space Grotesk via `font-num`.
         sans: ['"Schibsted Grotesk"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
         num: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['"Space Mono"', 'ui-monospace', '"SF Mono"', 'monospace'],
       },
       // Shadows tinted toward brand ink-navy instead of neutral black.
       boxShadow: {

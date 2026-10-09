@@ -30,6 +30,7 @@ import {
   sectionHeading,
   titleTag,
   type PeerMedians,
+  type PeerMetric,
 } from '../seo/schoolContent';
 import { buildSchoolPath } from '../util/schoolUrl';
 import peerMediansJson from '../data/peerMedians.json';
@@ -326,26 +327,18 @@ export function SchoolDetail({
             copied={copied}
           />
         }
+        filterLine={(m) => {
+          const f = FILTER_METRICS[m];
+          return <FilterLine ctx={headline[f.ctx]} format={f.format} lowerIsBetter={f.lowerIsBetter} />;
+        }}
+        extraStats={
+          headline.defaultRate.value !== null && (
+            <BigStat label="3-yr default rate" tip="default-rate" ctx={headline.defaultRate} format="pct" lowerIsBetter />
+          )
+        }
       />
 
       <SuppressionNote />
-
-      {/* Headline stat cards, ranked against the dashboard's current filter */}
-      <section aria-labelledby="school-filter-rank">
-      <h2 id="school-filter-rank" className="text-lg font-semibold text-slate-900 mb-3">
-        {heading('filter')}
-      </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <BigStat label="Enrollment" ctx={headline.size} format="num" />
-        <BigStat label="Admit rate" tip="admit-rate" ctx={headline.admit} format="pct" />
-        <BigStat label="Avg net price" tip="avg-net-price" ctx={headline.avgCost} format="money" lowerIsBetter />
-        <BigStat label="4-yr completion" tip="completion-4yr-150" ctx={headline.completion} format="pct" />
-        <BigStat label="Earnings (10y)" tip="earnings-10yr" ctx={headline.earnings} format="money" />
-        <BigStat label="Median debt" tip="student-debt" ctx={headline.debt} format="money" lowerIsBetter />
-        <BigStat label="3-yr default rate" tip="default-rate" ctx={headline.defaultRate} format="pct" lowerIsBetter />
-        <BigStat label="1st-year retention" tip="first-year-retention" ctx={headline.retention} format="pct" />
-      </div>
-      </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Cost & Aid */}
@@ -786,22 +779,40 @@ function SchoolDetailActions({
   );
 }
 
-interface BigStatProps {
-  label: string;
-  ctx: ContextValue;
-  format: 'money' | 'pct' | 'num';
-  lowerIsBetter?: boolean;
-  tip?: string;
+type StatFormat = 'money' | 'pct' | 'num';
+
+/** Which dashboard-filter stat backs each glance card, and how to format it. */
+const FILTER_METRICS: Record<
+  PeerMetric,
+  { ctx: 'size' | 'avgCost' | 'admit' | 'completion' | 'earnings' | 'debt' | 'retention'; format: StatFormat; lowerIsBetter?: boolean }
+> = {
+  size: { ctx: 'size', format: 'num' },
+  netPrice: { ctx: 'avgCost', format: 'money', lowerIsBetter: true },
+  admitRate: { ctx: 'admit', format: 'pct' },
+  completion: { ctx: 'completion', format: 'pct' },
+  earnings10: { ctx: 'earnings', format: 'money' },
+  medianDebt: { ctx: 'debt', format: 'money', lowerIsBetter: true },
+  retention: { ctx: 'retention', format: 'pct' },
+};
+
+function fmtStat(v: number | null, format: StatFormat): string {
+  if (v === null) return 'n/a';
+  if (format === 'money') return fmtMoney(v);
+  if (format === 'pct') return fmtPct(v);
+  return fmtNum(v);
 }
 
-function BigStat({ label, ctx, format, lowerIsBetter, tip }: BigStatProps) {
-  const fmt = (v: number | null) => {
-    if (v === null) return 'n/a';
-    if (format === 'money') return fmtMoney(v);
-    if (format === 'pct') return fmtPct(v);
-    return fmtNum(v);
-  };
-
+/** "Your filter: <median> · P<rank>" line under a glance card. */
+function FilterLine({
+  ctx,
+  format,
+  lowerIsBetter,
+}: {
+  ctx: ContextValue;
+  format: StatFormat;
+  lowerIsBetter?: boolean;
+}) {
+  if (ctx.filterMedian === null) return null;
   const adjustedRank =
     ctx.pctRank === null ? null : lowerIsBetter ? 100 - ctx.pctRank : ctx.pctRank;
 
@@ -812,26 +823,43 @@ function BigStat({ label, ctx, format, lowerIsBetter, tip }: BigStatProps) {
   }
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-3">
+    <div className="text-xs mt-0.5 flex items-center gap-1 flex-wrap">
+      <span className="text-slate-400">Your filter: {fmtStat(ctx.filterMedian, format)}</span>
+      {adjustedRank !== null && (
+        <span
+          className={`font-medium ${pctColor} inline-flex items-center`}
+          title="How this school ranks vs others in the filter"
+        >
+          · P{adjustedRank}
+          <InfoTooltip term="percentile-rank" />
+        </span>
+      )}
+    </div>
+  );
+}
+
+/** SPA-only glance card for metrics without a similar-school median. */
+function BigStat({
+  label,
+  ctx,
+  format,
+  lowerIsBetter,
+  tip,
+}: {
+  label: string;
+  ctx: ContextValue;
+  format: StatFormat;
+  lowerIsBetter?: boolean;
+  tip?: string;
+}) {
+  return (
+    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4">
       <div className="text-xs text-slate-500 inline-flex items-center">
         {label}
         {tip && <InfoTooltip term={tip} />}
       </div>
-      <div className="text-2xl font-semibold text-slate-900 tabular-nums mt-1">
-        {fmt(ctx.value)}
-      </div>
-      <div className="text-[11px] mt-1 flex items-center gap-1">
-        <span className="text-slate-400">vs filter median {fmt(ctx.filterMedian)}</span>
-        {adjustedRank !== null && (
-          <span
-            className={`font-medium ${pctColor} inline-flex items-center`}
-            title="How this school ranks vs others in the filter"
-          >
-            · P{adjustedRank}
-            <InfoTooltip term="percentile-rank" />
-          </span>
-        )}
-      </div>
+      <div className="text-2xl font-semibold text-slate-900 mt-1">{fmtStat(ctx.value, format)}</div>
+      <FilterLine ctx={ctx} format={format} lowerIsBetter={lowerIsBetter} />
     </div>
   );
 }

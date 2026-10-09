@@ -23,6 +23,19 @@ import { InfoTooltip } from '../components/InfoTooltip';
 import { SuppressionNote } from '../components/SuppressionNote';
 import { AddToStudentMenu } from '../components/AddToStudentMenu';
 import { useSession } from '../lib/auth-client';
+import { SchoolIntro } from '../components/SchoolIntro';
+import {
+  factsFromSchool,
+  metaDescription,
+  sectionHeading,
+  titleTag,
+  type PeerMedians,
+} from '../seo/schoolContent';
+import { buildSchoolPath } from '../util/schoolUrl';
+import peerMediansJson from '../data/peerMedians.json';
+
+const PEERS = peerMediansJson as PeerMedians;
+const SITE_URL = 'https://www.collegetrends.io';
 
 interface Props {
   school: School;
@@ -115,6 +128,28 @@ export function SchoolDetail({
   const [progLoading, setProgLoading] = useState(false);
   const [history, setHistory] = useState<SchoolHistory | null>(null);
   const [histLoading, setHistLoading] = useState(false);
+
+  // ---------- SEO: facts drive the intro, headings, <title> and meta ----------
+  const facts = useMemo(() => factsFromSchool(school, programs), [school, programs]);
+  const heading = (topic: Parameters<typeof sectionHeading>[1]) => sectionHeading(school.name, topic);
+
+  useEffect(() => {
+    const desc = document.querySelector('meta[name="description"]');
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const prev = {
+      title: document.title,
+      desc: desc?.getAttribute('content') ?? null,
+      canonical: canonical?.getAttribute('href') ?? null,
+    };
+    document.title = titleTag(facts);
+    desc?.setAttribute('content', metaDescription(facts));
+    canonical?.setAttribute('href', SITE_URL + buildSchoolPath(facts.id, facts.name));
+    return () => {
+      document.title = prev.title;
+      if (prev.desc !== null) desc?.setAttribute('content', prev.desc);
+      if (prev.canonical !== null) canonical?.setAttribute('href', prev.canonical);
+    };
+  }, [facts]);
 
   useEffect(() => {
     let cancelled = false;
@@ -271,39 +306,18 @@ export function SchoolDetail({
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <div>
-            <button
-              onClick={onClose}
-              className="text-xs text-indigo-600 hover:text-indigo-800 font-medium mb-2 no-print"
-            >
-              ← Back to filtered list
-            </button>
-            <h1 className="text-2xl font-semibold text-slate-900">{school.name}</h1>
-            <div className="text-sm text-slate-500 mt-1">
-              {school.city}, {school.state} ·{' '}
-              <span className="text-slate-700">
-                {OWNERSHIP_LABELS[school.ownership] ?? 'n/a'}
-              </span>
-              {school.url && (
-                <>
-                  {' · '}
-                  <a
-                    href={
-                      school.url.startsWith('http') ? school.url : `https://${school.url}`
-                    }
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-indigo-600 hover:text-indigo-800"
-                  >
-                    {school.url} ↗
-                  </a>
-                </>
-              )}
-            </div>
-          </div>
+      <SchoolIntro
+        facts={facts}
+        peers={PEERS}
+        back={
+          <button
+            onClick={onClose}
+            className="text-xs text-indigo-600 hover:text-indigo-800 font-medium mb-2 no-print"
+          >
+            ← Back to filtered list
+          </button>
+        }
+        actions={
           <SchoolDetailActions
             school={school}
             isSelected={isSelected}
@@ -311,12 +325,16 @@ export function SchoolDetail({
             copyShareLink={copyShareLink}
             copied={copied}
           />
-        </div>
-      </div>
+        }
+      />
 
       <SuppressionNote />
 
-      {/* Headline stat cards */}
+      {/* Headline stat cards, ranked against the dashboard's current filter */}
+      <section aria-labelledby="school-filter-rank">
+      <h2 id="school-filter-rank" className="text-lg font-semibold text-slate-900 mb-3">
+        {heading('filter')}
+      </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <BigStat label="Enrollment" ctx={headline.size} format="num" />
         <BigStat label="Admit rate" tip="admit-rate" ctx={headline.admit} format="pct" />
@@ -327,10 +345,11 @@ export function SchoolDetail({
         <BigStat label="3-yr default rate" tip="default-rate" ctx={headline.defaultRate} format="pct" lowerIsBetter />
         <BigStat label="1st-year retention" tip="first-year-retention" ctx={headline.retention} format="pct" />
       </div>
+      </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Cost & Aid */}
-        <Section title="Cost & aid" subtitle="Net price after grants, by family income.">
+        <Section title={heading('cost')} subtitle="Net price after grants, by family income.">
           <div className="grid grid-cols-2 gap-2 text-xs mb-3">
             <Stat label="In-state tuition" value={fmtMoney(school.tuitionIn)} />
             <Stat label="Out-of-state tuition" value={fmtMoney(school.tuitionOut)} />
@@ -359,7 +378,7 @@ export function SchoolDetail({
 
         {/* Admissions */}
         <Section
-          title="Admissions"
+          title={heading('admissions')}
           subtitle={
             school.testRequirements !== null
               ? `Test policy: ${TEST_POLICY_LABELS[school.testRequirements] ?? 'n/a'}`
@@ -390,7 +409,7 @@ export function SchoolDetail({
 
         {/* Outcomes */}
         <Section
-          title="Outcomes"
+          title={heading('outcomes')}
           subtitle="Earnings distribution 6 and 10 years after entry."
         >
           <div className="grid grid-cols-2 gap-2 text-xs mb-3">
@@ -430,7 +449,7 @@ export function SchoolDetail({
 
         {/* Retention / cohort */}
         <Section
-          title="Retention & cohort outcomes"
+          title={heading('retention')}
           subtitle="What happens to the entering Title-IV class within 6 years."
         >
           <div className="grid grid-cols-2 gap-2 text-xs mb-3">
@@ -473,7 +492,7 @@ export function SchoolDetail({
 
         {/* Demographics */}
         <Section
-          title="Who attends"
+          title={heading('students')}
           subtitle="Race / gender / age / Pell / first-gen."
         >
           <div className="grid grid-cols-2 gap-2 text-xs mb-3">
@@ -513,7 +532,7 @@ export function SchoolDetail({
 
         {/* Faculty */}
         <Section
-          title="Faculty"
+          title={heading('faculty')}
           subtitle="Composition compared to the student body above."
         >
           <div className="grid grid-cols-2 gap-2 text-xs mb-3">
@@ -570,7 +589,7 @@ export function SchoolDetail({
 
         {/* Programs */}
         <Section
-          title="Top bachelor's programs"
+          title={heading('programs')}
           subtitle="Ranked by 5-year median earnings (when reported)."
           className="lg:col-span-2"
         >
@@ -616,7 +635,7 @@ export function SchoolDetail({
 
         {/* Trends */}
         <Section
-          title="Trends over time"
+          title={heading('trends')}
           subtitle="In-state tuition, admit rate, and completion rate, 2004 → 2023."
           className="lg:col-span-2"
         >
@@ -832,7 +851,7 @@ function Section({
     <div
       className={`bg-white rounded-lg border border-slate-200 shadow-sm p-4 ${className ?? ''}`}
     >
-      <h3 className="text-sm font-semibold text-slate-700">{title}</h3>
+      <h2 className="text-base font-semibold text-slate-900">{title}</h2>
       {subtitle && <p className="text-xs text-slate-500 mb-3">{subtitle}</p>}
       {children}
     </div>

@@ -18,6 +18,33 @@ export interface ChangelogEntry {
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    date: '2026-10-10',
+    tag: 'New',
+    title: 'A record of data updates',
+    description:
+      'We now check the College Scorecard data every day and list each update below, under Data updates, so you can see when the data last changed and what changed.',
+    details: [
+      'Which groups of figures changed, and for how many schools',
+      'The data year each group of figures comes from, kept current automatically',
+      'Department of Education data releases since 2024, with their own notes',
+      'The "How recent is this data?" note on every page uses the same measured years',
+    ],
+  },
+  {
+    date: '2026-10-10',
+    tag: 'Improved',
+    title: 'More detailed school pages',
+    description:
+      'Each school page now opens with a plain-language summary of the school and its key figures, each shown next to the median for similar schools nationwide.',
+    details: [
+      'A short description of each school: type, location, size, degrees offered, and largest programs',
+      'Key figures for enrollment, net price, admit rate, graduation rate, earnings, debt, and first-year retention',
+      'Each figure also shows the median and percentile for the schools in your current dashboard filter',
+      'A summary of how the school compares with similar schools',
+      'Percentages now show one decimal place everywhere on the site',
+    ],
+  },
+  {
     date: '2026-10-08',
     tag: 'Improved',
     title: 'A new look for College Trends',

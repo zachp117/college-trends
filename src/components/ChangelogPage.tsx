@@ -26,7 +26,8 @@ function formatDate(iso: string): string {
 }
 
 export function ChangelogPage({ onBack }: Props) {
-  const entries = [...CHANGELOG].sort((a, b) => (a.date < b.date ? 1 : -1));
+  // Newest first; same-day entries keep their order in CHANGELOG.
+  const entries = [...CHANGELOG].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
   return (
     <div className="min-h-screen bg-slate-50">

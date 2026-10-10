@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2026-06-10",
+    "measured": false,
+    "official": {
+      "date": "2026-06-10",
+      "summary": "On June 10, 2026, the Department updated the College Scorecard website with more recent data for metrics from the Integrated Postsecondary Education Data System (IPEDS) and from Federal Student Aid sources."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  },
+  {
+    "date": "2026-03-23",
+    "measured": false,
+    "official": {
+      "date": "2026-03-23",
+      "summary": "On March 23, 2026, the Department updated the College Scorecard website with more recent data for metrics from the Integrated Postsecondary Education Data System (IPEDS), from the Internal Revenue Service (IRS), and from Federal Student Aid sources. Specific data updates in this release include: Updates to all data metrics derived from IPEDS with more recent data values from a new data collection year, Updates to all IRS earnings metrics measured four years after graduating and adding a new Field of Study metric, EARN_MDN_4YR_NAT, that measures earnings for each field of study nationally, Adding two metrics, EARN_THR_STATE and EARN_THR_NAT, that capture American Community Survey estimates of the earnings of high school graduates, Updated data derived from FSA sources to more recent values for the following data metrics: Currently Operating Status Flag, Heightened Cash Monitoring Flag, Accrediting Agency Name and Code, Title IV Approval Date, Federal School Code, Cohort Default Rate, Institutional control (Postsecondary Education Participants System version)."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  },
+  {
+    "date": "2025-11-17",
+    "measured": false,
+    "official": {
+      "date": "2025-11-17",
+      "summary": "On November 17, 2025, the Department updated the College Scorecard website with more recent data from Office of Postsecondary Education and Federal Student Aid sources."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  },
+  {
+    "date": "2025-05-21",
+    "measured": false,
+    "official": {
+      "date": "2025-05-21",
+      "summary": "On May 21, 2025, the Department updated the College Scorecard data to correct a truncation in the SCORECARD_SECTOR metric."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  },
+  {
+    "date": "2025-04-23",
+    "measured": false,
+    "official": {
+      "date": "2025-04-23",
+      "summary": "On April 23, 2025, the Department updated the College Scorecard website with more recent data for metrics from the Integrated Postsecondary Education Data System (IPEDS) and from Federal Student Aid sources."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  },
+  {
+    "date": "2025-01-16",
+    "measured": false,
+    "official": {
+      "date": "2025-01-16",
+      "summary": "On January 16, 2025, the Department updated the College Scorecard downloadable data files and the API to include more recent data values derived from Federal Student Aid sources for the following data metrics: Currently Operating Status Flag, Heightened Cash Monitoring Flag, Accrediting Agency Name and code, Title IV Approval Date, Federal School Code, Institutional Control."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  },
+  {
+    "date": "2024-10-10",
+    "measured": false,
+    "official": {
+      "date": "2024-10-10",
+      "summary": "On October 10, 2024, the Department updated the College Scorecard downloadable data files and the API as indicated below. More recent data values derived from Federal Student Aid sources for the following data metrics were included: Currently Operating Status Flag, Heightened Cash Monitoring Flag, Accrediting Agency Name and code, Title IV Approval Date, Federal School Code, Institutional Control."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  },
+  {
+    "date": "2024-05-06",
+    "measured": false,
+    "official": {
+      "date": "2024-05-06",
+      "summary": "On May 6, 2024, the Department updated the College Scorecard website with more recent data for metrics from the Integrated Postsecondary Education Data System (IPEDS) and from Federal Student Aid sources. To reduce file sizes, some text values have also been abbreviated in all data files. Also, the data documentation reports have been updated to include an appendix describing what changes were made to the report when compared to the prior version."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  }
+]

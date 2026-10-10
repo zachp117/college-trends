@@ -69,6 +69,14 @@ After cloning or wiping `data.db`, run `npm run db:migrate` to bootstrap the sch
 
 **One Hono process serves all `/api/*`** — no per-route serverless functions in `api/`. Vercel runs the Hono server as a single Node function. Routes include `/api/auth/*` (Better Auth handler), `/api/pins`, `/api/students`, `/api/student-schools`, `/api/health`.
 
+**Daily data check.** `.github/workflows/data-updates.yml` runs `scripts/check-data-updates.ts` daily
+(GitHub secret `SCORECARD_API_KEY`, ~60 requests). The API has no "last updated" date, so it hashes
+tracked fields per school (`data/scorecard-fingerprint.json`), measures which yearly file each field
+family comes from (`src/data/dataVintages.json`, feeds "How recent is this data?"), and reads the
+Department's change log. Changes are appended to `src/data/dataUpdates.json` (the "Data updates"
+section on /changelog) and committed to main, which redeploys. `--history-only` rebuilds the
+change-log history without API calls. Field families live in `src/util/dataVintage.ts`.
+
 ## Env vars
 
 See `.env.example`. Notable:

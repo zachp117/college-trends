@@ -1,5 +1,43 @@
 [
   {
+    "date": "2026-10-16",
+    "measured": true,
+    "changes": [
+      {
+        "family": "Tuition / cost / net price",
+        "schools": 5203,
+        "year": "2025–26",
+        "previousYear": "2024–25"
+      },
+      {
+        "family": "Completion / retention",
+        "schools": 2266,
+        "year": "2025–26",
+        "previousYear": "2024–25"
+      },
+      {
+        "family": "Financial aid (Pell grants, federal loans)",
+        "schools": 5414,
+        "year": "2025–26",
+        "previousYear": "2024–25"
+      },
+      {
+        "family": "Median debt at graduation",
+        "schools": 3837,
+        "year": "2024–25",
+        "previousYear": "2020–21"
+      },
+      {
+        "family": "Earnings after entry",
+        "schools": 5069,
+        "year": "2022–23",
+        "previousYear": "2020–21"
+      }
+    ],
+    "schoolsAdded": 1,
+    "schoolsRemoved": 42
+  },
+  {
     "date": "2026-06-10",
     "measured": false,
     "official": {

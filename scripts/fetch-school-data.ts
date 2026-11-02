@@ -3,6 +3,8 @@
  *
  * Writes:
  *   - .cache/school-facts.json: SchoolFacts[] for scripts/generate-sitemap.ts
+ *   - .cache/programs.json: bachelor's program earnings/debt per school, for the
+ *     /majors pages (scripts/build-collections.ts).
  *     (per-school title/meta, static body content, sitemap URLs).
  *   - src/data/schoolNameCollisions.json: names shared by several schools, so
  *     their title tags can add the city and state.
@@ -23,6 +25,7 @@ import {
   nameCollisions,
   type SchoolFacts,
 } from '../src/seo/schoolContent';
+import { PROGRAM_FIELDS, programsFromApiRow, type ProgramRecord } from '../src/seo/majorContent';
 
 // Mini dotenv loader: only sets vars that aren't already present (Vercel wins).
 if (existsSync('.env')) {
@@ -40,6 +43,7 @@ const SCORECARD_BASE = 'https://api.data.gov/ed/collegescorecard/v1/schools';
 const PER_PAGE = 100;
 const CONCURRENCY = 5;
 const FACTS_CACHE = resolve('.cache/school-facts.json');
+const PROGRAMS_CACHE = resolve('.cache/programs.json');
 const PEERS_OUT = resolve('src/data/peerMedians.json');
 const COLLISIONS_OUT = resolve('src/data/schoolNameCollisions.json');
 
@@ -51,7 +55,8 @@ interface ApiResponse {
 async function fetchPage(page: number, attempt = 1): Promise<ApiResponse> {
   const params = new URLSearchParams({
     api_key: API_KEY!,
-    fields: FACT_FIELDS.join(','),
+    // Program earnings and debt ride along in the same request (no extra calls).
+    fields: [...FACT_FIELDS, ...PROGRAM_FIELDS].join(','),
     // Only operating, degree-granting institutions, matching what the app shows.
     'school.operating': '1',
     'school.degrees_awarded.predominant': '1,2,3,4',
@@ -69,7 +74,7 @@ async function fetchPage(page: number, attempt = 1): Promise<ApiResponse> {
   return (await res.json()) as ApiResponse;
 }
 
-async function fetchAllFacts(): Promise<SchoolFacts[]> {
+async function fetchAllRows(): Promise<Array<Record<string, unknown>>> {
   console.log('Fetching school facts from College Scorecard…');
   const first = await fetchPage(0);
   const totalPages = Math.ceil(first.metadata.total / PER_PAGE);
@@ -81,9 +86,7 @@ async function fetchAllFacts(): Promise<SchoolFacts[]> {
     process.stdout.write(`\r  fetched ${rows.length}/${first.metadata.total}    `);
   }
   process.stdout.write('\n');
-  return rows
-    .map(factsFromApiRow)
-    .filter((f) => Number.isFinite(f.id) && f.name.length > 0);
+  return rows;
 }
 
 async function main() {
@@ -92,9 +95,14 @@ async function main() {
     return;
   }
   try {
-    const facts = await fetchAllFacts();
+    const rows = await fetchAllRows();
+    const facts: SchoolFacts[] = rows
+      .map(factsFromApiRow)
+      .filter((f) => Number.isFinite(f.id) && f.name.length > 0);
+    const programs: ProgramRecord[] = rows.flatMap(programsFromApiRow);
     mkdirSync(resolve('.cache'), { recursive: true });
     writeFileSync(FACTS_CACHE, JSON.stringify(facts));
+    writeFileSync(PROGRAMS_CACHE, JSON.stringify(programs));
     writeFileSync(PEERS_OUT, JSON.stringify(computePeerMedians(facts), null, 2) + '\n');
     writeFileSync(COLLISIONS_OUT, JSON.stringify(nameCollisions(facts), null, 2) + '\n');
     console.log(`✓ ${facts.length} school facts cached; peer medians written to src/data/peerMedians.json`);

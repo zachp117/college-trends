@@ -212,8 +212,8 @@ export function CollectionPage({ collection: c, state, rows }: Props) {
           <p className="mt-2 leading-relaxed">
             This page includes {c.definition}, as reported in the College Scorecard. Summary figures are medians
             across schools: each school counts once, whatever its size, and schools that don't report a measure are
-            left out of that measure. The Scorecard reports earnings and debt for a whole institution family, so
-            branch campuses of one university can show the same figures. Most recent data year: cost {vintages.years.cost}, graduation and retention{' '}
+            left out of that measure. The Scorecard reports earnings and debt for a whole institution, so branch
+            campuses share one figure; for those two measures each institution counts once. Most recent data year: cost {vintages.years.cost}, graduation and retention{' '}
             {vintages.years.completion}, earnings {vintages.years.earnings}, debt {vintages.years.debt}.{' '}
             <a href="/about" className="text-indigo-700 hover:text-indigo-900 underline">
               More on the data
@@ -242,8 +242,10 @@ function StatGrid({ local, national }: { local: Summary; national: Summary | nul
     cards.push({
       label,
       value: METRICS[k].format(s.median),
-      sub: n ? `U.S.: ${METRICS[k].format(n.median)}` : `${int(s.n)} schools reporting`,
-      tip: `${METRICS[k].tip} The figure here is the median across schools.`,
+      sub: n ? `U.S.: ${METRICS[k].format(n.median)}` : `${int(s.n)} reporting`,
+      tip: `${METRICS[k].tip} The figure here is the median across ${
+        k === 'earnings10' || k === 'medianDebt' ? 'institutions (branch campuses count once)' : 'schools'
+      }.`,
     });
   }
   return (

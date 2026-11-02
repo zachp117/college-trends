@@ -12,6 +12,8 @@ import {
 import { InfoTooltip } from './InfoTooltip';
 import { COLLECTIONS, collectionPath, hasStatePage } from '../data/collections';
 import { stateName } from '../seo/schoolContent';
+import { majorForTitle } from '../data/majors';
+import { majorPath } from '../seo/majorContent';
 
 interface Props {
   facts: SchoolFacts;
@@ -41,6 +43,11 @@ export function SchoolIntro({ facts, peers, back, actions, filterLine, extraStat
       ? { href: collectionPath(c.slug, facts.state), label: `${c.label} in ${stateName(facts.state)}` }
       : { href: collectionPath(c.slug), label: `All U.S. ${c.noun}` },
   );
+  // Top programs are bachelor's-level only when the school mostly awards bachelor's.
+  const majors =
+    facts.predominantDegree === 3
+      ? facts.topPrograms.map(majorForTitle).filter((m): m is NonNullable<typeof m> => Boolean(m))
+      : [];
   const website = facts.url
     ? facts.url.startsWith('http')
       ? facts.url
@@ -90,6 +97,19 @@ export function SchoolIntro({ facts, peers, back, actions, filterLine, extraStat
                 {i > 0 && ' · '}
                 <a href={g.href} className="text-indigo-700 hover:text-indigo-900">
                   {g.label}
+                </a>
+              </span>
+            ))}
+          </p>
+        )}
+        {majors.length > 0 && (
+          <p className="mt-1 text-sm text-slate-600">
+            Compare its largest majors across colleges:{' '}
+            {majors.map((m, i) => (
+              <span key={m.slug}>
+                {i > 0 && ' · '}
+                <a href={majorPath(m.slug)} className="text-indigo-700 hover:text-indigo-900">
+                  {m.title}
                 </a>
               </span>
             ))}

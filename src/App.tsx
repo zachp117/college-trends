@@ -592,6 +592,7 @@ export default function App() {
         <span>Data: U.S. Dept. of Education College Scorecard · api.data.gov</span>
         <span className="flex gap-4">
           <a href="/colleges" className="hover:text-slate-700 transition">Browse colleges</a>
+          <a href="/majors" className="hover:text-slate-700 transition">Majors</a>
           <a href="/changelog" className="hover:text-slate-700 transition">What's new</a>
           <a href="/about" className="hover:text-slate-700 transition">About &amp; methodology</a>
         </span>

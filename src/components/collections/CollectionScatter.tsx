@@ -10,7 +10,7 @@ import {
   YAxis,
   ZAxis,
 } from 'recharts';
-import { METRICS, schoolPath, type CollectionRow, type RowMetric } from '../../seo/collectionContent';
+import { METRICS, rowsForMetric, schoolPath, type CollectionRow, type RowMetric } from '../../seo/collectionContent';
 
 interface Props {
   /** Every school in the collection, nationwide. */
@@ -65,8 +65,11 @@ export function CollectionScatter({ rows, stateCode, stateName, noun, options }:
     return { focus, context, focusTotal };
   }, [rows, stateCode, xKey, yKey]);
 
-  const medX = median(focus.map((p) => p.x));
-  const medY = median(focus.map((p) => p.y));
+  // Same counting as the summary cards: earnings and debt count each institution once.
+  const medianOf = (k: RowMetric) =>
+    median(rowsForMetric(focus.map((p) => p.row), k).map((r) => r[k] as number));
+  const medX = medianOf(xKey);
+  const medY = medianOf(yKey);
   const xDef = METRICS[xKey];
   const yDef = METRICS[yKey];
   const axisOptions = [...options, 'size' as RowMetric].filter((k, i, a) => a.indexOf(k) === i);

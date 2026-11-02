@@ -72,6 +72,12 @@ listing which state pages exist, min 3 schools) → `vite build` → `generate-s
 `/colleges` page with the same React components). These pages load static JSON and make **no live API
 calls**, which matters because the site shares one 1,000 req/hr key.
 
+**`/majors` pages (bachelor's programs by CIP-4).** `src/seo/majorContent.ts`. Program earnings/debt ride
+along in the same `fetch-school-data` request (no extra API calls) and are cached to `.cache/programs.json`;
+`build-collections` writes `public/data/majors/*.json` and the committed `src/data/majorPages.json`. The
+Scorecard reports program earnings/debt per institution (6-digit OPE ID, `ope6`), so branch campuses repeat
+the same figures: medians, top-5 lists and chart dots use `onePerInstitution()`; the table lists every campus.
+
 **Build-time OG generation has a fallback.** The generic OG PNG is a static file from the brand kit. `scripts/generate-sitemap.ts` fetches the full school list from data.gov (needs `VITE_SCORECARD_API_KEY`) and emits per-school stubs + `sitemap.xml`. If the key is missing or the API call fails, the build still succeeds with a static sitemap and no per-school stubs — intentional, so CI doesn't break when secrets are absent. Don't add hard failure on missing API key.
 
 **Drizzle schema is split into two layers** in `server/db/schema.ts`: Better Auth core tables (`user`, `session`, `account`, `verification`) and app tables (`student`, `studentSchool`, `pinnedSchool`). Migrations are SQL files in `server/db/migrations/` — the canonical schema source. `data.db` is gitignored.

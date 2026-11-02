@@ -27,6 +27,8 @@ export const SITE_URL = 'https://www.collegetrends.io';
 
 export interface CollectionRow {
   id: number;
+  /** 6-digit OPE ID: branch campuses share it, and share earnings and debt figures. */
+  ope6: string | null;
   name: string;
   city: string;
   state: string;
@@ -49,6 +51,7 @@ export interface CollectionRow {
 export function rowFromFacts(f: SchoolFacts): CollectionRow {
   return {
     id: f.id,
+    ope6: f.ope6 ?? null,
     name: f.name,
     city: f.city,
     state: f.state,
@@ -232,10 +235,32 @@ function median(xs: number[]): number {
   return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
 
+/** Metrics the Scorecard reports per institution (6-digit OPE ID), repeated on each branch campus. */
+export const INSTITUTION_METRICS: RowMetric[] = ['earnings10', 'medianDebt'];
+
+/**
+ * One row per institution, keeping the largest campus. Used for earnings and debt
+ * so a university with many branch campuses counts once.
+ */
+export function onePerInstitution(rows: CollectionRow[]): CollectionRow[] {
+  const best = new Map<string, CollectionRow>();
+  for (const r of rows) {
+    const k = r.ope6 ?? `id${r.id}`;
+    const cur = best.get(k);
+    if (!cur || (r.size ?? 0) > (cur.size ?? 0)) best.set(k, r);
+  }
+  return [...best.values()];
+}
+
+/** Rows to use for a metric: one per institution for earnings and debt, every school otherwise. */
+export function rowsForMetric(rows: CollectionRow[], key: RowMetric): CollectionRow[] {
+  return INSTITUTION_METRICS.includes(key) ? onePerInstitution(rows) : rows;
+}
+
 export function summarize(rows: CollectionRow[]): Summary {
   const metrics: Summary['metrics'] = {};
   for (const key of Object.keys(METRICS) as RowMetric[]) {
-    const have = rows.filter((r) => r[key] !== null);
+    const have = rowsForMetric(rows, key).filter((r) => r[key] !== null);
     if (have.length === 0) continue;
     const sorted = [...have].sort((a, b) => (a[key] as number) - (b[key] as number));
     metrics[key] = {
@@ -259,7 +284,7 @@ export function extremes(
   dir: 'low' | 'high',
   n = 5,
 ): CollectionRow[] {
-  return rows
+  return rowsForMetric(rows, key)
     .filter((r) => r[key] !== null)
     .sort((a, b) =>
       dir === 'low' ? (a[key] as number) - (b[key] as number) : (b[key] as number) - (a[key] as number),
@@ -362,7 +387,7 @@ export function collectionIntro(
     out.push(
       `Former students' median earnings 10 years after starting college are ${money(
         earn.median,
-      )} at the median school${compareClause('earnings10', local, state ? national : null, c.noun)}.`,
+      )} at the median institution${compareClause('earnings10', local, state ? national : null, c.noun)}.`,
     );
   }
   const grad = local.metrics.gradRate;
@@ -432,9 +457,9 @@ export function quickFacts(c: Collection, state: Place | null, rows: CollectionR
     const top = earn.n >= 3 ? extremes(rows, 'earnings10', 'high', Math.min(3, earn.n)) : [];
     out.push({
       q: `How much do former students of ${c.noun} in ${where} earn?`,
-      a: `At the median school, former students who received federal aid earn ${money(
+      a: `At the median institution, former students who received federal aid earn ${money(
         earn.median,
-      )} 10 years after starting college.${
+      )} 10 years after starting college (${int(earn.n)} institutions reporting; branch campuses share one figure and count once).${
         top.length ? ` The highest reported medians are at ${nameList(top, 'earnings10')}.` : ''
       }`,
     });
@@ -454,7 +479,7 @@ export function quickFacts(c: Collection, state: Place | null, rows: CollectionR
   if (debt) {
     out.push({
       q: `How much student debt do graduates of ${c.noun} in ${where} have?`,
-      a: `The median school's graduates leave with ${money(
+      a: `The median institution's graduates leave with ${money(
         debt.median,
       )} in federal student loans (the median balance). Parent PLUS and private loans are not included.`,
     });

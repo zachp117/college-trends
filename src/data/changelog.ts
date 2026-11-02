@@ -19,6 +19,26 @@ export interface ChangelogEntry {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-11-02',
+    tag: 'New',
+    title: 'Compare a major across every college',
+    description:
+      "New pages for 201 bachelor's majors show what graduates earn one and five years after finishing, and what they borrow, at every college that reports it.",
+    details: [
+      'One chart per major with a dot for each college, filtered by school type or state',
+      'A sortable table of every college offering the major',
+      'A list of all majors, sortable by earnings and debt',
+      'School pages link to their largest majors',
+    ],
+  },
+  {
+    date: '2026-11-02',
+    tag: 'Fixed',
+    title: 'Earnings and debt count each university once',
+    description:
+      'The Scorecard reports earnings and debt for a whole university, so branch campuses repeat the same figures. Medians on the college group pages now count each university once, so systems with many campuses no longer pull the numbers toward their own.',
+  },
+  {
+    date: '2026-11-02',
     tag: 'Improved',
     title: 'Charts on the Compare view, and pin up to 8 schools',
     description:

@@ -15,7 +15,10 @@ export function SiteHeader() {
           <a href="/colleges" className={`${navLink} hidden sm:inline-block`}>
             Browse colleges
           </a>
-          <a href="/about" className={`${navLink} hidden sm:inline-block`}>
+          <a href="/majors" className={`${navLink} hidden sm:inline-block`}>
+            Majors
+          </a>
+          <a href="/about" className={`${navLink} hidden md:inline-block`}>
             About
           </a>
           <a
@@ -36,6 +39,7 @@ export function SiteFooter() {
       <span>Data: U.S. Dept. of Education College Scorecard · api.data.gov</span>
       <span className="flex gap-4">
         <a href="/colleges" className="hover:text-slate-700 transition">Browse colleges</a>
+        <a href="/majors" className="hover:text-slate-700 transition">Majors</a>
         <a href="/changelog" className="hover:text-slate-700 transition">What's new</a>
         <a href="/about" className="hover:text-slate-700 transition">About &amp; methodology</a>
       </span>

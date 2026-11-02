@@ -155,6 +155,9 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
               <a href="/colleges" className="hover:text-slate-700 transition">
                 Browse colleges
               </a>
+              <a href="/majors" className="hover:text-slate-700 transition">
+                Majors
+              </a>
               <a href="/changelog" className="hover:text-slate-700 transition">
                 What's new
               </a>

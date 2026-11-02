@@ -13,6 +13,7 @@
  *   3. dist/colleges/index.html, dist/colleges/<collection>/index.html and
  *      dist/colleges/<collection>/<state>/index.html: the /colleges pages, pre-rendered
  *      from the same React components the SPA uses (chart placeholder, first 50 rows).
+ *   4. dist/majors/index.html and dist/majors/<slug>/index.html, from .cache/programs.json.
  *
  * If the facts cache is missing (no API key, or the fetch failed), the build still
  * succeeds with a static-only sitemap and no per-school HTML.
@@ -45,6 +46,21 @@ import {
   summarize,
 } from '../src/seo/collectionContent';
 import { stateName } from '../src/seo/schoolContent';
+import { MajorPage } from '../src/components/majors/MajorPage';
+import { MajorsHub } from '../src/components/majors/MajorsHub';
+import {
+  MAJORS_HUB_META,
+  MAJORS_HUB_TITLE,
+  buildMajorData,
+  majorIndex,
+  majorJsonLd,
+  majorMeta,
+  majorPath,
+  majorQuickFacts,
+  majorTitle,
+  summarizeMajor,
+  type ProgramRecord,
+} from '../src/seo/majorContent';
 
 const SITE_URL = 'https://www.collegetrends.io';
 const FACTS_CACHE = resolve('.cache/school-facts.json');
@@ -241,6 +257,34 @@ function generateCollectionHtml(template: string, schools: SchoolFacts[]): strin
   return paths;
 }
 
+/** Write /majors and every /majors/<slug> page; returns their paths. */
+function generateMajorHtml(template: string, schools: SchoolFacts[]): string[] {
+  const cache = resolve('.cache/programs.json');
+  if (!existsSync(cache)) return [];
+  const data = buildMajorData(schools, JSON.parse(readFileSync(cache, 'utf8')) as ProgramRecord[]);
+  const paths: string[] = [];
+  writePage(
+    template,
+    { path: majorPath(), title: MAJORS_HUB_TITLE, description: MAJORS_HUB_META },
+    renderToStaticMarkup(createElement(MajorsHub, { index: majorIndex(data) })),
+  );
+  paths.push(majorPath());
+  for (const m of data.majors) {
+    const rows = data.rows[m.slug] ?? [];
+    const s = summarizeMajor(rows);
+    const title = majorTitle(m, s);
+    const description = majorMeta(m, s);
+    const path = majorPath(m.slug);
+    writePage(
+      template,
+      { path, title, description, jsonLd: majorJsonLd(m, rows, majorQuickFacts(m, rows, s), title, description) },
+      renderToStaticMarkup(createElement(MajorPage, { major: m, rows })),
+    );
+    paths.push(path);
+  }
+  return paths;
+}
+
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
@@ -281,6 +325,12 @@ function main() {
         urls.push({ loc: SITE_URL + p, priority: isState ? '0.7' : '0.8', changefreq: 'monthly' });
       }
       console.log(`✓ Wrote ${collectionPaths.length} /colleges pages`);
+
+      const majorPaths = generateMajorHtml(template, schools);
+      for (const p of majorPaths) {
+        urls.push({ loc: SITE_URL + p, priority: p === '/majors' ? '0.8' : '0.7', changefreq: 'monthly' });
+      }
+      console.log(`✓ Wrote ${majorPaths.length} /majors pages`);
     }
   }
 

@@ -1,0 +1,1007 @@
+[
+  {
+    "cip": "5203",
+    "slug": "accounting-and-related-services",
+    "title": "Accounting and Related Services"
+  },
+  {
+    "cip": "1402",
+    "slug": "aerospace-aeronautical-and-astronautical-space-engineering",
+    "title": "Aerospace, Aeronautical, and Astronautical/Space Engineering"
+  },
+  {
+    "cip": "0101",
+    "slug": "agricultural-business-and-management",
+    "title": "Agricultural Business and Management"
+  },
+  {
+    "cip": "1403",
+    "slug": "agricultural-engineering",
+    "title": "Agricultural Engineering"
+  },
+  {
+    "cip": "0102",
+    "slug": "agricultural-mechanization",
+    "title": "Agricultural Mechanization"
+  },
+  {
+    "cip": "0103",
+    "slug": "agricultural-production-operations",
+    "title": "Agricultural Production Operations"
+  },
+  {
+    "cip": "0108",
+    "slug": "agricultural-public-services",
+    "title": "Agricultural Public Services"
+  },
+  {
+    "cip": "0100",
+    "slug": "agriculture-general",
+    "title": "Agriculture, General"
+  },
+  {
+    "cip": "4901",
+    "slug": "air-transportation",
+    "title": "Air Transportation"
+  },
+  {
+    "cip": "5109",
+    "slug": "allied-health-diagnostic-intervention-and-treatment-professions",
+    "title": "Allied Health Diagnostic, Intervention, and Treatment Professions"
+  },
+  {
+    "cip": "1616",
+    "slug": "american-sign-language",
+    "title": "American Sign Language"
+  },
+  {
+    "cip": "0109",
+    "slug": "animal-sciences",
+    "title": "Animal Sciences"
+  },
+  {
+    "cip": "4502",
+    "slug": "anthropology",
+    "title": "Anthropology"
+  },
+  {
+    "cip": "1909",
+    "slug": "apparel-and-textiles",
+    "title": "Apparel and Textiles"
+  },
+  {
+    "cip": "0106",
+    "slug": "applied-horticulture-and-horticultural-business-services",
+    "title": "Applied Horticulture and Horticultural Business Services"
+  },
+  {
+    "cip": "2703",
+    "slug": "applied-mathematics",
+    "title": "Applied Mathematics"
+  },
+  {
+    "cip": "1404",
+    "slug": "architectural-engineering",
+    "title": "Architectural Engineering"
+  },
+  {
+    "cip": "0409",
+    "slug": "architectural-sciences-and-technology",
+    "title": "Architectural Sciences and Technology"
+  },
+  {
+    "cip": "0402",
+    "slug": "architecture",
+    "title": "Architecture"
+  },
+  {
+    "cip": "0501",
+    "slug": "area-studies",
+    "title": "Area Studies"
+  },
+  {
+    "cip": "5010",
+    "slug": "arts-entertainment-and-media-management",
+    "title": "Arts, Entertainment, and Media Management"
+  },
+  {
+    "cip": "4004",
+    "slug": "atmospheric-sciences-and-meteorology",
+    "title": "Atmospheric Sciences and Meteorology"
+  },
+  {
+    "cip": "1002",
+    "slug": "audiovisual-communications-technologies-technicians",
+    "title": "Audiovisual Communications Technologies/Technicians"
+  },
+  {
+    "cip": "3017",
+    "slug": "behavioral-sciences",
+    "title": "Behavioral Sciences"
+  },
+  {
+    "cip": "3902",
+    "slug": "bible-biblical-studies",
+    "title": "Bible/Biblical Studies"
+  },
+  {
+    "cip": "2602",
+    "slug": "biochemistry-biophysics-and-molecular-biology",
+    "title": "Biochemistry, Biophysics and Molecular Biology"
+  },
+  {
+    "cip": "2699",
+    "slug": "biological-and-biomedical-sciences-other",
+    "title": "Biological and Biomedical Sciences, Other"
+  },
+  {
+    "cip": "3001",
+    "slug": "biological-and-physical-sciences",
+    "title": "Biological and Physical Sciences"
+  },
+  {
+    "cip": "2601",
+    "slug": "biology-general",
+    "title": "Biology, General"
+  },
+  {
+    "cip": "1405",
+    "slug": "biomedical-medical-engineering",
+    "title": "Biomedical/Medical Engineering"
+  },
+  {
+    "cip": "2612",
+    "slug": "biotechnology",
+    "title": "Biotechnology"
+  },
+  {
+    "cip": "5202",
+    "slug": "business-administration-management-and-operations",
+    "title": "Business Administration, Management and Operations"
+  },
+  {
+    "cip": "5299",
+    "slug": "business-management-marketing-and-related-support-services-other",
+    "title": "Business, Management, Marketing, and Related Support Services, Other"
+  },
+  {
+    "cip": "5201",
+    "slug": "business-commerce-general",
+    "title": "Business/Commerce, General"
+  },
+  {
+    "cip": "5205",
+    "slug": "business-corporate-communications",
+    "title": "Business/Corporate Communications"
+  },
+  {
+    "cip": "5206",
+    "slug": "business-managerial-economics",
+    "title": "Business/Managerial Economics"
+  },
+  {
+    "cip": "2604",
+    "slug": "cell-cellular-biology-and-anatomical-sciences",
+    "title": "Cell/Cellular Biology and Anatomical Sciences"
+  },
+  {
+    "cip": "1407",
+    "slug": "chemical-engineering",
+    "title": "Chemical Engineering"
+  },
+  {
+    "cip": "4005",
+    "slug": "chemistry",
+    "title": "Chemistry"
+  },
+  {
+    "cip": "0403",
+    "slug": "city-urban-community-and-regional-planning",
+    "title": "City/Urban, Community, and Regional Planning"
+  },
+  {
+    "cip": "1408",
+    "slug": "civil-engineering",
+    "title": "Civil Engineering"
+  },
+  {
+    "cip": "1502",
+    "slug": "civil-engineering-technologies-technicians",
+    "title": "Civil Engineering Technologies/Technicians"
+  },
+  {
+    "cip": "4228",
+    "slug": "clinical-counseling-and-applied-psychology",
+    "title": "Clinical, Counseling and Applied Psychology"
+  },
+  {
+    "cip": "5110",
+    "slug": "clinical-medical-laboratory-science-research-and-allied-professions",
+    "title": "Clinical/Medical Laboratory Science/Research and Allied Professions"
+  },
+  {
+    "cip": "3025",
+    "slug": "cognitive-science",
+    "title": "Cognitive Science"
+  },
+  {
+    "cip": "0901",
+    "slug": "communication-and-media-studies",
+    "title": "Communication and Media Studies"
+  },
+  {
+    "cip": "5102",
+    "slug": "communication-disorders-sciences-and-services",
+    "title": "Communication Disorders Sciences and Services"
+  },
+  {
+    "cip": "0999",
+    "slug": "communication-journalism-and-related-programs-other",
+    "title": "Communication, Journalism, and Related Programs, Other"
+  },
+  {
+    "cip": "4402",
+    "slug": "community-organization-and-advocacy",
+    "title": "Community Organization and Advocacy"
+  },
+  {
+    "cip": "1101",
+    "slug": "computer-and-information-sciences-general",
+    "title": "Computer and Information Sciences, General"
+  },
+  {
+    "cip": "1409",
+    "slug": "computer-engineering",
+    "title": "Computer Engineering"
+  },
+  {
+    "cip": "1512",
+    "slug": "computer-engineering-technologies-technicians",
+    "title": "Computer Engineering Technologies/Technicians"
+  },
+  {
+    "cip": "1102",
+    "slug": "computer-programming",
+    "title": "Computer Programming"
+  },
+  {
+    "cip": "1107",
+    "slug": "computer-science",
+    "title": "Computer Science"
+  },
+  {
+    "cip": "1108",
+    "slug": "computer-software-and-media-applications",
+    "title": "Computer Software and Media Applications"
+  },
+  {
+    "cip": "1105",
+    "slug": "computer-systems-analysis",
+    "title": "Computer Systems Analysis"
+  },
+  {
+    "cip": "1109",
+    "slug": "computer-systems-networking-and-telecommunications",
+    "title": "Computer Systems Networking and Telecommunications"
+  },
+  {
+    "cip": "1110",
+    "slug": "computer-information-technology-administration-and-management",
+    "title": "Computer/Information Technology Administration and Management"
+  },
+  {
+    "cip": "1433",
+    "slug": "construction-engineering",
+    "title": "Construction Engineering"
+  },
+  {
+    "cip": "1510",
+    "slug": "construction-engineering-technology-technician",
+    "title": "Construction Engineering Technology/Technician"
+  },
+  {
+    "cip": "5220",
+    "slug": "construction-management",
+    "title": "Construction Management"
+  },
+  {
+    "cip": "4301",
+    "slug": "criminal-justice-and-corrections",
+    "title": "Criminal Justice and Corrections"
+  },
+  {
+    "cip": "4504",
+    "slug": "criminology",
+    "title": "Criminology"
+  },
+  {
+    "cip": "1205",
+    "slug": "culinary-arts-and-related-services",
+    "title": "Culinary Arts and Related Services"
+  },
+  {
+    "cip": "5003",
+    "slug": "dance",
+    "title": "Dance"
+  },
+  {
+    "cip": "5106",
+    "slug": "dental-support-services-and-allied-professions",
+    "title": "Dental Support Services and Allied Professions"
+  },
+  {
+    "cip": "5004",
+    "slug": "design-and-applied-arts",
+    "title": "Design and Applied Arts"
+  },
+  {
+    "cip": "5131",
+    "slug": "dietetics-and-clinical-nutrition-services",
+    "title": "Dietetics and Clinical Nutrition Services"
+  },
+  {
+    "cip": "1513",
+    "slug": "drafting-design-engineering-technologies-technicians",
+    "title": "Drafting/Design Engineering Technologies/Technicians"
+  },
+  {
+    "cip": "5005",
+    "slug": "drama-theatre-arts-and-stagecraft",
+    "title": "Drama/Theatre Arts and Stagecraft"
+  },
+  {
+    "cip": "1603",
+    "slug": "east-asian-languages-literatures-and-linguistics",
+    "title": "East Asian Languages, Literatures, and Linguistics"
+  },
+  {
+    "cip": "2613",
+    "slug": "ecology-evolution-systematics-and-population-biology",
+    "title": "Ecology, Evolution, Systematics, and Population Biology"
+  },
+  {
+    "cip": "4506",
+    "slug": "economics",
+    "title": "Economics"
+  },
+  {
+    "cip": "1301",
+    "slug": "education-general",
+    "title": "Education, General"
+  },
+  {
+    "cip": "1399",
+    "slug": "education-other",
+    "title": "Education, Other"
+  },
+  {
+    "cip": "1410",
+    "slug": "electrical-electronics-and-communications-engineering",
+    "title": "Electrical, Electronics, and Communications Engineering"
+  },
+  {
+    "cip": "1503",
+    "slug": "electrical-electronic-engineering-technologies-technicians",
+    "title": "Electrical/Electronic Engineering Technologies/Technicians"
+  },
+  {
+    "cip": "1504",
+    "slug": "electromechanical-technologies-technicians",
+    "title": "Electromechanical Technologies/Technicians"
+  },
+  {
+    "cip": "1412",
+    "slug": "engineering-physics",
+    "title": "Engineering Physics"
+  },
+  {
+    "cip": "1413",
+    "slug": "engineering-science",
+    "title": "Engineering Science"
+  },
+  {
+    "cip": "1500",
+    "slug": "engineering-technologies-technicians-general",
+    "title": "Engineering Technologies/Technicians, General"
+  },
+  {
+    "cip": "1515",
+    "slug": "engineering-related-fields",
+    "title": "Engineering-Related Fields"
+  },
+  {
+    "cip": "1401",
+    "slug": "engineering-general",
+    "title": "Engineering, General"
+  },
+  {
+    "cip": "1499",
+    "slug": "engineering-other",
+    "title": "Engineering, Other"
+  },
+  {
+    "cip": "1599",
+    "slug": "engineering-engineering-related-technologies-technicians-other",
+    "title": "Engineering/Engineering-Related Technologies/Technicians, Other"
+  },
+  {
+    "cip": "2301",
+    "slug": "english-language-and-literature-general",
+    "title": "English Language and Literature, General"
+  },
+  {
+    "cip": "2399",
+    "slug": "english-language-and-literature-letters-other",
+    "title": "English Language and Literature/Letters, Other"
+  },
+  {
+    "cip": "5207",
+    "slug": "entrepreneurial-and-small-business-operations",
+    "title": "Entrepreneurial and Small Business Operations"
+  },
+  {
+    "cip": "0404",
+    "slug": "environmental-design",
+    "title": "Environmental Design"
+  },
+  {
+    "cip": "1414",
+    "slug": "environmental-environmental-health-engineering",
+    "title": "Environmental/Environmental Health Engineering"
+  },
+  {
+    "cip": "0302",
+    "slug": "environmental-natural-resources-management-and-policy",
+    "title": "Environmental/Natural Resources Management and Policy"
+  },
+  {
+    "cip": "0502",
+    "slug": "ethnic-cultural-minority-gender-and-group-studies",
+    "title": "Ethnic, Cultural Minority, Gender, and Group Studies"
+  },
+  {
+    "cip": "1904",
+    "slug": "family-and-consumer-economics-and-related-studies",
+    "title": "Family and Consumer Economics and Related Studies"
+  },
+  {
+    "cip": "1901",
+    "slug": "family-and-consumer-sciences-human-sciences-general",
+    "title": "Family and Consumer Sciences/Human Sciences, General"
+  },
+  {
+    "cip": "5006",
+    "slug": "film-video-and-photographic-arts",
+    "title": "Film/Video and Photographic Arts"
+  },
+  {
+    "cip": "5208",
+    "slug": "finance-and-financial-management-services",
+    "title": "Finance and Financial Management Services"
+  },
+  {
+    "cip": "5007",
+    "slug": "fine-and-studio-arts",
+    "title": "Fine and Studio Arts"
+  },
+  {
+    "cip": "4302",
+    "slug": "fire-protection",
+    "title": "Fire Protection"
+  },
+  {
+    "cip": "0110",
+    "slug": "food-science-and-technology",
+    "title": "Food Science and Technology"
+  },
+  {
+    "cip": "1905",
+    "slug": "foods-nutrition-and-related-services",
+    "title": "Foods, Nutrition, and Related Services"
+  },
+  {
+    "cip": "0305",
+    "slug": "forestry",
+    "title": "Forestry"
+  },
+  {
+    "cip": "5218",
+    "slug": "general-sales-merchandising-and-related-marketing-operations",
+    "title": "General Sales, Merchandising and Related Marketing Operations"
+  },
+  {
+    "cip": "2608",
+    "slug": "genetics",
+    "title": "Genetics"
+  },
+  {
+    "cip": "4507",
+    "slug": "geography-and-cartography",
+    "title": "Geography and Cartography"
+  },
+  {
+    "cip": "4006",
+    "slug": "geological-and-earth-sciences-geosciences",
+    "title": "Geological and Earth Sciences/Geosciences"
+  },
+  {
+    "cip": "1003",
+    "slug": "graphic-communications",
+    "title": "Graphic Communications"
+  },
+  {
+    "cip": "5107",
+    "slug": "health-and-medical-administrative-services",
+    "title": "Health and Medical Administrative Services"
+  },
+  {
+    "cip": "5199",
+    "slug": "health-professions-and-related-clinical-sciences-other",
+    "title": "Health Professions and Related Clinical Sciences, Other"
+  },
+  {
+    "cip": "5100",
+    "slug": "health-services-allied-health-health-sciences-general",
+    "title": "Health Services/Allied Health/Health Sciences, General"
+  },
+  {
+    "cip": "5111",
+    "slug": "health-medical-preparatory-programs",
+    "title": "Health/Medical Preparatory Programs"
+  },
+  {
+    "cip": "5401",
+    "slug": "history",
+    "title": "History"
+  },
+  {
+    "cip": "4303",
+    "slug": "homeland-security",
+    "title": "Homeland Security"
+  },
+  {
+    "cip": "4399",
+    "slug": "homeland-security-law-enforcement-firefighting-and-related-protective-services-o",
+    "title": "Homeland Security, Law Enforcement, Firefighting and Related Protective Services, Other"
+  },
+  {
+    "cip": "5209",
+    "slug": "hospitality-administration-management",
+    "title": "Hospitality Administration/Management"
+  },
+  {
+    "cip": "3027",
+    "slug": "human-biology",
+    "title": "Human Biology"
+  },
+  {
+    "cip": "1907",
+    "slug": "human-development-family-studies-and-related-services",
+    "title": "Human Development, Family Studies, and Related Services"
+  },
+  {
+    "cip": "5210",
+    "slug": "human-resources-management-and-services",
+    "title": "Human Resources Management and Services"
+  },
+  {
+    "cip": "4400",
+    "slug": "human-services-general",
+    "title": "Human Services, General"
+  },
+  {
+    "cip": "1435",
+    "slug": "industrial-engineering",
+    "title": "Industrial Engineering"
+  },
+  {
+    "cip": "1506",
+    "slug": "industrial-production-technologies-technicians",
+    "title": "Industrial Production Technologies/Technicians"
+  },
+  {
+    "cip": "1104",
+    "slug": "information-science-studies",
+    "title": "Information Science/Studies"
+  },
+  {
+    "cip": "5217",
+    "slug": "insurance",
+    "title": "Insurance"
+  },
+  {
+    "cip": "2902",
+    "slug": "intelligence-command-control-and-information-operations",
+    "title": "Intelligence, Command Control and Information Operations"
+  },
+  {
+    "cip": "0405",
+    "slug": "interior-architecture",
+    "title": "Interior Architecture"
+  },
+  {
+    "cip": "5211",
+    "slug": "international-business",
+    "title": "International Business"
+  },
+  {
+    "cip": "4509",
+    "slug": "international-relations-and-national-security-studies",
+    "title": "International Relations and National Security Studies"
+  },
+  {
+    "cip": "3020",
+    "slug": "international-globalization-studies",
+    "title": "International/Globalization Studies"
+  },
+  {
+    "cip": "0904",
+    "slug": "journalism",
+    "title": "Journalism"
+  },
+  {
+    "cip": "0406",
+    "slug": "landscape-architecture",
+    "title": "Landscape Architecture"
+  },
+  {
+    "cip": "2299",
+    "slug": "legal-professions-and-studies-other",
+    "title": "Legal Professions and Studies, Other"
+  },
+  {
+    "cip": "2203",
+    "slug": "legal-support-services",
+    "title": "Legal Support Services"
+  },
+  {
+    "cip": "2401",
+    "slug": "liberal-arts-and-sciences-general-studies-and-humanities",
+    "title": "Liberal Arts and Sciences, General Studies and Humanities"
+  },
+  {
+    "cip": "1601",
+    "slug": "linguistic-comparative-and-related-language-studies-and-services",
+    "title": "Linguistic, Comparative, and Related Language Studies and Services"
+  },
+  {
+    "cip": "5212",
+    "slug": "management-information-systems-and-services",
+    "title": "Management Information Systems and Services"
+  },
+  {
+    "cip": "5213",
+    "slug": "management-sciences-and-quantitative-methods",
+    "title": "Management Sciences and Quantitative Methods"
+  },
+  {
+    "cip": "1436",
+    "slug": "manufacturing-engineering",
+    "title": "Manufacturing Engineering"
+  },
+  {
+    "cip": "5214",
+    "slug": "marketing",
+    "title": "Marketing"
+  },
+  {
+    "cip": "1418",
+    "slug": "materials-engineering",
+    "title": "Materials Engineering"
+  },
+  {
+    "cip": "2701",
+    "slug": "mathematics",
+    "title": "Mathematics"
+  },
+  {
+    "cip": "3008",
+    "slug": "mathematics-and-computer-science",
+    "title": "Mathematics and Computer Science"
+  },
+  {
+    "cip": "2799",
+    "slug": "mathematics-and-statistics-other",
+    "title": "Mathematics and Statistics, Other"
+  },
+  {
+    "cip": "1419",
+    "slug": "mechanical-engineering",
+    "title": "Mechanical Engineering"
+  },
+  {
+    "cip": "1508",
+    "slug": "mechanical-engineering-related-technologies-technicians",
+    "title": "Mechanical Engineering Related Technologies/Technicians"
+  },
+  {
+    "cip": "5115",
+    "slug": "mental-and-social-health-services-and-allied-professions",
+    "title": "Mental and Social Health Services and Allied Professions"
+  },
+  {
+    "cip": "2605",
+    "slug": "microbiological-sciences-and-immunology",
+    "title": "Microbiological Sciences and Immunology"
+  },
+  {
+    "cip": "3000",
+    "slug": "multi-interdisciplinary-studies-general",
+    "title": "Multi-/Interdisciplinary Studies, General"
+  },
+  {
+    "cip": "3099",
+    "slug": "multi-interdisciplinary-studies-other",
+    "title": "Multi/Interdisciplinary Studies, Other"
+  },
+  {
+    "cip": "5009",
+    "slug": "music",
+    "title": "Music"
+  },
+  {
+    "cip": "0301",
+    "slug": "natural-resources-conservation-and-research",
+    "title": "Natural Resources Conservation and Research"
+  },
+  {
+    "cip": "3018",
+    "slug": "natural-sciences",
+    "title": "Natural Sciences"
+  },
+  {
+    "cip": "2615",
+    "slug": "neurobiology-and-neurosciences",
+    "title": "Neurobiology and Neurosciences"
+  },
+  {
+    "cip": "2200",
+    "slug": "non-professional-legal-studies",
+    "title": "Non-Professional Legal Studies"
+  },
+  {
+    "cip": "1423",
+    "slug": "nuclear-engineering",
+    "title": "Nuclear Engineering"
+  },
+  {
+    "cip": "3019",
+    "slug": "nutrition-sciences",
+    "title": "Nutrition Sciences"
+  },
+  {
+    "cip": "3103",
+    "slug": "parks-recreation-and-leisure-facilities-management",
+    "title": "Parks, Recreation, and Leisure Facilities Management"
+  },
+  {
+    "cip": "3101",
+    "slug": "parks-recreation-and-leisure-studies",
+    "title": "Parks, Recreation, and Leisure Studies"
+  },
+  {
+    "cip": "3907",
+    "slug": "pastoral-counseling-and-specialized-ministries",
+    "title": "Pastoral Counseling and Specialized Ministries"
+  },
+  {
+    "cip": "1425",
+    "slug": "petroleum-engineering",
+    "title": "Petroleum Engineering"
+  },
+  {
+    "cip": "5120",
+    "slug": "pharmacy-pharmaceutical-sciences-and-administration",
+    "title": "Pharmacy, Pharmaceutical Sciences, and Administration"
+  },
+  {
+    "cip": "3801",
+    "slug": "philosophy",
+    "title": "Philosophy"
+  },
+  {
+    "cip": "4008",
+    "slug": "physics",
+    "title": "Physics"
+  },
+  {
+    "cip": "2609",
+    "slug": "physiology-pathology-and-related-sciences",
+    "title": "Physiology, Pathology and Related Sciences"
+  },
+  {
+    "cip": "0111",
+    "slug": "plant-sciences",
+    "title": "Plant Sciences"
+  },
+  {
+    "cip": "4510",
+    "slug": "political-science-and-government",
+    "title": "Political Science and Government"
+  },
+  {
+    "cip": "4201",
+    "slug": "psychology-general",
+    "title": "Psychology, General"
+  },
+  {
+    "cip": "4299",
+    "slug": "psychology-other",
+    "title": "Psychology, Other"
+  },
+  {
+    "cip": "4404",
+    "slug": "public-administration",
+    "title": "Public Administration"
+  },
+  {
+    "cip": "5122",
+    "slug": "public-health",
+    "title": "Public Health"
+  },
+  {
+    "cip": "4405",
+    "slug": "public-policy-analysis",
+    "title": "Public Policy Analysis"
+  },
+  {
+    "cip": "0909",
+    "slug": "public-relations-advertising-and-applied-communication",
+    "title": "Public Relations, Advertising, and Applied Communication"
+  },
+  {
+    "cip": "1507",
+    "slug": "quality-control-and-safety-technologies-technicians",
+    "title": "Quality Control and Safety Technologies/Technicians"
+  },
+  {
+    "cip": "0907",
+    "slug": "radio-television-and-digital-communication",
+    "title": "Radio, Television, and Digital Communication"
+  },
+  {
+    "cip": "5215",
+    "slug": "real-estate",
+    "title": "Real Estate"
+  },
+  {
+    "cip": "5138",
+    "slug": "registered-nursing-nursing-administration-nursing-research-and-clinical-nursing",
+    "title": "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing"
+  },
+  {
+    "cip": "5123",
+    "slug": "rehabilitation-and-therapeutic-professions",
+    "title": "Rehabilitation and Therapeutic Professions"
+  },
+  {
+    "cip": "3802",
+    "slug": "religion-religious-studies",
+    "title": "Religion/Religious Studies"
+  },
+  {
+    "cip": "4227",
+    "slug": "research-and-experimental-psychology",
+    "title": "Research and Experimental Psychology"
+  },
+  {
+    "cip": "2313",
+    "slug": "rhetoric-and-composition-writing-studies",
+    "title": "Rhetoric and Composition/Writing Studies"
+  },
+  {
+    "cip": "1609",
+    "slug": "romance-languages-literatures-and-linguistics",
+    "title": "Romance Languages, Literatures, and Linguistics"
+  },
+  {
+    "cip": "4304",
+    "slug": "security-science-and-technology",
+    "title": "Security Science and Technology"
+  },
+  {
+    "cip": "4501",
+    "slug": "social-sciences-general",
+    "title": "Social Sciences, General"
+  },
+  {
+    "cip": "4599",
+    "slug": "social-sciences-other",
+    "title": "Social Sciences, Other"
+  },
+  {
+    "cip": "4407",
+    "slug": "social-work",
+    "title": "Social Work"
+  },
+  {
+    "cip": "4511",
+    "slug": "sociology",
+    "title": "Sociology"
+  },
+  {
+    "cip": "4513",
+    "slug": "sociology-and-anthropology",
+    "title": "Sociology and Anthropology"
+  },
+  {
+    "cip": "1310",
+    "slug": "special-education-and-teaching",
+    "title": "Special Education and Teaching"
+  },
+  {
+    "cip": "5219",
+    "slug": "specialized-sales-merchandising-and-marketing-operations",
+    "title": "Specialized Sales, Merchandising and  Marketing Operations"
+  },
+  {
+    "cip": "3105",
+    "slug": "sports-kinesiology-and-physical-education-fitness",
+    "title": "Sports, Kinesiology, and Physical Education/Fitness"
+  },
+  {
+    "cip": "2705",
+    "slug": "statistics",
+    "title": "Statistics"
+  },
+  {
+    "cip": "3033",
+    "slug": "sustainability-studies",
+    "title": "Sustainability Studies"
+  },
+  {
+    "cip": "1427",
+    "slug": "systems-engineering",
+    "title": "Systems Engineering"
+  },
+  {
+    "cip": "1312",
+    "slug": "teacher-education-and-professional-development-specific-levels-and-methods",
+    "title": "Teacher Education and Professional Development, Specific Levels and Methods"
+  },
+  {
+    "cip": "1313",
+    "slug": "teacher-education-and-professional-development-specific-subject-areas",
+    "title": "Teacher Education and Professional Development, Specific Subject Areas"
+  },
+  {
+    "cip": "1314",
+    "slug": "teaching-english-or-french-as-a-second-or-foreign-language",
+    "title": "Teaching English or French as a Second or Foreign Language"
+  },
+  {
+    "cip": "3906",
+    "slug": "theological-and-ministerial-studies",
+    "title": "Theological and Ministerial Studies"
+  },
+  {
+    "cip": "4512",
+    "slug": "urban-studies-affairs",
+    "title": "Urban Studies/Affairs"
+  },
+  {
+    "cip": "0183",
+    "slug": "veterinary-animal-health-technologies-technicians",
+    "title": "Veterinary/Animal Health Technologies/Technicians"
+  },
+  {
+    "cip": "5001",
+    "slug": "visual-and-performing-arts-general",
+    "title": "Visual and Performing Arts, General"
+  },
+  {
+    "cip": "5099",
+    "slug": "visual-and-performing-arts-other",
+    "title": "Visual and Performing Arts, Other"
+  },
+  {
+    "cip": "0306",
+    "slug": "wildlife-and-wildlands-science-and-management",
+    "title": "Wildlife and Wildlands Science and Management"
+  },
+  {
+    "cip": "2607",
+    "slug": "zoology-animal-biology",
+    "title": "Zoology/Animal Biology"
+  }
+]

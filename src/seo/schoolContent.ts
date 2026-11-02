@@ -64,11 +64,14 @@ export interface SchoolFacts {
   retentionLt4?: number | null;
   tuitionIn?: number | null;
   tuitionOut?: number | null;
+  /** 6-digit OPE ID: campuses of one institution share it (and share earnings/debt figures). */
+  ope6?: string | null;
 }
 
 /** Scorecard API field paths the build script requests (one row per school). */
 export const FACT_FIELDS = [
   'id',
+  'ope6_id',
   'school.name',
   'school.city',
   'school.state',
@@ -180,6 +183,7 @@ export function factsFromApiRow(r: Record<string, unknown>): SchoolFacts {
     retentionLt4: num(r['latest.student.retention_rate.lt_four_year.full_time']),
     tuitionIn: num(r['latest.cost.tuition.in_state']),
     tuitionOut: num(r['latest.cost.tuition.out_of_state']),
+    ope6: typeof r['ope6_id'] === 'string' ? (r['ope6_id'] as string) : null,
   };
 }
 
@@ -334,8 +338,19 @@ export const pct = (v: number) => `${(v * 100).toFixed(1)}%`;
 const pctWhole = (v: number) => `${Math.round(v * 100)}%`;
 export const int = (v: number) => intFmt.format(Math.round(v));
 
+const TERRITORIES: Record<string, string> = {
+  PR: 'Puerto Rico',
+  GU: 'Guam',
+  VI: 'U.S. Virgin Islands',
+  AS: 'American Samoa',
+  MP: 'Northern Mariana Islands',
+  FM: 'Micronesia',
+  MH: 'Marshall Islands',
+  PW: 'Palau',
+};
+
 export function stateName(code: string): string {
-  return US_STATES.find((s) => s.code === code)?.name ?? code;
+  return US_STATES.find((s) => s.code === code)?.name ?? TERRITORIES[code] ?? code;
 }
 
 const LOCALE_PHRASE: Record<number, string> = {

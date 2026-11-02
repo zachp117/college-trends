@@ -10,8 +10,10 @@ import { parseSchoolPath } from './util/schoolUrl';
 import { AUTH_ENABLED } from './util/featureFlags';
 import { CollectionsRoute } from './components/collections/CollectionsRoute';
 import { parseCollectionPath } from './data/collections';
+import { MajorsRoute } from './components/majors/MajorsRoute';
+import { parseMajorPath } from './data/majors';
 
-type Route = 'landing' | 'auth' | 'app' | 'about' | 'changelog' | 'colleges' | 'notfound';
+type Route = 'landing' | 'auth' | 'app' | 'about' | 'changelog' | 'colleges' | 'majors' | 'notfound';
 
 /**
  * Match a path against a route prefix. Returns true for exactly the prefix
@@ -37,6 +39,8 @@ function pathToRoute(path: string): Route {
   if (isUnder(clean, '/changelog')) return 'changelog';
   // /colleges hub, /colleges/<collection>, /colleges/<collection>/<state>
   if (isUnder(clean, '/colleges')) return parseCollectionPath(clean) ? 'colleges' : 'notfound';
+  // /majors hub and /majors/<slug>
+  if (isUnder(clean, '/majors')) return parseMajorPath(clean) ? 'majors' : 'notfound';
   // Auth surface is flag-gated: when hidden in prod, /login and /signup 404.
   if (AUTH_ENABLED && (isUnder(clean, '/login') || isUnder(clean, '/signup'))) {
     return 'auth';
@@ -91,6 +95,7 @@ export function Root() {
       {route === 'colleges' && (
         <CollectionsRoute route={parseCollectionPath(window.location.pathname.replace(/\/+$/, '') || '/')!} />
       )}
+      {route === 'majors' && <MajorsRoute route={parseMajorPath(window.location.pathname)!} />}
       {route === 'changelog' && <ChangelogPage onBack={() => navigate('/app')} />}
       {route === 'auth' && <AuthPage onSuccess={() => navigate('/app')} />}
       {route === 'landing' && (

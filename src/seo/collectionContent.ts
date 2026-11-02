@@ -118,7 +118,7 @@ export interface MetricDef {
   tip: string;
 }
 
-const kMoney = (v: number) => `$${Math.round(v / 1000)}k`;
+const kMoney = (v: number) => (v === 0 ? '$0' : `$${Math.round(v / 1000)}k`);
 const wholePct = (v: number) => `${Math.round(v * 100)}%`;
 
 export const METRICS: Record<RowMetric, MetricDef> = {
@@ -480,6 +480,7 @@ export function collectionTitle(c: Collection, state: Place | null, count: numbe
         `${n} ${label} in ${state.name}: Cost, Earnings & Debt | College Trends`,
         `${n} ${label} in ${state.name}: Cost & Earnings | College Trends`,
         `${label} in ${state.name}: Cost & Earnings | College Trends`,
+        `${n} ${label} in ${state.name} | College Trends`,
         `${label} in ${state.name} | College Trends`,
       ]
     : [

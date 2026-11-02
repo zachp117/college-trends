@@ -65,7 +65,7 @@ app.post('/api/pins', async (c) => {
   if (typeof body.schoolId !== 'number' || typeof body.schoolName !== 'string') {
     return c.json({ error: 'Invalid body' }, 400);
   }
-  // Cap at 5 pins per user
+  // Cap pins per user (matches MAX_PINS in src/util/schoolColors.ts)
   const existing = await db
     .select()
     .from(schema.pinnedSchool)
@@ -73,8 +73,8 @@ app.post('/api/pins', async (c) => {
   if (existing.find((p) => p.schoolId === body.schoolId)) {
     return c.json({ ok: true, alreadyPinned: true });
   }
-  if (existing.length >= 5) {
-    return c.json({ error: 'Pin limit reached (5)' }, 400);
+  if (existing.length >= 8) {
+    return c.json({ error: 'Pin limit reached (8)' }, 400);
   }
   await db.insert(schema.pinnedSchool).values({
     id: crypto.randomUUID(),

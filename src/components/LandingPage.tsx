@@ -199,7 +199,7 @@ const FEATURES: { title: string; body: string }[] = [
   },
   {
     title: 'Pin and compare',
-    body: 'Pin up to 5 schools and see them side by side in every view: earnings ranges, graduation outcomes, and who attends.',
+    body: 'Pin up to 8 schools and see them side by side in every view: earnings ranges, graduation outcomes, and who attends.',
   },
   {
     title: 'Clear about the data',

@@ -19,13 +19,13 @@ import type {
 import { TREND_METRICS, fetchSchoolHistory, fetchHistoryAggregate } from '../api/scorecard';
 import { fmtMoney, fmtNum, fmtPct } from '../util/format';
 import { Accordion, AccordionSection } from '../components/Accordion';
+import { SCHOOL_COLORS as PALETTE } from '../util/schoolColors';
 
 interface Props {
   filters: SearchFilters;
   selectedSchools: School[];
 }
 
-const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 const AGGREGATE_KEY = 'All filtered colleges (avg)';
 const AGGREGATE_COLOR = '#0f172a';
 

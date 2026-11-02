@@ -14,6 +14,8 @@ import type { School } from '../api/scorecard';
 import { OWNERSHIP_LABELS, TEST_POLICY_LABELS } from '../api/scorecard';
 import { fmtMoney, fmtNum, fmtPct } from '../util/format';
 import { Accordion, AccordionSection } from '../components/Accordion';
+import { CompareCharts } from '../components/compare/CompareCharts';
+import { SCHOOL_COLORS as PALETTE } from '../util/schoolColors';
 
 function slugify(s: string): string {
   return s
@@ -26,7 +28,6 @@ interface Props {
   selectedSchools: School[];
 }
 
-const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 
 const RACE_GROUPS = [
   { key: 'raceWhite', label: 'White', color: '#2F6FEB' },
@@ -289,7 +290,7 @@ export function CompareTab({ selectedSchools }: Props) {
         </div>
         <div className="text-sm">
           You've pinned <span className="font-medium">{selectedSchools[0].name}</span>.
-          Pin one to four more to see them side by side.
+          Pin up to seven more to see them side by side.
         </div>
       </div>
     );
@@ -318,7 +319,7 @@ export function CompareTab({ selectedSchools }: Props) {
             Print / save as PDF
           </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
           {selectedSchools.map((s, i) => (
             <div
               key={s.id}
@@ -344,6 +345,8 @@ export function CompareTab({ selectedSchools }: Props) {
           ))}
         </div>
       </div>
+
+      <CompareCharts schools={selectedSchools} />
 
       {/* Sections */}
       <Accordion>

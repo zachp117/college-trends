@@ -19,6 +19,19 @@ export interface ChangelogEntry {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-11-02',
+    tag: 'Improved',
+    title: 'Charts on the Compare view, and pin up to 8 schools',
+    description:
+      'Compare now draws charts for your pinned schools, and each chart can be saved as an image to share or drop into a document.',
+    details: [
+      'Net price by family income, grouped by school',
+      'Net price, earnings, debt, graduation, retention and admission rates side by side',
+      'Download PNG saves a chart with its title, legend and source',
+      'Pin up to 8 schools, with new school colors that are easier to tell apart',
+    ],
+  },
+  {
+    date: '2026-11-02',
     tag: 'New',
     title: 'Compare whole groups of colleges',
     description:

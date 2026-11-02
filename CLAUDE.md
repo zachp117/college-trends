@@ -25,7 +25,8 @@ usages are brand cyan. Brand corner radii (`md/lg/xl`) and a faint cyan/violet p
 The site stays **light**; headers are light/sticky with a blurred background (navy on About,
 What's new, 404). The dark theme was intentionally NOT adopted. **Space Grotesk, Space Mono and
 `// LABEL` eyebrows are no longer used** (owner's call). Chart series palettes are still their
-original hues. Keep it trustworthy, editorial, minimal.
+original hues, except pinned-school colors: those come from `src/util/schoolColors.ts` (8 validated
+colors; `MAX_PINS` = 8, also enforced in `server/index.ts`). Keep it trustworthy, editorial, minimal.
 
 **Brand v2 (partial adoption, `design/brand-v2/`):** only these pieces are adopted. Ignore the rest of
 that kit (its colors, navy/paper palette, square corners, mono labels, UI kit layouts).

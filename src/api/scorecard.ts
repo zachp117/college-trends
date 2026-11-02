@@ -24,6 +24,7 @@ export const FIELDS = {
   tuitionIn: 'latest.cost.tuition.in_state',
   tuitionOut: 'latest.cost.tuition.out_of_state',
   completionRate: 'latest.completion.completion_rate_4yr_150nt',
+  completionRateLt4: 'latest.completion.completion_rate_less_than_4yr_150nt',
   medianEarnings10: 'latest.earnings.10_yrs_after_entry.median',
   medianEarnings6: 'latest.earnings.6_yrs_after_entry.mean_earnings',
   medianDebt: 'latest.aid.median_debt.completers.overall',
@@ -236,6 +237,8 @@ export interface School {
   tuitionIn: number | null;
   tuitionOut: number | null;
   completionRate: number | null;
+  /** Less-than-4-year schools report this instead of completionRate. */
+  completionRateLt4: number | null;
   medianEarnings10: number | null;
   medianEarnings6: number | null;
   medianDebt: number | null;
@@ -482,6 +485,7 @@ function mapRow(row: Record<string, unknown>): School {
     tuitionIn: g<number>(FIELDS.tuitionIn),
     tuitionOut: g<number>(FIELDS.tuitionOut),
     completionRate: g<number>(FIELDS.completionRate),
+    completionRateLt4: g<number>(FIELDS.completionRateLt4),
     medianEarnings10: g<number>(FIELDS.medianEarnings10),
     medianEarnings6: g<number>(FIELDS.medianEarnings6),
     medianDebt: g<number>(FIELDS.medianDebt),

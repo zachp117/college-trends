@@ -30,6 +30,7 @@ import { StudentDetailPage } from './components/StudentDetailPage';
 import { StarterPresets } from './components/StarterPresets';
 import { SidebarLayout } from './components/Sidebar';
 import { Wordmark } from './components/Wordmark';
+import { MAX_PINS } from './util/schoolColors';
 
 type StudentView =
   | { kind: 'none' }
@@ -414,7 +415,7 @@ export default function App() {
       const next = new Set(cur);
       const wasPinned = next.has(id);
       if (wasPinned) next.delete(id);
-      else if (next.size < 5) next.add(id);
+      else if (next.size < MAX_PINS) next.add(id);
       // Mirror the change to the server when logged in.
       if (isLoggedIn) {
         // Find a school name for the pin: try filtered list first, then detail.
@@ -701,12 +702,12 @@ function MainView({
             ) : (
               <span
                 className="text-xs text-slate-500 hidden md:inline"
-                title="Pinned schools appear in per-school breakdowns across every view. Pick up to 5."
+                title="Pinned schools appear in per-school breakdowns across every view. Pick up to 8."
               >
                 <Pin size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />
                 {selectedIds.size === 1
                   ? '1 pinned · pin one more to compare'
-                  : 'Pin schools to compare (up to 5)'}
+                  : 'Pin schools to compare (up to 8)'}
               </span>
             )}
             <button

@@ -10,13 +10,13 @@ import {
   Cell,
 } from 'recharts';
 import type { School } from '../../api/scorecard';
+import { SCHOOL_COLORS as PALETTE } from '../../util/schoolColors';
 
 interface Props {
   schools: School[];
   selected: School[];
 }
 
-const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 
 export function DefaultRateBar({ schools, selected }: Props) {
   const mode: 'selected' | 'top' = selected.length > 0 ? 'selected' : 'top';

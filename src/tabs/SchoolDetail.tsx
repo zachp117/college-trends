@@ -751,7 +751,7 @@ function SchoolDetailActions({
             ? 'bg-indigo-600 border-indigo-600 text-white hover:bg-indigo-700'
             : 'bg-white border-indigo-300 text-indigo-700 hover:bg-indigo-50'
         }`}
-        title="Pinned schools appear in per-school breakdowns across every tab (Trends, Majors, Demographics, Faculty, Outcomes, Earnings, and more). Pick up to 5."
+        title="Pinned schools appear in per-school breakdowns across every tab (Trends, Majors, Demographics, Faculty, Outcomes, Earnings, and more). Pick up to 8."
       >
         {isSelected ? <Check size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" /> : <Pin size={13} strokeWidth={1.75} className="inline -mt-0.5 mr-1" aria-hidden="true" />}
         {isSelected ? 'Pinned' : 'Pin to dashboard'}

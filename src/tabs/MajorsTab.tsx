@@ -14,12 +14,12 @@ import type { Program, School } from '../api/scorecard';
 import { CREDENTIAL_LABELS, fetchSchoolPrograms } from '../api/scorecard';
 import { fmtMoney, fmtNum } from '../util/format';
 import { Accordion, AccordionSection } from '../components/Accordion';
+import { SCHOOL_COLORS as PALETTE } from '../util/schoolColors';
 
 interface Props {
   selectedSchools: School[];
 }
 
-const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 const COMMON_CREDENTIALS = [1, 2, 3, 5, 6, 7];
 
 type MetricKey = keyof Pick<
@@ -239,7 +239,7 @@ export function MajorsTab({ selectedSchools }: Props) {
           Pin schools to compare majors
         </div>
         <div>
-          Check up to 5 schools in the table below. Each school publishes per-program data for every CIP-4 program it offers.
+          Check up to 8 schools in the table below. Each school publishes per-program data for every CIP-4 program it offers.
         </div>
       </div>
     );

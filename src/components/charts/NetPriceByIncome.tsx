@@ -12,13 +12,13 @@ import {
 import type { School } from '../../api/scorecard';
 import { INCOME_BRACKETS } from '../../api/scorecard';
 import { fmtMoney } from '../../util/format';
+import { SCHOOL_COLORS as PALETTE } from '../../util/schoolColors';
 
 interface Props {
   schools: School[];
   selected: School[];
 }
 
-const PALETTE = ['#6D5EF0', '#2F6FEB', '#16A34A', '#F59E0B', '#E0483D'];
 
 function median(nums: number[]): number | null {
   if (nums.length === 0) return null;

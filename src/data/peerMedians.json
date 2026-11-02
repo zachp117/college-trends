@@ -1,30 +1,30 @@
 {
   "1-1": {
-    "count": 664,
+    "count": 662,
     "metrics": {
       "size": {
-        "median": 875,
-        "n": 662
+        "median": 877.5,
+        "n": 660
       },
       "netPrice": {
-        "median": 8983,
-        "n": 603
+        "median": 8761,
+        "n": 597
       },
       "admitRate": {
-        "median": 0.7925,
-        "n": 51
+        "median": 0.7987,
+        "n": 50
       },
       "completion": {
-        "median": 0.33535,
-        "n": 72
+        "median": 0.3283,
+        "n": 75
       },
       "earnings10": {
-        "median": 38203,
-        "n": 619
+        "median": 42807,
+        "n": 631
       },
       "medianDebt": {
-        "median": 9500,
-        "n": 387
+        "median": 9750,
+        "n": 369
       },
       "retention": {
         "median": 0.7221,
@@ -40,24 +40,24 @@
         "n": 630
       },
       "netPrice": {
-        "median": 7911,
-        "n": 627
+        "median": 7414.5,
+        "n": 614
       },
       "admitRate": {
         "median": 0.7899,
         "n": 23
       },
       "completion": {
-        "median": 0.3155,
-        "n": 167
+        "median": 0.3196,
+        "n": 176
       },
       "earnings10": {
-        "median": 40397,
-        "n": 613
+        "median": 44835.5,
+        "n": 620
       },
       "medianDebt": {
-        "median": 10500,
-        "n": 508
+        "median": 10597,
+        "n": 501
       },
       "retention": {
         "median": 0.5957,
@@ -73,24 +73,24 @@
         "n": 595
       },
       "netPrice": {
-        "median": 14638,
-        "n": 565
+        "median": 14226,
+        "n": 567
       },
       "admitRate": {
         "median": 0.8362,
         "n": 529
       },
       "completion": {
-        "median": 0.52635,
+        "median": 0.5156000000000001,
         "n": 568
       },
       "earnings10": {
-        "median": 54659,
+        "median": 59509,
         "n": 587
       },
       "medianDebt": {
-        "median": 21000,
-        "n": 586
+        "median": 19500,
+        "n": 585
       },
       "retention": {
         "median": 0.76535,
@@ -102,11 +102,11 @@
     "count": 13,
     "metrics": {
       "earnings10": {
-        "median": 66479,
-        "n": 3
+        "median": 71619.5,
+        "n": 2
       },
       "medianDebt": {
-        "median": 25907,
+        "median": 24750,
         "n": 2
       }
     }
@@ -119,24 +119,24 @@
         "n": 172
       },
       "netPrice": {
-        "median": 20536,
-        "n": 129
+        "median": 20834,
+        "n": 131
       },
       "admitRate": {
         "median": 0.8411,
         "n": 57
       },
       "completion": {
-        "median": 0.5,
-        "n": 33
+        "median": 0.5217,
+        "n": 31
       },
       "earnings10": {
-        "median": 36909,
-        "n": 113
+        "median": 44255,
+        "n": 123
       },
       "medianDebt": {
-        "median": 12000,
-        "n": 93
+        "median": 9500,
+        "n": 85
       },
       "retention": {
         "median": 0.8146500000000001,
@@ -145,31 +145,31 @@
     }
   },
   "2-2": {
-    "count": 161,
+    "count": 159,
     "metrics": {
       "size": {
-        "median": 271,
-        "n": 157
+        "median": 272,
+        "n": 155
       },
       "netPrice": {
-        "median": 17127,
-        "n": 128
+        "median": 15554.5,
+        "n": 136
       },
       "admitRate": {
-        "median": 0.8,
-        "n": 95
+        "median": 0.80185,
+        "n": 94
       },
       "completion": {
-        "median": 0.4897,
-        "n": 93
+        "median": 0.4444,
+        "n": 97
       },
       "earnings10": {
-        "median": 42636,
-        "n": 117
+        "median": 45693,
+        "n": 121
       },
       "medianDebt": {
-        "median": 16667,
-        "n": 100
+        "median": 17676,
+        "n": 96
       },
       "retention": {
         "median": 0.7186999999999999,
@@ -178,81 +178,81 @@
     }
   },
   "2-3": {
-    "count": 1205,
+    "count": 1197,
     "metrics": {
       "size": {
-        "median": 1100,
-        "n": 1198
+        "median": 1107,
+        "n": 1190
       },
       "netPrice": {
-        "median": 22585,
-        "n": 1095
+        "median": 22971,
+        "n": 1092
       },
       "admitRate": {
-        "median": 0.7371,
-        "n": 999
+        "median": 0.7374,
+        "n": 993
       },
       "completion": {
-        "median": 0.5750500000000001,
-        "n": 1118
+        "median": 0.5771999999999999,
+        "n": 1108
       },
       "earnings10": {
-        "median": 54055.5,
-        "n": 1074
+        "median": 59097.5,
+        "n": 1080
       },
       "medianDebt": {
-        "median": 24951,
-        "n": 1028
+        "median": 23250,
+        "n": 1015
       },
       "retention": {
-        "median": 0.77025,
-        "n": 1118
+        "median": 0.7706500000000001,
+        "n": 1110
       }
     }
   },
   "2-4": {
-    "count": 219,
+    "count": 217,
     "metrics": {
       "size": {
         "median": 1,
         "n": 7
       },
       "earnings10": {
-        "median": 61716,
-        "n": 16
+        "median": 60280,
+        "n": 17
       },
       "medianDebt": {
-        "median": 20750,
-        "n": 12
+        "median": 26430,
+        "n": 11
       }
     }
   },
   "3-1": {
-    "count": 1768,
+    "count": 1749,
     "metrics": {
       "size": {
-        "median": 125,
-        "n": 1736
+        "median": 127,
+        "n": 1717
       },
       "netPrice": {
-        "median": 19544,
-        "n": 1617
+        "median": 20499,
+        "n": 1630
       },
       "admitRate": {
         "median": 0.8983,
         "n": 70
       },
       "completion": {
-        "median": 0.561,
-        "n": 47
+        "median": 0.53645,
+        "n": 46
       },
       "earnings10": {
-        "median": 27392.5,
-        "n": 1280
+        "median": 32752,
+        "n": 1371
       },
       "medianDebt": {
-        "median": 9500,
-        "n": 1358
+        "median": 9498,
+        "n": 1376
       },
       "retention": {
         "median": 0.6577500000000001,
@@ -261,31 +261,31 @@
     }
   },
   "3-2": {
-    "count": 182,
+    "count": 177,
     "metrics": {
       "size": {
-        "median": 391.5,
-        "n": 160
+        "median": 396,
+        "n": 155
       },
       "netPrice": {
-        "median": 27074,
-        "n": 147
+        "median": 27950,
+        "n": 157
       },
       "admitRate": {
-        "median": 0.78775,
-        "n": 28
+        "median": 0.7755,
+        "n": 27
       },
       "completion": {
-        "median": 0.57565,
-        "n": 54
+        "median": 0.5056,
+        "n": 55
       },
       "earnings10": {
-        "median": 39633,
-        "n": 160
+        "median": 46253,
+        "n": 155
       },
       "medianDebt": {
-        "median": 16204.5,
-        "n": 162
+        "median": 18740,
+        "n": 159
       },
       "retention": {
         "median": 0.6667,
@@ -294,31 +294,31 @@
     }
   },
   "3-3": {
-    "count": 144,
+    "count": 143,
     "metrics": {
       "size": {
-        "median": 454,
-        "n": 142
+        "median": 455,
+        "n": 141
       },
       "netPrice": {
-        "median": 30716,
-        "n": 109
+        "median": 31853,
+        "n": 110
       },
       "admitRate": {
         "median": 1,
         "n": 57
       },
       "completion": {
-        "median": 0.33725,
+        "median": 0.37065000000000003,
         "n": 108
       },
       "earnings10": {
-        "median": 40092,
-        "n": 129
+        "median": 44016,
+        "n": 128
       },
       "medianDebt": {
-        "median": 25686.5,
-        "n": 130
+        "median": 28667,
+        "n": 129
       },
       "retention": {
         "median": 0.6667,
@@ -327,19 +327,19 @@
     }
   },
   "3-4": {
-    "count": 31,
+    "count": 30,
     "metrics": {
       "size": {
         "median": 0,
         "n": 3
       },
       "earnings10": {
-        "median": 79150,
-        "n": 3
+        "median": 69215,
+        "n": 2
       },
       "medianDebt": {
-        "median": 32946,
-        "n": 1
+        "median": 5500,
+        "n": 4
       }
     }
   }

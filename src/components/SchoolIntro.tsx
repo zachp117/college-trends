@@ -10,6 +10,8 @@ import {
   type SchoolFacts,
 } from '../seo/schoolContent';
 import { InfoTooltip } from './InfoTooltip';
+import { COLLECTIONS, collectionPath, hasStatePage } from '../data/collections';
+import { stateName } from '../seo/schoolContent';
 
 interface Props {
   facts: SchoolFacts;
@@ -33,6 +35,12 @@ export function SchoolIntro({ facts, peers, back, actions, filterLine, extraStat
   const description = schoolDescription(facts);
   const overview = schoolOverview(facts, peers);
   const stats = highlights(facts, peers);
+  // Links to the /colleges pages this school appears on (state page when it exists).
+  const groups = COLLECTIONS.filter((c) => c.includes(facts)).map((c) =>
+    hasStatePage(c.slug, facts.state)
+      ? { href: collectionPath(c.slug, facts.state), label: `${c.label} in ${stateName(facts.state)}` }
+      : { href: collectionPath(c.slug), label: `All U.S. ${c.noun}` },
+  );
   const website = facts.url
     ? facts.url.startsWith('http')
       ? facts.url
@@ -74,6 +82,19 @@ export function SchoolIntro({ facts, peers, back, actions, filterLine, extraStat
         <p className="mt-2 text-xs text-slate-400">
           Source: U.S. Department of Education College Scorecard.
         </p>
+        {groups.length > 0 && (
+          <p className="mt-3 text-sm text-slate-600">
+            Compare with similar schools:{' '}
+            {groups.map((g, i) => (
+              <span key={g.href}>
+                {i > 0 && ' · '}
+                <a href={g.href} className="text-indigo-700 hover:text-indigo-900">
+                  {g.label}
+                </a>
+              </span>
+            ))}
+          </p>
+        )}
       </header>
 
       {stats.length > 0 && (

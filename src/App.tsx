@@ -590,6 +590,7 @@ export default function App() {
       <footer className="max-w-7xl mx-auto px-4 sm:px-6 py-8 mt-8 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
         <span>Data: U.S. Dept. of Education College Scorecard · api.data.gov</span>
         <span className="flex gap-4">
+          <a href="/colleges" className="hover:text-slate-700 transition">Browse colleges</a>
           <a href="/changelog" className="hover:text-slate-700 transition">What's new</a>
           <a href="/about" className="hover:text-slate-700 transition">About &amp; methodology</a>
         </span>

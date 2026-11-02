@@ -63,6 +63,14 @@ After cloning or wiping `data.db`, run `npm run db:migrate` to bootstrap the sch
 
 **Dual SPA + static-stub routing for social previews.** `vercel.json` rewrites `/*` → `/index.html` so the React SPA handles routing client-side. BUT `scripts/generate-sitemap.ts` writes per-school HTML files to `dist/school/<slug>-<id>/index.html` at build time with school-specific Open Graph + Twitter Card meta. These static stubs ship the same React bundle, so a real visitor clicking the link still gets the SPA; only crawlers (Facebook, Twitter, iMessage, etc.) read the per-school meta. If you change SPA routes or the OG flow, both paths need to stay consistent.
 
+**`/colleges` pages (school groups by type and state).** Collections (public universities, private
+nonprofit, community colleges, HBCUs) are defined in `src/data/collections.ts`; text and medians in
+`src/seo/collectionContent.ts`. Build order: `fetch-school-data` (API) → `build-collections` (no API:
+writes `public/data/collections/*.json`, gitignored, and the committed `src/data/collectionStates.json`
+listing which state pages exist, min 3 schools) → `vite build` → `generate-sitemap` (pre-renders every
+`/colleges` page with the same React components). These pages load static JSON and make **no live API
+calls**, which matters because the site shares one 1,000 req/hr key.
+
 **Build-time OG generation has a fallback.** The generic OG PNG is a static file from the brand kit. `scripts/generate-sitemap.ts` fetches the full school list from data.gov (needs `VITE_SCORECARD_API_KEY`) and emits per-school stubs + `sitemap.xml`. If the key is missing or the API call fails, the build still succeeds with a static sitemap and no per-school stubs — intentional, so CI doesn't break when secrets are absent. Don't add hard failure on missing API key.
 
 **Drizzle schema is split into two layers** in `server/db/schema.ts`: Better Auth core tables (`user`, `session`, `account`, `verification`) and app tables (`student`, `studentSchool`, `pinnedSchool`). Migrations are SQL files in `server/db/migrations/` — the canonical schema source. `data.db` is gitignored.

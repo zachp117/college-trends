@@ -27,6 +27,9 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
             <Wordmark />
           </span>
           <div className="flex items-center gap-1">
+            <a href="/colleges" className={`${quietLink} hidden sm:inline-block`}>
+              Browse colleges
+            </a>
             <a href="/about" className={`${quietLink} hidden sm:inline-block`}>
               About
             </a>
@@ -149,6 +152,9 @@ export function LandingPage({ onEnterApp, onSignIn }: Props) {
           <div className="text-xs text-slate-400 space-y-2 md:text-right">
             <div>Data: U.S. Dept. of Education College Scorecard</div>
             <div className="flex flex-wrap gap-5 md:justify-end">
+              <a href="/colleges" className="hover:text-slate-700 transition">
+                Browse colleges
+              </a>
               <a href="/changelog" className="hover:text-slate-700 transition">
                 What's new
               </a>

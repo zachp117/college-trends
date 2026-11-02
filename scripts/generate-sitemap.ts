@@ -3,13 +3,16 @@
  *
  * Reads .cache/school-facts.json (written by scripts/fetch-school-data.ts) and
  * produces:
- *   1. dist/sitemap.xml: static + per-school URLs.
+ *   1. dist/sitemap.xml: static, per-school and /colleges URLs.
  *   2. dist/school/<slug>-<id>/index.html: per-school HTML whose <head> carries
  *      a school-specific title, meta description, canonical, Open Graph, Twitter
  *      and schema.org JSON-LD, and whose #root is pre-filled with the school's
  *      intro (H1, description, key metrics, data overview) rendered from the same
  *      React component the SPA uses. Crawlers that don't run JS see real content;
  *      in a browser, React mounts and replaces it with the full interactive page.
+ *   3. dist/colleges/index.html, dist/colleges/<collection>/index.html and
+ *      dist/colleges/<collection>/<state>/index.html: the /colleges pages, pre-rendered
+ *      from the same React components the SPA uses (chart placeholder, first 50 rows).
  *
  * If the facts cache is missing (no API key, or the fetch failed), the build still
  * succeeds with a static-only sitemap and no per-school HTML.
@@ -27,6 +30,21 @@ import {
   type SchoolFacts,
 } from '../src/seo/schoolContent';
 import { SchoolIntro } from '../src/components/SchoolIntro';
+import { CollectionPage } from '../src/components/collections/CollectionPage';
+import { CollectionsHub } from '../src/components/collections/CollectionsHub';
+import { COLLECTIONS, collectionPath } from '../src/data/collections';
+import {
+  HUB_META,
+  HUB_TITLE,
+  buildCollectionData,
+  collectionJsonLd,
+  collectionMeta,
+  collectionTitle,
+  hubSummary,
+  quickFacts,
+  summarize,
+} from '../src/seo/collectionContent';
+import { stateName } from '../src/seo/schoolContent';
 
 const SITE_URL = 'https://www.collegetrends.io';
 const FACTS_CACHE = resolve('.cache/school-facts.json');
@@ -36,6 +54,7 @@ const STATIC_PAGES: Array<{ path: string; priority: string; changefreq: string }
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/app', priority: '0.9', changefreq: 'weekly' },
   { path: '/about', priority: '0.5', changefreq: 'monthly' },
+  { path: '/colleges', priority: '0.8', changefreq: 'monthly' },
 ];
 
 interface UrlEntry {
@@ -142,6 +161,87 @@ function generateSchoolHtml(template: string, schools: SchoolFacts[], peers: Pee
 }
 
 // ---------------------------------------------------------------------------
+// /colleges pages
+// ---------------------------------------------------------------------------
+
+interface PageMeta {
+  path: string;
+  title: string;
+  description: string;
+  jsonLd?: Record<string, unknown>;
+}
+
+function renderPageMeta(m: PageMeta): string {
+  const url = SITE_URL + m.path;
+  const title = htmlEscape(m.title);
+  const description = htmlEscape(m.description);
+  const ogImage = `${SITE_URL}/og-image.png`;
+  const jsonLd = m.jsonLd
+    ? `\n    <script type="application/ld+json">${JSON.stringify(m.jsonLd).replace(/</g, '\\u003c')}</script>`
+    : '';
+  return `<!-- meta:start (per-page, generated) -->
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    <link rel="canonical" href="${url}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="College Trends" />
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${description}" />
+    <meta property="og:url" content="${url}" />
+    <meta property="og:image" content="${ogImage}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:image" content="${ogImage}" />${jsonLd}
+    <!-- meta:end -->`;
+}
+
+function writePage(template: string, meta: PageMeta, body: string) {
+  const html = template
+    .replace(META_BLOCK_REGEX, () => renderPageMeta(meta))
+    .replace(ROOT_REGEX, () => `<div id="root">${body}</div>`);
+  const out = resolve(`dist${meta.path}/index.html`);
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, html);
+}
+
+/** Write every /colleges page; returns their paths for the sitemap. */
+function generateCollectionHtml(template: string, schools: SchoolFacts[]): string[] {
+  const { rows, states } = buildCollectionData(schools);
+  const paths: string[] = [];
+
+  writePage(
+    template,
+    { path: collectionPath(), title: HUB_TITLE, description: HUB_META },
+    renderToStaticMarkup(createElement(CollectionsHub, { summary: hubSummary(rows) })),
+  );
+  paths.push(collectionPath());
+
+  for (const c of COLLECTIONS) {
+    const all = rows[c.slug] ?? [];
+    if (all.length === 0) continue;
+    const places = [null, ...(states[c.slug] ?? []).map((code) => ({ code, name: stateName(code) }))];
+    for (const state of places) {
+      const local = state ? all.filter((r) => r.state === state.code) : all;
+      const summary = summarize(local);
+      const title = collectionTitle(c, state, summary.count);
+      const description = collectionMeta(c, state, summary);
+      const facts = quickFacts(c, state, local, summary);
+      const path = collectionPath(c.slug, state?.code);
+      writePage(
+        template,
+        { path, title, description, jsonLd: collectionJsonLd(c, state, local, facts, title, description) },
+        renderToStaticMarkup(createElement(CollectionPage, { collection: c, state, rows: all })),
+      );
+      paths.push(path);
+    }
+  }
+  return paths;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -163,23 +263,31 @@ function main() {
     console.warn('No .cache/school-facts.json; sitemap will include static pages only, per-school HTML skipped.');
   }
 
-  // 1. Sitemap
-  const sitemapOut = resolve('dist/sitemap.xml');
-  writeFileSync(sitemapOut, buildXml(urls));
-  console.log(`✓ Wrote ${sitemapOut} (${urls.length} URLs)`);
-
-  // 2. Per-school HTML
-  if (schools.length > 0) {
-    const templatePath = resolve('dist/index.html');
-    if (!existsSync(templatePath)) {
-      console.error(`✗ Missing ${templatePath}; did vite build run first?`);
-      return;
-    }
+  // 1. Per-school and /colleges HTML (before the sitemap, which lists the /colleges pages)
+  const templatePath = resolve('dist/index.html');
+  if (schools.length > 0 && !existsSync(templatePath)) {
+    console.error(`✗ Missing ${templatePath}; did vite build run first?`);
+  } else if (schools.length > 0) {
     const template = readFileSync(templatePath, 'utf8');
     const peers = JSON.parse(readFileSync(PEERS_PATH, 'utf8')) as PeerMedians;
     const written = generateSchoolHtml(template, schools, peers);
     console.log(`✓ Wrote ${written} per-school HTML files (dist/school/<slug>-<id>/index.html)`);
+
+    if (META_BLOCK_REGEX.test(template) && ROOT_REGEX.test(template)) {
+      const collectionPaths = generateCollectionHtml(template, schools);
+      // /colleges itself is already in STATIC_PAGES.
+      for (const p of collectionPaths.filter((x) => x !== '/colleges')) {
+        const isState = p.split('/').length > 3;
+        urls.push({ loc: SITE_URL + p, priority: isState ? '0.7' : '0.8', changefreq: 'monthly' });
+      }
+      console.log(`✓ Wrote ${collectionPaths.length} /colleges pages`);
+    }
   }
+
+  // 2. Sitemap
+  const sitemapOut = resolve('dist/sitemap.xml');
+  writeFileSync(sitemapOut, buildXml(urls));
+  console.log(`✓ Wrote ${sitemapOut} (${urls.length} URLs)`);
 }
 
 main();

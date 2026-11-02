@@ -57,6 +57,13 @@ export interface SchoolFacts {
   retention: number | null;
   /** Largest programs by awards at the school's main credential level. */
   topPrograms: string[];
+  // Used by the /colleges pages. Optional so older caches still parse.
+  /** Less-than-4-year schools: share finishing within 150% of normal time. */
+  completionLt4?: number | null;
+  /** Less-than-4-year schools: first-time, full-time students returning for year two. */
+  retentionLt4?: number | null;
+  tuitionIn?: number | null;
+  tuitionOut?: number | null;
 }
 
 /** Scorecard API field paths the build script requests (one row per school). */
@@ -81,6 +88,10 @@ export const FACT_FIELDS = [
   'latest.earnings.10_yrs_after_entry.median',
   'latest.aid.median_debt.completers.overall',
   'latest.student.retention_rate.four_year.full_time',
+  'latest.completion.completion_rate_less_than_4yr_150nt',
+  'latest.student.retention_rate.lt_four_year.full_time',
+  'latest.cost.tuition.in_state',
+  'latest.cost.tuition.out_of_state',
   'latest.programs.cip_4_digit.title',
   'latest.programs.cip_4_digit.credential.level',
   'latest.programs.cip_4_digit.counts.ipeds_awards2',
@@ -165,6 +176,10 @@ export function factsFromApiRow(r: Record<string, unknown>): SchoolFacts {
     medianDebt: num(r['latest.aid.median_debt.completers.overall']),
     retention: num(r['latest.student.retention_rate.four_year.full_time']),
     topPrograms: topProgramsFrom(programs, predominantDegree),
+    completionLt4: num(r['latest.completion.completion_rate_less_than_4yr_150nt']),
+    retentionLt4: num(r['latest.student.retention_rate.lt_four_year.full_time']),
+    tuitionIn: num(r['latest.cost.tuition.in_state']),
+    tuitionOut: num(r['latest.cost.tuition.out_of_state']),
   };
 }
 

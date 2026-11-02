@@ -18,6 +18,19 @@ export interface ChangelogEntry {
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    date: '2026-11-02',
+    tag: 'New',
+    title: 'Compare whole groups of colleges',
+    description:
+      'New pages put every public university, private nonprofit college, community college or HBCU on one chart and one table, nationwide or within a state.',
+    details: [
+      'A chart with one dot per school: pick any two measures, such as net price and earnings',
+      'Medians for the group, with the national median shown on state pages',
+      'A sortable table of every school, linking to each school page',
+      'Start at Browse colleges, or follow the links on any school page',
+    ],
+  },
+  {
     date: '2026-10-10',
     tag: 'New',
     title: 'A record of data updates',

@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-11-03",
+    "measured": true,
+    "changes": [
+      {
+        "family": "Tuition / cost / net price",
+        "schools": 121,
+        "year": "2025–26",
+        "previousYear": "2025–26"
+      },
+      {
+        "family": "Completion / retention",
+        "schools": 7,
+        "year": "2025–26",
+        "previousYear": "2025–26"
+      },
+      {
+        "family": "Financial aid (Pell grants, federal loans)",
+        "schools": 100,
+        "year": "2025–26",
+        "previousYear": "2025–26"
+      }
+    ],
+    "schoolsAdded": 1,
+    "schoolsRemoved": 0
+  },
+  {
     "date": "2026-10-16",
     "measured": true,
     "changes": [

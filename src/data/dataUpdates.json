@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-11-16",
+    "measured": true,
+    "official": {
+      "date": "2026-11-02",
+      "summary": "On November 2, 2026, the Department updated the College Scorecard data to reflect a more recent version of the IPEDS Winter 2025-26 data. This update captures revisions institutions submitted near the end of the IPEDS collection period."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
+  },
+  {
     "date": "2026-11-03",
     "measured": true,
     "changes": [
@@ -62,6 +73,17 @@
     ],
     "schoolsAdded": 1,
     "schoolsRemoved": 42
+  },
+  {
+    "date": "2026-10-15",
+    "measured": false,
+    "official": {
+      "date": "2026-10-15",
+      "summary": "On October 15, 2026, the Department updated the College Scorecard website with more recent data from Office of Postsecondary Education and Federal Student Aid sources."
+    },
+    "changes": [],
+    "schoolsAdded": 0,
+    "schoolsRemoved": 0
   },
   {
     "date": "2026-06-10",
